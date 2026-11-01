@@ -80,6 +80,13 @@ body{margin:0}
 .tbl tbody th{width:150px;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#5A4D3F}
 .tbl tbody tr:last-child td,.tbl tbody tr:last-child th{border-bottom:0}
 .tbl .hl{background:#F2E6CF}
+.tbl-hint{display:none;margin:0 0 10px;font-size:14px;font-weight:600;color:#5A4D3F}
+@media (max-width: 760px){
+  .tbl-hint{display:block}
+  .tbl{min-width:760px}
+  .tbl th,.tbl td{padding:14px 12px;font-size:15px}
+  .tbl tbody th{width:96px;font-size:12px;position:sticky;left:0;background:#FFF8EC;z-index:1;box-shadow:1px 0 0 #DCC9A8}
+}
 .svc{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:2px solid #CDB992;border-radius:16px;min-width:0;color:#2A2218}
 .svc:hover{border-color:#2A2218}
 .dayb,.slotb{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:12px;font-weight:600;font-size:16px;border:2px solid transparent;color:#2A2218}
@@ -216,6 +223,7 @@ body{margin:0}
           <div class="chap">Comparer</div>
           <h3 class="serif" style="margin:12px 0 0;font-size:clamp(34px,4.4vw,56px);line-height:1">Les offres en un coup d'œil</h3>
         </div>
+        <p class="tbl-hint" aria-hidden="true">Fais glisser le tableau vers la gauche pour voir toutes les offres →</p>
         <div style="overflow-x:auto;border-radius:18px;border:1px solid #DCC9A8" role="region" aria-label="Tableau comparatif des offres" tabindex="0">
           <table class="tbl">
             <caption style="position:absolute;left:-9999px">Comparaison des quatre offres : Reconnexion, Reiki Usui, Massage Kobido et Entreprises</caption>
