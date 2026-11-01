@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Artisane du Bien-être – Accueil (version disruptive)</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.b{font-family:'DM Sans',system-ui,sans-serif;background:#044D2F;color:#FBF3E4;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.b *{box-sizing:border-box}
+.b a{color:inherit}
+.w{max-width:1240px;margin:0 auto;padding-left:clamp(20px,5vw,48px);padding-right:clamp(20px,5vw,48px)}
+.s{padding-top:clamp(64px,9vw,130px);padding-bottom:clamp(64px,9vw,130px)}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.015em}
+.chap{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#B88917}
+.chap::after{content:"";height:1px;width:56px;background:currentColor;opacity:0.7}
+.bone{background:#F5EBDC;color:#2A2218}
+.bone .chap{color:#8A5A0A}
+.mut{color:#DDE2CC}
+.bone .mut{color:#5A4D3F}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;border-radius:999px;font-weight:600;font-size:17px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;line-height:1.2;text-align:center}
+.pill-a{background:#B88917;color:#2A2218 !important}
+.pill-a:hover{background:#B88917}
+.pill-o{border-color:#FBF3E4;color:#FBF3E4 !important;background:transparent}
+.pill-o:hover{background:rgba(251,243,228,0.12)}
+.pill-d{background:#2A2218;color:#FBF3E4 !important}
+.pill-d:hover{background:#000000}
+.row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) minmax(0,1fr) auto;gap:20px 36px;align-items:center;padding:34px 0;border-top:1px solid #2A2218;text-decoration:none;color:#2A2218}
+.row:hover{background:#EBDDC6}
+.row:last-child{border-bottom:1px solid #2A2218}
+.skip{position:absolute;left:-9999px;top:8px;background:#B88917;color:#2A2218 !important;padding:12px 18px;border-radius:999px;z-index:100;font-weight:700}
+.skip:focus{left:12px}
+.b a:focus-visible,.b button:focus-visible,.b input:focus-visible,.b textarea:focus-visible{outline:3px solid #B88917;outline-offset:3px;border-radius:8px}
+.bone a:focus-visible,.bone button:focus-visible,.amber a:focus-visible,.amber button:focus-visible,.amber input:focus-visible,.amber textarea:focus-visible{outline-color:#2A2218}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;min-height:64px;padding:16px 22px;border:2px solid rgba(251,243,228,0.4);border-radius:18px;font-family:'DM Sans',system-ui,sans-serif;font-size:19px;font-weight:600;line-height:1.3;color:#FBF3E4;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.chip:hover{border-color:#B88917}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-weight:600;font-size:15px}
+.fld input,.fld textarea{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;color:#2A2218;border:2px solid #2A2218;border-radius:12px;padding:12px 16px;min-height:52px;background:#FFF9EE}
+.fld textarea{min-height:120px;resize:vertical}
+.opt{box-sizing:border-box;display:flex;flex-direction:column;gap:10px;padding:26px;border:2px solid rgba(251,243,228,0.35);border-radius:22px;text-decoration:none;color:#FBF3E4;min-height:240px}
+.opt:hover{border-color:#B88917;background:rgba(251,243,228,0.06)}
+.cl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.cl li{position:relative;padding-left:30px}
+.cl li::before{content:"";position:absolute;left:5px;top:0.45em;width:6px;height:12px;border:solid #2A2218;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.ico{width:72px;height:72px;border-radius:50%;border:2px solid #B88917;display:flex;align-items:center;justify-content:center;flex:none}
+.ic{width:42px;height:42px;fill:none;stroke:#B88917;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.opt:hover .ico{background:#B88917}
+.opt:hover .ic{stroke:#2A2218}
+.ci{width:26px;height:26px;flex:none;fill:none;stroke:currentColor;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.mbar{display:none}
+.menu-btn{display:none}
+#orientation,#reconnexion,#seances,#entreprises,#aurelie,#faq,#contact{scroll-margin-top:72px}
+.tab{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid transparent;font-size:14.5px;font-weight:600;line-height:1.2;text-decoration:none;white-space:nowrap}
+.tab:hover{border-color:rgba(184,137,23,0.75)}
+.tab svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:14px;font-weight:600;letter-spacing:0.03em;margin-bottom:18px}
+.crumb a{text-underline-offset:3px}
+.door{display:flex;align-items:center;gap:20px;margin-bottom:34px}
+.door>.ci{box-sizing:content-box;width:36px;height:36px;padding:16px;border:2px solid #B88917;border-radius:50%;stroke:#B88917}
+.bone .door>.ci{border-color:#2A2218;stroke:#2A2218}
+.offer .mut{color:#3B2F1E}
+.bone .opt{border-color:rgba(42,34,24,0.45);color:#2A2218}
+.bone .opt:hover{border-color:#2A2218;background:rgba(42,34,24,0.05)}
+.bone .ico{border-color:#2A2218}
+.bone .ic{stroke:#2A2218}
+.bone .opt:hover .ico{background:#B88917}
+.tbl{width:100%;min-width:820px;border-collapse:collapse;font-size:16px;background:#FFF8EC}
+.tbl th,.tbl td{padding:16px 18px;text-align:left;vertical-align:top;border-bottom:1px solid #DCC9A8}
+.tbl thead th,.tbl thead td{background:#2A2218;color:#FBF3E4;border-bottom:0}
+.tbl thead th{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:26px;line-height:1.1}
+.tbl tbody th{width:150px;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#5A4D3F}
+.tbl tbody tr:last-child td,.tbl tbody tr:last-child th{border-bottom:0}
+.tbl .hl{background:#F2E6CF}
+.svc{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:16px 18px;border:2px solid #CDB992;border-radius:16px;min-width:0;color:#2A2218}
+.svc:hover{border-color:#2A2218}
+.dayb,.slotb{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:12px;font-weight:600;font-size:16px;border:2px solid transparent;color:#2A2218}
+.dayb:hover:not(:disabled),.slotb:hover{border-color:#2A2218}
+.dayb:disabled{cursor:not-allowed}
+.navb{all:unset;box-sizing:border-box;cursor:pointer;width:46px;height:46px;border-radius:50%;border:2px solid #2A2218;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;color:#2A2218}
+.navb:disabled{opacity:0.35;cursor:not-allowed}
+.plan button:focus-visible,.plan input:focus-visible{outline:3px solid #2A2218;outline-offset:3px}
+.fchip{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 18px;border:2px solid #2A2218;border-radius:999px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;color:#2A2218}
+.fchip:hover{background:#EBDDC6}
+@media (max-width: 760px){.rings{display:none}}
+@media (max-width: 960px){
+  .navd{display:none !important}
+  .menu-btn{display:inline-flex !important}
+  .row{grid-template-columns:1fr;gap:10px;padding:28px 0}
+}
+@media (max-width: 760px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#044D2F;border-top:1px solid rgba(251,243,228,0.25);padding:10px 16px}
+  .b{padding-bottom:78px}
+  .cta-head{display:none !important}
+}
+</style>
+</helmet>
+
+<div class="b">
+
+  <a class="skip" href="#contenu">Aller au contenu principal</a>
+
+  <!-- Bannière : marque, accroche, médaillon, nom et adresse -->
+  <div id="haut" style="border-bottom:1px solid rgba(251,243,228,0.16)">
+    <div class="w" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding-top:16px;padding-bottom:16px">
+      <div style="display:flex;align-items:center;gap:16px;min-width:0">
+        <img src="./assets/25c90e4014949585e91a3965b789fd7b.jpg" alt="Aurélie Aké" style="width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid #B88917;flex:none">
+        <div style="line-height:1.25;min-width:0">
+          <h1 style="margin:0;font-size:30px;line-height:1;font-weight:400"><a href="#haut" class="serif" style="text-decoration:none;font-size:30px;line-height:1;display:block">artisane <em style="color:#B88917">du bien-être</em></a></h1>
+          <div style="font-size:17px;font-weight:600;margin-top:10px;line-height:1.4;color:#FBF3E4"><strong style="color:#B88917;font-weight:700">Aurélie Aké</strong> · Maison du Port, Couëron (44220) · Visio partout en France</div>
+        </div>
+      </div>
+      <div class="cta-head" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <a href="https://www.instagram.com/artisanedubienetre_reiki/" target="_blank" rel="noopener noreferrer" aria-label="Instagram d'Artisane du Bien-être (s'ouvre dans un nouvel onglet)" title="Instagram" style="width:48px;height:48px;border-radius:50%;border:2px solid #FBF3E4;color:#FBF3E4;display:inline-flex;align-items:center;justify-content:center;flex:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg></a>
+        <a class="pill pill-o" href="#ecrire" style="min-height:48px">Écris-moi</a>
+        <a class="pill pill-a" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}" style="min-height:48px">Réserver un premier échange</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation collante -->
+  <header style="position:sticky;top:0;z-index:50;background:#044D2F;border-bottom:1px solid rgba(251,243,228,0.16)">
+    <div class="w" style="max-width:1480px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;min-height:64px;padding-top:6px;padding-bottom:6px">
+      <nav aria-label="Navigation principale" class="navd" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center">
+        <a class="tab" href="#orientation" style="{{ tab.orientation.style }}" aria-current="{{ tab.orientation.cur }}"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="22"></circle><path d="M40 24 L35 35 L24 40 L29 29 Z"></path></svg>Par où commencer</a>
+        <a class="tab" href="#reconnexion" style="{{ tab.reconnexion.style }}" aria-current="{{ tab.reconnexion.cur }}"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M32 12 A20 20 0 1 1 12.7 37.6"></path><path d="M7.5 43 L12.7 37.6 L18.5 42.5"></path><circle cx="32" cy="32" r="3.5"></circle></svg>Je tourne en rond</a>
+        <a class="tab" href="#reiki" style="{{ tab.reiki.style }}" aria-current="{{ tab.reiki.cur }}"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 24 H38 a7 7 0 1 0 -7 -7"></path><path d="M8 34 H48 a7 7 0 1 1 -7 7"></path><path d="M8 44 H26"></path></svg>J'ai besoin de souffler</a>
+        <a class="tab" href="#kobido" style="{{ tab.kobido.style }}" aria-current="{{ tab.kobido.cur }}"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M32 12 C41 22 41 36 32 46 C23 36 23 22 32 12 Z"></path><path d="M32 46 C22 46 12 40 11 28 C20 28 28 34 32 46"></path><path d="M32 46 C42 46 52 40 53 28 C44 28 36 34 32 46"></path><path d="M12 53 H52"></path></svg>Je m'offre une pause</a>
+        <a class="tab" href="#entreprises" style="{{ tab.entreprises.style }}" aria-current="{{ tab.entreprises.cur }}"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="22" r="6"></circle><circle cx="14" cy="28" r="4.5"></circle><circle cx="50" cy="28" r="4.5"></circle><path d="M20 50 C20 40 25 36 32 36 C39 36 44 40 44 50 Z"></path><path d="M5 50 C5 43 8 39 14 39"></path><path d="M59 50 C59 43 56 39 50 39"></path></svg>Mon équipe est sous pression</a>
+        <a class="tab" href="#aurelie" style="color:#DDE2CC;font-weight:500">Aurélie</a>
+        <a class="tab" href="#faq" style="color:#DDE2CC;font-weight:500">Questions</a>
+        <sc-if value="{{ internal }}" hint-placeholder-val="{{ false }}"><a class="tab" href="#reserver" style="background:#B88917;color:#2A2218;font-weight:700">Réserver</a></sc-if>
+      </nav>
+      <div style="display:flex;gap:12px;align-items:center;margin-left:auto">
+        <a class="menu-btn" href="https://www.instagram.com/artisanedubienetre_reiki/" target="_blank" rel="noopener noreferrer" aria-label="Instagram d'Artisane du Bien-être (s'ouvre dans un nouvel onglet)" style="width:46px;height:46px;border-radius:50%;border:2px solid #FBF3E4;color:#FBF3E4;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg></a>
+        <button type="button" class="pill pill-o menu-btn" onClick="{{ toggleMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="menu-mobile" style="min-height:46px;padding:0 22px;font-size:15px">Menu</button>
+      </div>
+    </div>
+    <sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+      <nav id="menu-mobile" aria-label="Menu mobile" style="border-top:1px solid rgba(251,243,228,0.16)">
+        <div class="w" style="display:flex;flex-direction:column;padding-top:8px;padding-bottom:18px">
+          <a class="serif" href="#orientation" style="text-decoration:none;font-size:28px;padding:9px 0;color:#B88917">Par où commencer</a>
+          <a class="serif" href="#reconnexion" style="text-decoration:none;font-size:28px;padding:9px 0">Je tourne en rond</a>
+          <a class="serif" href="#reiki" style="text-decoration:none;font-size:28px;padding:9px 0">J'ai besoin de souffler</a>
+          <a class="serif" href="#kobido" style="text-decoration:none;font-size:28px;padding:9px 0">Je m'offre une pause</a>
+          <a class="serif" href="#entreprises" style="text-decoration:none;font-size:28px;padding:9px 0">Mon équipe est sous pression</a>
+          <a class="serif" href="#aurelie" style="text-decoration:none;font-size:22px;padding:9px 0">Aurélie</a>
+          <a class="serif" href="#faq" style="text-decoration:none;font-size:22px;padding:9px 0">Questions</a>
+        </div>
+      </nav>
+    </sc-if>
+  </header>
+
+  <main id="contenu">
+
+    <!-- Par où commencer : chaque porte mène à sa section détaillée -->
+    <section id="orientation" class="s bone" style="padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(40px,5vw,72px)">
+      <div class="w">
+        <div class="chap" style="margin-bottom:22px">Par où commencer</div>
+        <h2 class="serif" style="margin:0 0 14px;font-size:clamp(40px,6vw,84px);line-height:1">Où en es-tu <em style="color:#8A5A0A">aujourd'hui ?</em></h2>
+        <p class="mut" style="margin:0 0 36px;max-width:640px">Retrouve de la clarté, fais des choix qui te ressemblent et avance dans une direction qui a du sens pour toi. Choisis la situation qui te ressemble : chaque porte t'amène à la présentation détaillée qui lui correspond.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
+          <a class="opt" href="#reconnexion">
+            <img src="./assets/25c90e4014949585e91a3965b789fd7b.jpg" alt="Aurélie Aké, souriante, une tasse à la main" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 22%;border-radius:14px;display:block;margin-bottom:6px">
+            <span class="ico"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M32 12 A20 20 0 1 1 12.7 37.6"></path><path d="M7.5 43 L12.7 37.6 L18.5 42.5"></path><circle cx="32" cy="32" r="3.5"></circle></svg></span>
+            <span style="font-size:19px;font-weight:600;line-height:1.3">Je tourne en rond</span>
+            <span class="serif" style="font-size:34px;line-height:1">Reconnexion</span>
+            <span class="mut" style="font-size:15px">4 séances individuelles · 125 € la séance</span>
+            <span style="margin-top:auto;padding-top:8px;font-weight:700">Voir le détail →</span>
+          </a>
+          <a class="opt" href="#reiki">
+            <img src="./assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="Soin Reiki : des mains posées sur le front d'une personne allongée" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 30%;border-radius:14px;display:block;margin-bottom:6px">
+            <span class="ico"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 24 H38 a7 7 0 1 0 -7 -7"></path><path d="M8 34 H48 a7 7 0 1 1 -7 7"></path><path d="M8 44 H26"></path></svg></span>
+            <span style="font-size:19px;font-weight:600;line-height:1.3">J'ai besoin de souffler</span>
+            <span class="serif" style="font-size:34px;line-height:1">Reiki Usui</span>
+            <span class="mut" style="font-size:15px">60 min · à partir de 50 €</span>
+            <span style="margin-top:auto;padding-top:8px;font-weight:700">Voir le détail →</span>
+          </a>
+          <a class="opt" href="#kobido">
+            <img src="./assets/b2d56bf58034a7a5d0660073377ad934.jpg" alt="Massage du visage Kobido au cabinet" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 58%;border-radius:14px;display:block;margin-bottom:6px">
+            <span class="ico"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M32 12 C41 22 41 36 32 46 C23 36 23 22 32 12 Z"></path><path d="M32 46 C22 46 12 40 11 28 C20 28 28 34 32 46"></path><path d="M32 46 C42 46 52 40 53 28 C44 28 36 34 32 46"></path><path d="M12 53 H52"></path></svg></span>
+            <span style="font-size:19px;font-weight:600;line-height:1.3">Je m'offre une pause</span>
+            <span class="serif" style="font-size:34px;line-height:1">Massage Kobido</span>
+            <span class="mut" style="font-size:15px">60 min · 65 € au cabinet</span>
+            <span style="margin-top:auto;padding-top:8px;font-weight:700">Voir le détail →</span>
+          </a>
+          <a class="opt" href="#entreprises">
+            <img src="./assets/8cfab1f7656dd17e87624afdd89322f0.jpg" alt="Bol chantant tenu dans une main, utilisé pour la relaxation guidée" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 55%;border-radius:14px;display:block;margin-bottom:6px">
+            <span class="ico"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="22" r="6"></circle><circle cx="14" cy="28" r="4.5"></circle><circle cx="50" cy="28" r="4.5"></circle><path d="M20 50 C20 40 25 36 32 36 C39 36 44 40 44 50 Z"></path><path d="M5 50 C5 43 8 39 14 39"></path><path d="M59 50 C59 43 56 39 50 39"></path></svg></span>
+            <span style="font-size:19px;font-weight:600;line-height:1.3">Mon équipe est sous pression</span>
+            <span class="serif" style="font-size:34px;line-height:1">Entreprises</span>
+            <span class="mut" style="font-size:15px">Sur mesure · séance découverte offerte</span>
+            <span style="margin-top:auto;padding-top:8px;font-weight:700">Voir le détail →</span>
+          </a>
+        </div>
+
+        <!-- Aide à la décision -->
+        <div style="margin:36px 0 64px;background:#2A2218;color:#FBF3E4;border-radius:24px;padding:clamp(22px,3vw,34px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between">
+          <div style="flex:1 1 360px;min-width:0">
+            <div class="serif" style="font-size:clamp(28px,3vw,38px);line-height:1.1">Tu hésites encore entre deux offres ?</div>
+            <div style="margin-top:6px;color:#E9DEC9">Un premier échange t'aide à choisir la plus adaptée à ta situation.</div>
+          </div>
+          <a class="pill pill-a" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}">Réserver un premier échange</a>
+        </div>
+
+        <!-- Comparatif -->
+        <div style="max-width:700px;margin-bottom:24px">
+          <div class="chap">Comparer</div>
+          <h3 class="serif" style="margin:12px 0 0;font-size:clamp(34px,4.4vw,56px);line-height:1">Les offres en un coup d'œil</h3>
+        </div>
+        <div style="overflow-x:auto;border-radius:18px;border:1px solid #DCC9A8" role="region" aria-label="Tableau comparatif des offres" tabindex="0">
+          <table class="tbl">
+            <caption style="position:absolute;left:-9999px">Comparaison des quatre offres : Reconnexion, Reiki Usui, Massage Kobido et Entreprises</caption>
+            <thead>
+              <tr>
+                <td></td>
+                <th scope="col">Reconnexion</th>
+                <th scope="col">Reiki Usui</th>
+                <th scope="col">Massage Kobido</th>
+                <th scope="col">Entreprises</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">C'est pour toi si…</th>
+                <td class="hl">tu hésites, tu tournes en rond et tu veux passer à l'action</td>
+                <td>tu es fatigué(e), chargé(e) émotionnellement ou en période de transition</td>
+                <td>tu veux détendre ton visage, ta nuque, t'offrir une vraie pause</td>
+                <td>ton équipe a besoin de souffler</td>
+              </tr>
+              <tr>
+                <th scope="row">Format</th>
+                <td class="hl">4 séances individuelles + suivi et exercices en visioconférence entre les séances</td>
+                <td>Soin énergétique, au cabinet ou en ligne</td>
+                <td>Massage sur table, habillé(e), au cabinet</td>
+                <td>Relaxation en groupe ou soins individuels, sur site, au cabinet ou en ligne</td>
+              </tr>
+              <tr>
+                <th scope="row">Durée</th>
+                <td class="hl">Environ 1 h 30 par séance, sur plusieurs semaines</td>
+                <td>60 minutes</td>
+                <td>60 minutes</td>
+                <td>Sur mesure</td>
+              </tr>
+              <tr>
+                <th scope="row">Tarif</th>
+                <td class="hl"><strong>125 €</strong> la séance<br>soit 500 € pour 4 séances<br>paiement en plusieurs fois</td>
+                <td><strong>65 €</strong> au cabinet<br><strong>50 €</strong> en ligne</td>
+                <td><strong>65 €</strong> au cabinet</td>
+                <td>Sur devis<br>séance découverte offerte</td>
+              </tr>
+              <tr>
+                <th scope="row">Réserver</th>
+                <td class="hl"><a class="pill pill-d" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}" style="min-height:44px;padding:0 18px;font-size:15px">Premier échange</a></td>
+                <td><a class="pill pill-d" href="{{ ext.reiki }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.reiki }}" style="min-height:44px;padding:0 18px;font-size:15px">Réserver</a></td>
+                <td><a class="pill pill-d" href="{{ ext.kobido }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.kobido }}" style="min-height:44px;padding:0 18px;font-size:15px">Réserver</a></td>
+                <td><a class="pill pill-d" href="#ecrire" style="min-height:44px;padding:0 18px;font-size:15px">Demander une proposition</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 Reconnexion : le constat et l'offre, une seule section -->
+    <section id="reconnexion" aria-label="Reconnexion, accompagnement individuel">
+    <div class="s" style="padding-bottom:clamp(32px,4vw,56px)">
+      <div class="w">
+        <nav class="crumb" aria-label="Fil d'Ariane"><a href="#orientation">← Par où commencer</a><span aria-hidden="true">·</span><span>Porte 1 sur 4</span></nav>
+        <div class="door serif" style="font-size:clamp(38px,5vw,68px);line-height:1"><svg class="ci" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M32 12 A20 20 0 1 1 12.7 37.6"></path><path d="M7.5 43 L12.7 37.6 L18.5 42.5"></path><circle cx="32" cy="32" r="3.5"></circle></svg>Je tourne en rond</div>
+        <p class="serif" style="margin:0;font-size:clamp(38px,6.6vw,96px);line-height:1.02;max-width:1100px">Tu avances. Tu gères. Tu fais ce qu'il faut… mais au fond, tu sens que <em style="color:#B88917">quelque chose n'est plus vraiment à sa place.</em></p>
+        <div style="display:flex;flex-wrap:wrap;gap:24px 64px;margin-top:48px;align-items:flex-start">
+          <p class="mut" style="margin:0;flex:1 1 340px;max-width:520px;font-size:clamp(18px,1.8vw,21px)">Tu réfléchis beaucoup. Tu t'adaptes. Tu hésites sur certaines décisions. Et tu ne sais plus toujours ce que <strong style="color:#FBF3E4">toi</strong>, tu veux vraiment.</p>
+          <p class="serif" style="margin:0;flex:1 1 340px;max-width:520px;font-size:clamp(28px,3.2vw,44px);line-height:1.1">Pas pour en faire davantage.<br><em style="color:#B88917">Pour vivre davantage selon toi.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="s" style="padding-top:0">
+      <div class="w" style="display:flex;flex-wrap:wrap;gap:56px 72px;align-items:flex-start">
+        <div class="offer amber" style="flex:1 1 380px;min-width:0;position:sticky;top:110px;align-self:flex-start;background:#B88917;color:#2A2218;border-radius:28px;padding:clamp(26px,3.4vw,44px)">
+          <div style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px">Mon accompagnement individuel</div>
+          <h2 class="serif" style="margin:0 0 26px;font-size:clamp(44px,5.4vw,80px);line-height:0.95;max-width:100%;overflow-wrap:break-word">Re<em style="color:#6B4308">connexion</em></h2>
+          <div class="serif" style="font-size:clamp(100px,16vw,230px);line-height:0.8;color:#2A2218">4</div>
+          <div class="serif" style="font-size:clamp(36px,4.4vw,60px);line-height:1;margin:12px 0 22px">séances pour revenir à toi.</div>
+          <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px"><span class="serif" style="font-size:clamp(48px,5vw,72px);line-height:1">125 €</span><span class="mut" style="font-size:16px">la séance · soit 500 € pour 4 séances · paiement possible en plusieurs fois</span></div>
+          <p class="mut" style="margin:0 0 26px;font-size:16px">Environ 1 h 30 par séance · en visioconférence · échanges et exercices entre les séances</p>
+          <a class="pill pill-d" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}">Réserver un premier échange</a>
+        </div>
+        <div style="flex:1 1 460px;min-width:0">
+          <ol style="list-style:none;margin:0;padding:0">
+            <li style="display:flex;gap:26px;padding:28px 0;border-top:1px solid rgba(251,243,228,0.3)"><span class="serif" style="font-size:44px;line-height:1;color:#B88917;min-width:64px">01</span><div><div class="serif" style="font-size:clamp(32px,3.6vw,46px);line-height:1.05">Clarifier</div><div class="mut">ce que tu veux vraiment.</div></div></li>
+            <li style="display:flex;gap:26px;padding:28px 0;border-top:1px solid rgba(251,243,228,0.3)"><span class="serif" style="font-size:44px;line-height:1;color:#B88917;min-width:64px">02</span><div><div class="serif" style="font-size:clamp(32px,3.6vw,46px);line-height:1.05">Retrouver</div><div class="mut">tes besoins, tes envies et tes priorités.</div></div></li>
+            <li style="display:flex;gap:26px;padding:28px 0;border-top:1px solid rgba(251,243,228,0.3)"><span class="serif" style="font-size:44px;line-height:1;color:#B88917;min-width:64px">03</span><div><div class="serif" style="font-size:clamp(32px,3.6vw,46px);line-height:1.05">Comprendre</div><div class="mut">ce qui te bloque ou te fait tourner en rond.</div></div></li>
+            <li style="display:flex;gap:26px;padding:28px 0;border-top:1px solid rgba(251,243,228,0.3)"><span class="serif" style="font-size:44px;line-height:1;color:#B88917;min-width:64px">04</span><div><div class="serif" style="font-size:clamp(32px,3.6vw,46px);line-height:1.05">Choisir</div><div class="mut">avec plus de confiance et de cohérence.</div></div></li>
+            <li style="display:flex;gap:26px;padding:28px 0;border-top:1px solid rgba(251,243,228,0.3);border-bottom:1px solid rgba(251,243,228,0.3)"><span class="serif" style="font-size:44px;line-height:1;color:#B88917;min-width:64px">05</span><div><div class="serif" style="font-size:clamp(32px,3.6vw,46px);line-height:1.05">Agir</div><div class="mut">concrètement, pour faire évoluer ce qui doit l'être.</div></div></li>
+          </ol>
+          <p class="mut" style="margin:28px 0 0;font-size:17px;max-width:560px">Mon rôle n'est pas de te donner des réponses toutes faites, mais de t'aider à retrouver assez de clarté pour trouver les tiennes. Avec douceur, mais avec une vraie direction.</p>
+        </div>
+      </div>
+    </div>
+
+    </section>
+
+    <!-- 02 Reiki et 03 Kobido : détail complet -->
+    <section id="seances" class="s bone">
+      <div class="w">
+        <h2 class="serif" style="margin:0 0 14px;font-size:clamp(56px,9vw,132px);line-height:0.95">Séances <em style="color:#8A5A0A">à la carte</em></h2>
+        <p class="serif" style="margin:0 0 44px;font-size:clamp(24px,3vw,38px);line-height:1.15;max-width:760px">Un temps pour toi, quand tu en as besoin.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:24px">
+
+          <article id="reiki" style="background:#FFF8EC;border:1px solid #DCC9A8;border-radius:28px;padding:clamp(26px,3.4vw,44px);display:flex;flex-direction:column;gap:20px;scroll-margin-top:96px">
+            <img src="./assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="Soin Reiki : des mains posées sur le front d'une personne allongée" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 30%;border-radius:18px;display:block">
+            <nav class="crumb" aria-label="Fil d'Ariane" style="margin-bottom:0"><a href="#orientation">← Par où commencer</a><span aria-hidden="true">·</span><span>Porte 2 sur 4</span></nav>
+            <div class="door serif" style="font-size:clamp(30px,3.4vw,42px);line-height:1;margin-bottom:0"><svg class="ci" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M8 24 H38 a7 7 0 1 0 -7 -7"></path><path d="M8 34 H48 a7 7 0 1 1 -7 7"></path><path d="M8 44 H26"></path></svg>J'ai besoin de souffler</div>
+            <h3 class="serif" style="margin:0;font-size:clamp(40px,4.6vw,64px);line-height:1">Reiki Usui</h3>
+            <p style="margin:0;font-size:18px">Une pratique énergétique douce pour relâcher les tensions, apaiser le mental et te recentrer, surtout en période de fatigue émotionnelle ou de transition.</p>
+            <div>
+              <div style="font-weight:700;font-size:15px;margin-bottom:10px">Déroulé</div>
+              <ul class="cl" style="font-size:17px">
+                <li>Échange préalable sur ton besoin du moment</li>
+                <li>Soin par imposition des mains, en silence ou en parlant</li>
+                <li>Temps de retour autour d'une boisson chaude</li>
+              </ul>
+            </div>
+            <dl style="margin:0;display:grid;grid-template-columns:1fr auto;gap:10px 20px;font-size:17px;padding-top:20px;border-top:1px solid #2A2218">
+              <dt class="mut">Durée</dt><dd style="margin:0;font-weight:700">60 minutes</dd>
+              <dt class="mut">Au cabinet à Couëron</dt><dd style="margin:0;font-weight:700">65 €</dd>
+              <dt class="mut">En ligne</dt><dd style="margin:0;font-weight:700">50 €</dd>
+            </dl>
+            <a class="pill pill-d" href="{{ ext.reiki }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.reiki }}" style="margin-top:auto">Réserver une séance de Reiki</a>
+          </article>
+
+          <article id="kobido" style="background:#FFF8EC;border:1px solid #DCC9A8;border-radius:28px;padding:clamp(26px,3.4vw,44px);display:flex;flex-direction:column;gap:20px;scroll-margin-top:96px">
+            <img src="./assets/b2d56bf58034a7a5d0660073377ad934.jpg" alt="Massage du visage Kobido au cabinet" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 58%;border-radius:18px;display:block">
+            <nav class="crumb" aria-label="Fil d'Ariane" style="margin-bottom:0"><a href="#orientation">← Par où commencer</a><span aria-hidden="true">·</span><span>Porte 3 sur 4</span></nav>
+            <div class="door serif" style="font-size:clamp(30px,3.4vw,42px);line-height:1;margin-bottom:0"><svg class="ci" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M32 12 C41 22 41 36 32 46 C23 36 23 22 32 12 Z"></path><path d="M32 46 C22 46 12 40 11 28 C20 28 28 34 32 46"></path><path d="M32 46 C42 46 52 40 53 28 C44 28 36 34 32 46"></path><path d="M12 53 H52"></path></svg>Je m'offre une pause</div>
+            <h3 class="serif" style="margin:0;font-size:clamp(40px,4.6vw,64px);line-height:1">Massage Kobido</h3>
+            <p style="margin:0;font-size:18px">Un massage japonais du visage, de la nuque et de la zone des clavicules, pour détendre les traits, relâcher les tensions et favoriser l'éclat du teint.</p>
+            <div>
+              <div style="font-weight:700;font-size:15px;margin-bottom:10px">Déroulé</div>
+              <ul class="cl" style="font-size:17px">
+                <li>Échange préalable sur tes attentes</li>
+                <li>Massage sur table, tu restes habillé(e)</li>
+                <li>Temps de retour autour d'une boisson chaude</li>
+              </ul>
+            </div>
+            <dl style="margin:0;display:grid;grid-template-columns:1fr auto;gap:10px 20px;font-size:17px;padding-top:20px;border-top:1px solid #2A2218">
+              <dt class="mut">Durée</dt><dd style="margin:0;font-weight:700">60 minutes</dd>
+              <dt class="mut">Au cabinet à Couëron</dt><dd style="margin:0;font-weight:700">65 €</dd>
+              <dt class="mut">Contre-indications</dt><dd style="margin:0;font-weight:700">[à préciser]</dd>
+            </dl>
+            <a class="pill pill-d" href="{{ ext.kobido }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.kobido }}" style="margin-top:auto">Réserver un massage Kobido</a>
+          </article>
+
+        </div>
+        <p class="mut" style="margin:26px 0 0;font-size:14px;max-width:720px">Le Reiki et le massage Kobido sont des pratiques de bien-être. Ils ne se substituent ni à un avis médical ni à un traitement.</p>
+      </div>
+    </section>
+
+    <!-- 06 Entreprises -->
+    <section class="s" id="entreprises">
+      <div class="w">
+        <nav class="crumb" aria-label="Fil d'Ariane"><a href="#orientation">← Par où commencer</a><span aria-hidden="true">·</span><span>Porte 4 sur 4</span></nav>
+        <div class="door serif" style="font-size:clamp(38px,5vw,68px);line-height:1"><svg class="ci" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="22" r="6"></circle><circle cx="14" cy="28" r="4.5"></circle><circle cx="50" cy="28" r="4.5"></circle><path d="M20 50 C20 40 25 36 32 36 C39 36 44 40 44 50 Z"></path><path d="M5 50 C5 43 8 39 14 39"></path><path d="M59 50 C59 43 56 39 50 39"></path></svg>Mon équipe est sous pression</div>
+        <h2 class="serif" style="margin:0 0 26px;font-size:clamp(40px,6vw,84px);line-height:1;max-width:980px">Et si vos équipes prenaient enfin le temps <em style="color:#B88917">de respirer ?</em></h2>
+        <p class="mut" style="margin:0 0 40px;max-width:640px;font-size:clamp(18px,1.9vw,21px)">Des séances courtes, adaptées au rythme professionnel, pour contribuer à réduire le stress, à améliorer la concentration et à installer un climat de travail plus serein.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;margin-bottom:40px">
+          <div style="border:1px solid rgba(251,243,228,0.3);border-radius:20px;padding:28px"><img src="./assets/8cfab1f7656dd17e87624afdd89322f0.jpg" alt="Bol chantant tenu dans une main" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;display:block;margin-bottom:16px"><div class="serif" style="font-size:32px;line-height:1.05;margin-bottom:10px">Relaxation guidée</div><div class="mut" style="font-size:16px">Une méditation guidée en groupe, pour se recentrer et renforcer la cohésion d'équipe.</div></div>
+          <div style="border:1px solid rgba(251,243,228,0.3);border-radius:20px;padding:28px"><img src="./assets/b2d56bf58034a7a5d0660073377ad934.jpg" alt="Massage du visage Kobido" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 58%;border-radius:12px;display:block;margin-bottom:16px"><div class="serif" style="font-size:32px;line-height:1.05;margin-bottom:10px">Massage Kobido</div><div class="mut" style="font-size:16px">Un soin individuel de détente, pour une vraie pause.</div></div>
+          <div style="border:1px solid rgba(251,243,228,0.3);border-radius:20px;padding:28px"><img src="./assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="Séance énergétique : mains posées sur le front" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 30%;border-radius:12px;display:block;margin-bottom:16px"><div class="serif" style="font-size:32px;line-height:1.05;margin-bottom:10px">Séance énergétique</div><div class="mut" style="font-size:16px">Une séance individuelle inspirée d'une méthode japonaise de détente.</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center">
+          <a class="pill pill-a" href="#contact">Demander une proposition</a>
+          <span class="mut" style="font-size:16px">Sur site, au cabinet ou en ligne · Formules sur mesure · Séance découverte offerte</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Aurélie -->
+    <section class="s bone" id="aurelie">
+      <div class="w" style="display:flex;flex-wrap:wrap;gap:48px 80px;align-items:flex-start">
+        <div style="flex:1 1 420px;min-width:0">
+          <div class="chap" style="margin-bottom:26px">Qui suis-je</div>
+          <h2 class="serif" style="margin:0;font-size:clamp(48px,7.4vw,112px);line-height:0.95">Je suis <em style="color:#8A5A0A">Aurélie.</em></h2>
+        </div>
+        <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:20px">
+          <p style="margin:0;font-size:clamp(19px,2vw,23px);line-height:1.5">Énergéticienne, Maître en Reiki Usui, praticienne en techniques d'accompagnement au changement (issues de la PNL) et en massage Kobido, j'accompagne depuis 2019 celles et ceux qui veulent retrouver apaisement, clarté et cohérence.</p>
+          <p class="mut" style="margin:0">Aller mieux, ce n'est pas seulement calmer le mental ou retrouver de l'énergie. C'est aussi entendre ce que l'on veut vraiment, et se donner la permission de construire une vie qui nous ressemble.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+            <span style="border:1.5px solid #2A2218;border-radius:999px;padding:8px 18px;font-size:15px;font-weight:600">Maître en Reiki Usui</span>
+            <span style="border:1.5px solid #2A2218;border-radius:999px;padding:8px 18px;font-size:15px;font-weight:600">Techniques issues de la PNL</span>
+            <span style="border:1.5px solid #2A2218;border-radius:999px;padding:8px 18px;font-size:15px;font-weight:600">Massage Kobido</span>
+            <span style="border:1.5px solid #2A2218;border-radius:999px;padding:8px 18px;font-size:15px;font-weight:600">Depuis 2019</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Témoignages -->
+    <section class="s" id="avis">
+      <div class="w">
+        <div class="chap" style="margin-bottom:18px">Avis clients</div>
+        <h2 class="serif" style="margin:0 0 44px;font-size:clamp(44px,7vw,104px);line-height:1">Ils sont <em style="color:#B88917">ravis</em></h2>
+        <figure style="margin:0 0 56px">
+          <blockquote class="serif" style="margin:0;font-size:clamp(34px,5.2vw,72px);line-height:1.05;max-width:1100px">« … elle m'aide à me poser les bonnes questions et retrouver mon mindset. »</blockquote>
+          <figcaption class="mut" style="margin-top:22px;font-size:16px">Chris · Avis Google · 5 sur 5</figcaption>
+        </figure>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+          <figure style="margin:0;border:1px solid rgba(251,243,228,0.3);border-radius:20px;padding:28px"><blockquote style="margin:0 0 16px">Elle est douce, pédagogue, d'une bienveillance et d'un accompagnement fin et efficace.</blockquote><figcaption class="mut" style="font-size:15px">Aurélie L. · Reiki Usui · Avis Google</figcaption></figure>
+          <figure style="margin:0;border:1px solid rgba(251,243,228,0.3);border-radius:20px;padding:28px"><blockquote style="margin:0 0 16px">… m'a apporté une profonde détente intérieure.</blockquote><figcaption class="mut" style="font-size:15px">Valérie M. · Massage Kobido · Avis Google</figcaption></figure>
+          <figure style="margin:0;border:1px solid rgba(251,243,228,0.3);border-radius:20px;padding:28px"><blockquote style="margin:0 0 16px">5,0 sur 5 · 20 avis Google</blockquote><figcaption class="mut" style="font-size:15px"><a href="https://www.google.com/maps/search/?api=1&amp;query=Artisane+du+bien-%C3%AAtre+Cou%C3%ABron" target="_blank" rel="noopener noreferrer">Lire tous les avis sur Google</a></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="s bone" id="faq">
+      <div class="w" style="max-width:1000px">
+        <div class="chap" style="margin-bottom:22px">Questions</div>
+        <h2 class="serif" style="margin:0 0 14px;font-size:clamp(40px,6vw,84px);line-height:1">Quelle question <em style="color:#8A5A0A">te retient ?</em></h2>
+        <p class="mut" style="margin:0 0 28px;max-width:640px">Choisis ce qui te freine : chaque réponse te mène vers la bonne offre, avec le bouton pour passer à l'action.</p>
+        <div role="group" aria-label="Filtrer les questions par offre" style="display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px">
+          <sc-for list="{{faqFilters}}" as="f" hint-placeholder-count="5">
+            <button type="button" class="fchip" onClick="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="{{ f.style }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+        <div style="border-top:1px solid #2A2218">
+          <sc-for list="{{faq}}" as="q" hint-placeholder-count="8">
+            <div style="border-bottom:1px solid #2A2218">
+              <h3 style="margin:0">
+                <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.expanded }}" aria-controls="{{ q.panelId }}" style="all:unset;box-sizing:border-box;width:100%;min-height:72px;padding:20px 4px;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.8vw,34px);line-height:1.15;color:#2A2218">
+                  <span><span style="display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A5A0A;margin-bottom:6px">{{ q.tagLabel }}</span>{{ q.question }}</span>
+                  <span aria-hidden="true" style="{{ q.iconStyle }}">+</span>
+                </button>
+              </h3>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <div id="{{ q.panelId }}" style="padding:0 4px 28px;font-size:18px;color:#4A3F33;max-width:760px">{{ q.answer }}
+                  <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:18px">
+                    <sc-if value="{{ q.hasC1 }}" hint-placeholder-val="{{ true }}"><a class="pill pill-d" href="{{ q.c1Href }}" target="{{ q.c1T }}" rel="noopener noreferrer" onClick="{{ q.c1Act }}" style="min-height:48px">{{ q.c1Label }}</a></sc-if>
+                    <sc-if value="{{ q.hasC2 }}" hint-placeholder-val="{{ false }}"><a class="pill" href="{{ q.c2Href }}" target="{{ q.c2T }}" rel="noopener noreferrer" onClick="{{ q.c2Act }}" style="min-height:48px;border-color:#2A2218;color:#2A2218">{{ q.c2Label }}</a></sc-if>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- Réservation intégrée (version 4) -->
+    <sc-if value="{{ internal }}" hint-placeholder-val="{{ false }}">
+    <section id="reserver" class="s" style="scroll-margin-top:72px">
+      <div class="w">
+        <div class="chap" style="margin-bottom:22px">Réserver</div>
+        <h2 class="serif" style="margin:0 0 14px;font-size:clamp(44px,7vw,104px);line-height:0.95">Réserve ton <em style="color:#B88917">créneau</em></h2>
+        <p class="mut" style="margin:0 0 8px;max-width:680px">Choisis ta prestation, un jour et une heure, puis laisse-moi tes coordonnées. Tout se passe ici, sans quitter la page.</p>
+        <p class="mut" style="margin:0 0 40px;max-width:680px;font-size:14px">Maquette : les créneaux affichés sont des exemples. Dans la version en ligne, ils seront reliés à ton agenda réel.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+
+          <div class="plan" style="flex:1 1 560px;min-width:0;background:#FFF8EC;color:#2A2218;border-radius:28px;padding:clamp(22px,3.4vw,40px);display:flex;flex-direction:column;gap:34px">
+            <div>
+              <h3 class="serif" style="margin:0 0 14px;font-size:30px;line-height:1">1 · Ta prestation</h3>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px">
+                <sc-for list="{{services}}" as="s" hint-placeholder-count="4">
+                  <button type="button" class="svc" onClick="{{ s.pick }}" aria-pressed="{{ s.pressed }}" style="{{ s.style }}"><span class="serif" style="font-size:26px;line-height:1.05">{{ s.label }}</span><span style="font-size:15px">{{ s.meta }}</span></button>
+                </sc-for>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="serif" style="margin:0 0 14px;font-size:30px;line-height:1">2 · Ton jour</h3>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px">
+                <button type="button" class="navb" onClick="{{ prevMonth }}" aria-label="Mois précédent" disabled="{{ noPrev }}">‹</button>
+                <div class="serif" style="font-size:30px;line-height:1;text-transform:capitalize" aria-live="polite">{{ monthTitle }}</div>
+                <button type="button" class="navb" onClick="{{ nextMonth }}" aria-label="Mois suivant" disabled="{{ noNext }}">›</button>
+              </div>
+              <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;text-align:center;font-size:13px;font-weight:700;color:#5A4D3F;margin-bottom:6px"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+              <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px">
+                <sc-for list="{{days}}" as="d" hint-placeholder-count="35">
+                  <button type="button" class="dayb" onClick="{{ d.pick }}" disabled="{{ d.disabled }}" aria-pressed="{{ d.pressed }}" aria-label="{{ d.aria }}" style="{{ d.style }}">{{ d.label }}</button>
+                </sc-for>
+              </div>
+              <p style="margin:12px 0 0;font-size:14px;color:#5A4D3F">Fermé le dimanche. Les jours barrés sont complets ou indisponibles.</p>
+            </div>
+
+            <div>
+              <h3 class="serif" style="margin:0 0 14px;font-size:30px;line-height:1">3 · Ton heure</h3>
+              <sc-if value="{{ noDate }}" hint-placeholder-val="{{ true }}">
+                <p style="margin:0;color:#5A4D3F">Choisis d'abord un jour dans le calendrier.</p>
+              </sc-if>
+              <sc-if value="{{ noSlots }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;color:#5A4D3F">Plus de créneau ce jour-là. Essaie un autre jour.</p>
+              </sc-if>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px">
+                <sc-for list="{{slots}}" as="t" hint-placeholder-count="4">
+                  <button type="button" class="slotb" onClick="{{ t.pick }}" aria-pressed="{{ t.pressed }}" style="{{ t.style }}">{{ t.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <aside class="amber" aria-label="Récapitulatif de ta réservation" style="flex:1 1 340px;min-width:0;max-width:480px;margin:0 auto;background:#B88917;color:#2A2218;border-radius:28px;padding:clamp(22px,3.4vw,38px);position:sticky;top:96px;align-self:flex-start">
+            <sc-if value="{{ bookDone }}" hint-placeholder-val="{{ false }}">
+              <div role="status">
+                <div class="serif" style="font-size:40px;line-height:1;margin-bottom:12px">C'est réservé.</div>
+                <p style="margin:0 0 14px">Merci {{ sum.name }}, ton rendez-vous est enregistré (démo).</p>
+                <div style="background:#FFF3DC;border-radius:16px;padding:16px 18px;font-weight:600;line-height:1.5">{{ sum.service }}<br>{{ sum.date }} à {{ sum.time }}<br>{{ sum.place }}</div>
+                <p style="margin:14px 0 18px;font-size:15px">Dans la version en ligne, une confirmation est envoyée par e-mail et le créneau est bloqué dans ton agenda.</p>
+                <button type="button" class="pill pill-d" onClick="{{ resetBooking }}">Nouvelle réservation</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ bookOpen }}" hint-placeholder-val="{{ true }}">
+              <div>
+                <div class="serif" style="font-size:36px;line-height:1;margin-bottom:16px">Ton rendez-vous</div>
+                <dl style="margin:0 0 20px;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:16px">
+                  <dt style="font-weight:700">Prestation</dt><dd style="margin:0">{{ sum.service }}</dd>
+                  <dt style="font-weight:700">Date</dt><dd style="margin:0;text-transform:capitalize">{{ sum.date }}</dd>
+                  <dt style="font-weight:700">Heure</dt><dd style="margin:0">{{ sum.time }}</dd>
+                  <dt style="font-weight:700">Lieu</dt><dd style="margin:0">{{ sum.place }}</dd>
+                  <dt style="font-weight:700">Durée</dt><dd style="margin:0">{{ sum.dur }}</dd>
+                  <dt style="font-weight:700">Tarif</dt><dd style="margin:0">{{ sum.price }}</dd>
+                </dl>
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <div class="fld"><label for="r-prenom">Prénom *</label><input id="r-prenom" type="text" autocomplete="given-name" onInput="{{ setName }}"></div>
+                  <div class="fld"><label for="r-email">Adresse e-mail *</label><input id="r-email" type="email" autocomplete="email" onInput="{{ setEmail }}"></div>
+                  <div class="fld"><label for="r-msg">Un mot pour Aurélie (facultatif)</label><textarea id="r-msg" style="min-height:90px"></textarea></div>
+                  <button type="button" class="pill pill-d" onClick="{{ confirm }}" aria-disabled="{{ sum.disabled }}" style="{{ sum.btnStyle }}">Confirmer ma réservation</button>
+                  <p style="margin:0;font-size:14px">{{ sum.hint }}</p>
+                </div>
+              </div>
+            </sc-if>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+    </sc-if>
+
+    <!-- Contact -->
+    <section class="s amber" id="contact" style="background:#B88917;color:#2A2218">
+      <div class="w" style="display:flex;flex-wrap:wrap;gap:48px 64px;align-items:flex-start">
+        <div style="flex:1 1 420px;min-width:0">
+          <h2 class="serif" style="margin:0 0 22px;font-size:clamp(48px,7.4vw,110px);line-height:0.94">On en parle ?</h2>
+          <p style="margin:0 0 28px;font-size:clamp(18px,2vw,22px);max-width:520px">Dis-moi en quelques mots où tu en es, ou réserve directement un créneau. Je te réponds personnellement.</p>
+          <a class="pill pill-d" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}">Choisir un créneau</a>
+          <p style="margin:10px 0 0;font-size:14px">{{ bookNote }}</p>
+          <div style="margin-top:40px;display:flex;flex-direction:column;gap:14px;font-size:17px">
+            <div><strong style="display:block">Au cabinet</strong>Maison du Port, Couëron (44220), près de Nantes</div>
+            <div><strong style="display:block">En visioconférence</strong>Partout en France</div>
+            <div><strong style="display:block">Contact</strong>aurelie.artisanedubienetre@gmail.com · [téléphone] · Instagram <a href="https://www.instagram.com/artisanedubienetre_reiki/" target="_blank" rel="noopener noreferrer" style="color:inherit">@artisanedubienetre_reiki</a></div>
+          </div>
+        </div>
+        <div id="ecrire" style="flex:1 1 380px;min-width:0;background:#FFF3DC;border-radius:24px;padding:clamp(24px,3.4vw,40px);scroll-margin-top:84px">
+          <h3 class="serif" style="margin:0 0 6px;font-size:36px;line-height:1">Écris-moi</h3>
+          <p style="margin:0 0 22px;font-size:15px">Les champs marqués d'un astérisque sont obligatoires.</p>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="background:#2A2218;color:#FBF3E4;border-radius:14px;padding:22px"><strong style="display:block;margin-bottom:6px">Ton application de messagerie s'ouvre.</strong>Envoie le mail pré-rempli. Si rien ne s'ouvre, écris-moi directement à aurelie.artisanedubienetre@gmail.com.</div>
+          </sc-if>
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ send }}" style="display:flex;flex-direction:column;gap:18px" novalidate="">
+              <div class="fld"><label for="b-prenom">Prénom *</label><input id="b-prenom" name="prenom" type="text" autocomplete="given-name"></div>
+              <div class="fld"><label for="b-email">Adresse e-mail *</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+              <div class="fld"><label for="b-msg">Ton message *</label><textarea id="b-msg" name="message"></textarea></div>
+              <label style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5"><input type="checkbox" name="consent" style="width:22px;height:22px;margin:0;flex:none;accent-color:#2A2218"><span>J'accepte que mes données soient utilisées pour répondre à ma demande. [Lien vers la politique de confidentialité]</span></label>
+              <button type="button" onClick="{{ send }}" class="pill pill-d" style="align-self:flex-start">Envoyer</button>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pied de page -->
+  <footer style="font-size:15px">
+    <div class="w" style="padding-top:44px;padding-bottom:30px;display:flex;flex-wrap:wrap;gap:28px 56px;justify-content:space-between">
+      <div style="max-width:340px"><div class="serif" style="font-size:30px;line-height:1;margin-bottom:10px">artisane <em style="color:#B88917">du bien-être</em></div><p class="mut" style="margin:0">Accompagnement individuel, Reiki Usui et massage Kobido à Couëron (44) et en visioconférence.</p></div>
+      <nav aria-label="Pied de page" style="display:flex;flex-wrap:wrap;gap:12px 36px;align-items:flex-start"><a href="#contact">Mentions légales</a><a href="#contact">CGV</a><a href="#contact">Confidentialité</a><a href="#contact">Instagram</a></nav>
+    </div>
+    <div class="w mut" style="padding-top:20px;padding-bottom:28px;border-top:1px solid rgba(251,243,228,0.2);font-size:13px;line-height:1.6">
+      <p style="margin:0 0 8px">Les pratiques proposées (Reiki, massage Kobido, techniques d'accompagnement) relèvent du bien-être et ne se substituent ni à un avis médical, ni à un traitement, ni à un suivi psychologique.</p>
+      <p style="margin:0">© 2026 Artisane du Bien-être · Entreprise individuelle, Nantes · SIRET [numéro]</p>
+    </div>
+  </footer>
+
+  <div class="mbar" role="region" aria-label="Réservation rapide"><a class="pill pill-a" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}" style="flex:1">Réserver un premier échange</a><a class="pill pill-o" href="#ecrire">Écris-moi</a></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: 0, menu: false, sent: false, vis: {}, service: 'premier', month: 0, date: '', time: '', name: '', email: '', booked: false, faqFilter: 'all' };
+  }
+  componentDidMount() {
+    try {
+      const ids = ['orientation', 'reconnexion', 'reiki', 'kobido', 'entreprises'];
+      this.io = new IntersectionObserver((entries) => {
+        const vis = Object.assign({}, this.state.vis);
+        entries.forEach((en) => { vis[en.target.id] = en.isIntersecting; });
+        this.setState({ vis });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      ids.forEach((id) => { const el = document.getElementById(id); if (el) this.io.observe(el); });
+    } catch (e) {}
+  }
+  componentWillUnmount() {
+    try { if (this.io) this.io.disconnect(); } catch (e) {}
+  }
+  renderVals() {
+    const items = [
+      { question: "Cet accompagnement est-il fait pour moi ?", answer: "Reconnexion s'adresse aux personnes qui ressentent le besoin de changement, de clarté ou d'une nouvelle direction, et qui souhaitent être accompagnées pour comprendre ce qu'elles veulent réellement et passer à l'action." },
+      { question: "Et si je ne sais pas ce que je veux ?", answer: "C'est justement l'un des points de départ. Tu n'as pas besoin d'avoir les réponses avant de commencer : nous les faisons émerger ensemble." },
+      { question: "Quelle différence avec une séance ponctuelle ?", answer: "Une séance permet de prendre du recul et de t'apaiser à un moment donné. Reconnexion s'inscrit dans la durée : comprendre ce qui se joue, clarifier ce que tu veux et mettre en place des changements concrets." },
+      { question: "Comment se déroulent les séances ?", answer: "En visioconférence, dans un cadre confidentiel et chaleureux. Chaque rendez-vous s'adapte à ce que tu traverses et à l'évolution de ton cheminement." },
+      { question: "Dois-je connaître le Reiki ?", answer: "Non, aucune connaissance particulière n'est nécessaire. Les outils sont choisis en fonction de tes besoins et de ce qui peut réellement t'aider à avancer." },
+      { question: "Pourquoi 500 € ?", answer: "Reconnexion n'est pas une succession de séances isolées : c'est un accompagnement personnalisé sur plusieurs semaines, avec un vrai travail de fond sur tes besoins, tes choix et leur mise en œuvre. Le paiement est possible en plusieurs fois." },
+      { question: "Cela remplace-t-il un suivi médical ou psychologique ?", answer: "Non. Le Reiki, le massage Kobido et les techniques d'accompagnement sont des pratiques de bien-être. Elles ne se substituent ni à un avis médical, ni à un traitement, ni à un suivi psychologique." },
+      { question: "Comment savoir si c'est le bon moment ?", answer: "Si tu ne veux plus simplement attendre que les choses changent et que tu es prêt(e) à prendre une place active dans la suite, parlons-en lors d'un premier échange." }
+    ];
+    const internal = this.props.internalBooking === true || this.props.internalBooking === 'true';
+    const noop = () => {};
+    const pickSvc = (id) => (internal ? () => this.setState({ service: id, time: '' }) : noop);
+    const ext = { t: internal ? '_self' : '_blank', premier: internal ? '#reserver' : 'https://calendar.app.google/ktmoR72SQwgZzDju8', reiki: internal ? '#reserver' : 'https://my.weezevent.com/seance-reiki-usui', kobido: internal ? '#reserver' : 'https://my.weezevent.com/massage-kobido-1' };
+    const act = { premier: pickSvc('premier'), reiki: pickSvc('reiki-cabinet'), kobido: pickSvc('kobido') };
+    const bookNote = internal ? 'Le planning de réservation est juste au-dessus.' : "Calendrier de réservation en ligne (s'ouvre dans un nouvel onglet)";
+    const SERVICES = [
+      { id: 'premier', label: 'Premier échange', meta: 'En visioconférence', dur: 'Durée à préciser', price: 'À préciser', place: 'En visioconférence', times: ['10:00', '11:00', '14:00', '16:00', '17:30'] },
+      { id: 'reiki-cabinet', label: 'Reiki Usui · cabinet', meta: '60 min · 65 €', dur: '60 minutes', price: '65 €', place: 'Au cabinet, Couëron', times: ['10:00', '11:30', '14:00', '15:30', '17:00'] },
+      { id: 'reiki-ligne', label: 'Reiki Usui · en ligne', meta: '60 min · 50 €', dur: '60 minutes', price: '50 €', place: 'En ligne', times: ['10:00', '11:30', '14:00', '15:30', '17:00'] },
+      { id: 'kobido', label: 'Massage Kobido', meta: '60 min · 65 €', dur: '60 minutes', price: '65 €', place: 'Au cabinet, Couëron', times: ['10:00', '11:30', '14:00', '15:30', '17:00'] }
+    ];
+    const svc = SERVICES.find((x) => x.id === this.state.service) || SERVICES[0];
+    const services = SERVICES.map((x) => {
+      const on = x.id === svc.id;
+      return { label: x.label, meta: x.meta, pressed: on ? 'true' : 'false', style: on ? 'background:#2A2218;border-color:#2A2218;color:#FBF3E4' : '', pick: () => this.setState({ service: x.id, time: '' }) };
+    });
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const base = new Date(today.getFullYear(), today.getMonth() + this.state.month, 1);
+    const lead = (base.getDay() + 6) % 7;
+    const dim = new Date(base.getFullYear(), base.getMonth() + 1, 0).getDate();
+    const blank = { label: '', aria: '', disabled: true, pressed: 'false', style: 'visibility:hidden', pick: noop };
+    const days = [];
+    for (let i = 0; i < lead; i++) days.push(blank);
+    for (let d = 1; d <= dim; d++) {
+      const dt = new Date(base.getFullYear(), base.getMonth(), d);
+      const iso = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + d;
+      const avail = dt > today && dt.getDay() !== 0 && ((d * 7 + dt.getMonth() * 3) % 5 !== 0);
+      const sel = this.state.date === iso;
+      days.push({
+        label: String(d),
+        aria: dt.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + (avail ? '' : ', indisponible'),
+        disabled: !avail,
+        pressed: sel ? 'true' : 'false',
+        style: sel ? 'background:#2A2218;color:#FBF3E4' : (avail ? 'background:#EFE3CE' : 'color:#8F8372;opacity:0.5;text-decoration:line-through'),
+        pick: () => this.setState({ date: iso, time: '' })
+      });
+    }
+    const sd = this.state.date ? this.state.date.split('-').map(Number) : null;
+    const selDate = sd ? new Date(sd[0], sd[1] - 1, sd[2]) : null;
+    const slots = selDate ? svc.times.filter((t, i) => ((selDate.getDate() * 3 + i * 5 + selDate.getMonth()) % 4) !== 0).map((t) => {
+      const on = this.state.time === t;
+      return { label: t, pressed: on ? 'true' : 'false', style: on ? 'background:#2A2218;color:#FBF3E4' : 'background:#EFE3CE', pick: () => this.setState({ time: t }) };
+    }) : [];
+    const ready = !!(selDate && this.state.time && this.state.name.trim() && /\S+@\S+\.\S+/.test(this.state.email));
+    const sum = {
+      service: svc.label, place: svc.place, dur: svc.dur, price: svc.price,
+      date: selDate ? selDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) : 'À choisir',
+      time: this.state.time || 'À choisir',
+      name: this.state.name.trim(),
+      disabled: ready ? 'false' : 'true',
+      btnStyle: ready ? '' : 'opacity:0.5;cursor:not-allowed',
+      hint: ready ? 'Tu pourras déplacer ou annuler ton rendez-vous.' : 'Choisis un jour et une heure, puis renseigne ton prénom et ton e-mail.'
+    };
+    const vis = this.state.vis || {};
+    const mk = (id) => ({ style: vis[id] ? 'background:#B88917;color:#2A2218;border-color:#B88917' : 'color:#FBF3E4', cur: vis[id] ? 'location' : 'false' });
+    const tab = { orientation: mk('orientation'), reconnexion: mk('reconnexion'), reiki: mk('reiki'), kobido: mk('kobido'), entreprises: mk('entreprises') };
+    const L = {
+      premier: { href: ext.premier, t: ext.t, act: act.premier },
+      reiki: { href: ext.reiki, t: ext.t, act: act.reiki },
+      reikiLigne: { href: ext.reiki, t: ext.t, act: internal ? () => this.setState({ service: 'reiki-ligne', time: '' }) : noop },
+      kobido: { href: ext.kobido, t: ext.t, act: act.kobido },
+      ecrire: { href: '#ecrire', t: '_self', act: noop },
+      offres: { href: '#orientation', t: '_self', act: noop },
+      reconnexion: { href: '#reconnexion', t: '_self', act: noop },
+      seances: { href: '#seances', t: '_self', act: noop }
+    };
+    const TAGS = { general: 'Général', reconnexion: 'Reconnexion', reiki: 'Reiki Usui', kobido: 'Massage Kobido', entreprises: 'Entreprises' };
+    const ITEMS = [
+      { tag: 'general', q: `Reconnexion, Reiki ou Kobido : comment choisir ?`, a: `Si tu tournes en rond ou si tu hésites sur des choix, Reconnexion est faite pour toi. Si tu es fatigué(e) et que tu as besoin de relâcher, choisis le Reiki. Si tu veux t'offrir une pause pour ton visage et ta nuque, le massage Kobido t'attend. Un doute ? Un premier échange t'aide à trancher.`, c1: ['Réserver un premier échange', 'premier'], c2: ['Comparer les offres', 'offres'] },
+      { tag: 'reconnexion', q: `Je tourne en rond : par où commencer ?`, a: `Par un premier échange. Nous regardons ensemble où tu en es et si l'accompagnement Reconnexion correspond à ce que tu recherches. Tu n'as pas besoin d'avoir les réponses avant de commencer : nous les faisons émerger ensemble.`, c1: ['Réserver un premier échange', 'premier'] },
+      { tag: 'reconnexion', q: `Cet accompagnement est-il fait pour moi ?`, a: `Reconnexion s'adresse aux personnes qui ressentent le besoin de changement, de clarté ou d'une nouvelle direction, et qui souhaitent être accompagnées pour comprendre ce qu'elles veulent réellement et passer à l'action.`, c1: ['Réserver un premier échange', 'premier'], c2: ['Découvrir Reconnexion', 'reconnexion'] },
+      { tag: 'reconnexion', q: `Quelle différence avec une séance ponctuelle ?`, a: `Une séance permet de prendre du recul et de t'apaiser à un moment donné. Reconnexion s'inscrit dans la durée : comprendre ce qui se joue, clarifier ce que tu veux et mettre en place des changements concrets.`, c1: ['Découvrir Reconnexion', 'reconnexion'], c2: ['Voir les séances à la carte', 'seances'] },
+      { tag: 'reconnexion', q: `Pourquoi 125 € la séance ?`, a: `Reconnexion n'est pas une succession de séances isolées : c'est un accompagnement personnalisé sur plusieurs semaines, avec un vrai travail de fond sur tes besoins, tes choix et leur mise en œuvre. Chaque séance coûte 125 €, soit 500 € pour les 4 séances, avec paiement possible en plusieurs fois.`, c1: ['Réserver un premier échange', 'premier'] },
+      { tag: 'reiki', q: `J'ai besoin de souffler : que me conseilles-tu ?`, a: `Une séance de Reiki Usui : un temps pour relâcher les tensions, apaiser le mental et te recentrer. Tu peux parler… ou rester en silence, c'est toi qui choisis. Une séance dure 60 minutes.`, c1: ['Réserver une séance de Reiki', 'reiki'] },
+      { tag: 'reiki', q: `Dois-je connaître le Reiki pour essayer ?`, a: `Non, aucune connaissance particulière n'est nécessaire, ni pour une séance de Reiki ni pour l'accompagnement Reconnexion. Les outils sont choisis en fonction de tes besoins et de ce qui peut réellement t'aider.`, c1: ['Réserver une séance de Reiki', 'reiki'] },
+      { tag: 'reiki', q: `Je ne peux pas venir à Couëron : est-ce possible à distance ?`, a: `Oui. Le Reiki existe en ligne (50 € au lieu de 65 € au cabinet) et l'accompagnement Reconnexion se fait en visioconférence, partout en France.`, c1: ['Réserver une séance en ligne', 'reikiLigne'], c2: ['Premier échange en visio', 'premier'] },
+      { tag: 'kobido', q: `Reiki ou Kobido : lequel choisir pour m'offrir une pause ?`, a: `Le Reiki relâche le mental et les émotions, le Kobido détend le visage, la nuque et les clavicules. Les deux durent 60 minutes. Choisis selon ce dont tu as besoin aujourd'hui.`, c1: ['Réserver un massage Kobido', 'kobido'], c2: ['Réserver une séance de Reiki', 'reiki'] },
+      { tag: 'kobido', q: `Comment se passe un massage Kobido ?`, a: `Un échange préalable sur tes attentes, puis un massage sur table : tu restes habillé(e). Il travaille le visage, la nuque et la zone des clavicules, avec un temps de retour autour d'une boisson chaude. Les éventuelles contre-indications sont à vérifier avant de réserver [à préciser].`, c1: ['Réserver un massage Kobido', 'kobido'] },
+      { tag: 'entreprises', q: `J'aimerais proposer ça à mon équipe : comment ça se passe ?`, a: `Je propose des séances courtes, adaptées au rythme professionnel : relaxation guidée en groupe, massage Kobido ou séance énergétique en individuel, sur site, au cabinet ou en ligne. Les formules sont sur mesure et la séance découverte est offerte.`, c1: ['Demander une proposition', 'ecrire'] },
+      { tag: 'general', q: `Ces pratiques remplacent-elles un suivi médical ou psychologique ?`, a: `Non. Le Reiki, le massage Kobido et les techniques d'accompagnement sont des pratiques de bien-être. Elles ne se substituent ni à un avis médical, ni à un traitement, ni à un suivi psychologique.` }
+    ];
+    const fk = this.state.faqFilter || 'all';
+    const shown = ITEMS.filter((it) => fk === 'all' || it.tag === fk || it.tag === 'general');
+    const faqx = shown.map((it, i) => {
+      const isOpen = this.state.open === i;
+      const a1 = it.c1 ? L[it.c1[1]] : null;
+      const a2 = it.c2 ? L[it.c2[1]] : null;
+      return {
+        question: it.q, answer: it.a, tagLabel: TAGS[it.tag],
+        open: isOpen, panelId: 'b-faq-' + i, expanded: isOpen ? 'true' : 'false',
+        iconStyle: 'flex:none;font-family:DM Sans,system-ui,sans-serif;font-size:34px;line-height:1;transition:transform .2s;transform:rotate(' + (isOpen ? 45 : 0) + 'deg)',
+        toggle: () => this.setState({ open: isOpen ? -1 : i }),
+        hasC1: !!a1, c1Label: a1 ? it.c1[0] : '', c1Href: a1 ? a1.href : '#', c1T: a1 ? a1.t : '_self', c1Act: a1 ? a1.act : noop,
+        hasC2: !!a2, c2Label: a2 ? it.c2[0] : '', c2Href: a2 ? a2.href : '#', c2T: a2 ? a2.t : '_self', c2Act: a2 ? a2.act : noop
+      };
+    });
+    const faqFilters = [['all', 'Toutes les questions'], ['reconnexion', 'Reconnexion'], ['reiki', 'Reiki Usui'], ['kobido', 'Massage Kobido'], ['entreprises', 'Entreprises']].map((f) => {
+      const on = fk === f[0];
+      return { label: f[1], pressed: on ? 'true' : 'false', style: on ? 'background:#2A2218;color:#FBF3E4' : '', pick: () => this.setState({ faqFilter: f[0], open: 0 }) };
+    });
+    const faq = items.map((it, i) => {
+      const isOpen = this.state.open === i;
+      return {
+        question: it.question,
+        answer: it.answer,
+        open: isOpen,
+        panelId: 'b-faq-' + i,
+        expanded: isOpen ? 'true' : 'false',
+        iconStyle: 'flex:none;font-family:DM Sans,system-ui,sans-serif;font-size:34px;line-height:1;transition:transform .2s;transform:rotate(' + (isOpen ? 45 : 0) + 'deg)',
+        toggle: () => this.setState({ open: isOpen ? -1 : i })
+      };
+    });
+    return {
+      internal, ext, act, bookNote, services, days, slots, sum,
+      monthTitle: base.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' }),
+      noPrev: this.state.month <= 0,
+      noNext: this.state.month >= 3,
+      prevMonth: () => this.setState({ month: Math.max(0, this.state.month - 1), date: '', time: '' }),
+      nextMonth: () => this.setState({ month: Math.min(3, this.state.month + 1), date: '', time: '' }),
+      noDate: !selDate,
+      noSlots: !!selDate && slots.length === 0,
+      bookDone: this.state.booked,
+      bookOpen: !this.state.booked,
+      setName: (e) => this.setState({ name: e.target.value }),
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      confirm: ready ? () => this.setState({ booked: true }) : noop,
+      resetBooking: () => this.setState({ booked: false, date: '', time: '', name: '', email: '' }),
+      tab,
+      faq: faqx,
+      faqFilters,
+      menu: this.state.menu,
+      menuExpanded: this.state.menu ? 'true' : 'false',
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      send: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const g = (id) => { const el = document.getElementById(id); return el ? (el.value || '').trim() : ''; };
+        const c = document.querySelector('#ecrire input[name=consent]');
+        const prenom = g('b-prenom'), email = g('b-email'), msg = g('b-msg');
+        if (!prenom || !/\S+@\S+\.\S+/.test(email) || !msg || !(c && c.checked)) {
+          window.alert('Merci de renseigner ton prénom, une adresse e-mail valide, ton message, et de cocher la case de consentement.');
+          return;
+        }
+        const body = msg + '\n\n' + prenom + '\n' + email;
+        window.location.href = 'mailto:aurelie.artisanedubienetre@gmail.com?subject=' + encodeURIComponent('Message depuis le site, de ' + prenom) + '&body=' + encodeURIComponent(body);
+        this.setState({ sent: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
