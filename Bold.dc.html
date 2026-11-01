@@ -97,6 +97,9 @@ body{margin:0}
 .plan button:focus-visible,.plan input:focus-visible{outline:3px solid #2A2218;outline-offset:3px}
 .fchip{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 18px;border:2px solid #2A2218;border-radius:999px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;color:#2A2218}
 .fchip:hover{background:#EBDDC6}
+.qchip{all:unset;box-sizing:border-box;cursor:pointer;min-width:44px;height:44px;padding:0 12px;border:2px solid #2A2218;border-radius:999px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;justify-content:center;color:#2A2218}
+.qchip:hover{background:#EBDDC6}
+.qchip:focus-visible{outline:3px solid #2A2218;outline-offset:3px}
 @media (max-width: 760px){.rings{display:none}}
 @media (max-width: 960px){
   .navd{display:none !important}
@@ -174,6 +177,27 @@ body{margin:0}
         <div class="chap" style="margin-bottom:22px">Par où commencer</div>
         <h2 class="serif" style="margin:0 0 14px;font-size:clamp(40px,6vw,84px);line-height:1">Où en es-tu <em style="color:#8A5A0A">aujourd'hui ?</em></h2>
         <p class="mut" style="margin:0 0 36px;max-width:640px">Prends un instant pour faire le point. Que tu cherches à libérer des tensions physiques, clarifier ton esprit ou retrouver ton alignement, choisis la porte qui résonne avec ton besoin du moment et découvre le soin idéal pour y répondre.</p>
+        <div style="background:#FFF8EC;border:1px solid #DCC9A8;border-radius:22px;padding:clamp(18px,2.4vw,28px);margin:0 0 36px;max-width:900px">
+          <p class="mut" style="margin:0 0 6px;font-size:15px">Note chaque point de 1 (très bas) à 4 (très bien) pour découvrir le soin conseillé.</p>
+          <sc-for list="{{quizRows}}" as="r" hint-placeholder-count="4">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:12px 0;border-top:1px solid #DCC9A8">
+              <div style="flex:1 1 220px;min-width:0"><div style="font-weight:700;font-size:17px">{{ r.title }}</div><div class="mut" style="font-size:14px;line-height:1.4">{{ r.hint }}</div></div>
+              <div role="group" aria-label="{{ r.title }}" style="display:flex;gap:8px"><button type="button" class="qchip" onClick="{{ r.k1 }}" aria-pressed="{{ r.p1 }}" style="{{ r.s1 }}" aria-label="1 sur 4">1</button><button type="button" class="qchip" onClick="{{ r.k2 }}" aria-pressed="{{ r.p2 }}" style="{{ r.s2 }}" aria-label="2 sur 4">2</button><button type="button" class="qchip" onClick="{{ r.k3 }}" aria-pressed="{{ r.p3 }}" style="{{ r.s3 }}" aria-label="3 sur 4">3</button><button type="button" class="qchip" onClick="{{ r.k4 }}" aria-pressed="{{ r.p4 }}" style="{{ r.s4 }}" aria-label="4 sur 4">4</button></div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ quizDone }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="background:#044D2F;color:#FBF3E4;border-radius:16px;padding:20px 22px;margin-top:8px">
+              <div style="font-size:14px;opacity:0.85">Ton score : {{ quizScore }} sur 16</div>
+              <div class="serif" style="font-size:clamp(28px,3.4vw,40px);line-height:1.1;margin:6px 0 8px;color:#B88917">{{ quizName }}</div>
+              <p style="margin:0 0 14px;font-size:16px;line-height:1.55">{{ quizWhy }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center"><a class="pill pill-a" href="{{ quizHref }}">Découvrir cette offre</a><button type="button" class="pill pill-o" onClick="{{ quizReset }}">Refaire le quiz</button></div>
+              <p style="margin:14px 0 0;font-size:13px;opacity:0.8">Cette orientation est indicative et ne remplace pas un avis médical.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ quizTodo }}" hint-placeholder-val="{{ true }}">
+            <p class="mut" style="margin:0;padding-top:12px;border-top:1px solid #DCC9A8;font-size:15px">Note les 4 points pour voir le soin conseillé.</p>
+          </sc-if>
+        </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
           <a class="opt" href="#reconnexion">
             <img src="./assets/25c90e4014949585e91a3965b789fd7b.jpg" alt="Aurélie Aké, souriante, une tasse à la main" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 22%;border-radius:14px;display:block;margin-bottom:6px">
@@ -620,7 +644,7 @@ body{margin:0}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { open: 0, menu: false, sent: false, vis: {}, service: 'premier', month: 0, date: '', time: '', name: '', email: '', booked: false, faqFilter: 'all' };
+    this.state = { quiz: [0, 0, 0, 0], open: 0, menu: false, sent: false, vis: {}, service: 'premier', month: 0, date: '', time: '', name: '', email: '', booked: false, faqFilter: 'all' };
   }
   componentDidMount() {
     try {
@@ -744,6 +768,32 @@ class Component extends DCLogic {
         hasC2: !!a2, c2Label: a2 ? it.c2[0] : '', c2Href: a2 ? a2.href : '#', c2T: a2 ? a2.t : '_self', c2Act: a2 ? a2.act : noop
       };
     });
+    const QZ = [
+      { t: 'Énergie physique', h: ['vitalité, fatigue, tensions', 'Épuisement total, corps lourd, aucune énergie', 'Fatigue persistante, besoin de recharger les batteries', 'Énergie correcte, mais des petites baisses dans la journée', 'Plein(e) d\u2019énergie et de vitalité'] },
+      { t: 'Paix intérieure', h: ['stress, lâcher-prise, anxiété', 'Stress intense, émotions submergées, anxiété permanente', 'Agitation mentale, ruminations, difficulté à déconnecter', 'Globalement calme, quelques pics de stress récents', 'Serein(e), ancré(e) et apaisé(e)'] },
+      { t: 'Moral et clarté d\u2019esprit', h: ['motivation, vision de la vie, confiance', 'Moral en berne, brouillard mental, sentiment de blocage', 'Doute, besoin d\u2019y voir clair sur une situation ou sur soi', 'Envie d\u2019avancer mais léger manque d\u2019élan ou de recul', 'Confiant(e), motivé(e) et clair(e) dans ses choix'] },
+      { t: 'Corps et visage', h: ['tensions du visage, besoin de détente et d\u2019éclat', 'Visage très marqué par la fatigue, mâchoires serrées, front crispé', 'Besoin urgent de détendre les traits et le haut du corps', 'Envie de prendre soin de soi et de raviver l\u2019éclat de sa peau', 'Peau et visage détendus, lumineux'] }
+    ];
+    const qa = this.state.quiz;
+    const qDone = qa.every((x) => x > 0);
+    const qScore = qa.reduce((a, b) => a + b, 0);
+    const qOn = 'background:#2A2218;color:#FBF3E4';
+    const quizRows = QZ.map((q, i) => {
+      const v = qa[i];
+      const set = (k) => () => { const n = this.state.quiz.slice(); n[i] = k; this.setState({ quiz: n }); };
+      return {
+        title: q.t,
+        hint: v ? q.h[v] : q.h[0],
+        k1: set(1), k2: set(2), k3: set(3), k4: set(4),
+        p1: v === 1 ? 'true' : 'false', p2: v === 2 ? 'true' : 'false', p3: v === 3 ? 'true' : 'false', p4: v === 4 ? 'true' : 'false',
+        s1: v === 1 ? qOn : '', s2: v === 2 ? qOn : '', s3: v === 3 ? qOn : '', s4: v === 4 ? qOn : ''
+      };
+    });
+    const qRes = qScore <= 8
+      ? { name: 'Reconnexion, accompagnement individuel', why: 'Ton score montre un trop-plein ou une période délicate. Un espace d\u2019écoute et un travail guidé t\u2019aideront à libérer ce qui pèse.', href: '#reconnexion' }
+      : qScore <= 12
+        ? { name: 'Soin Reiki Usui', why: 'Ton énergie baisse et le stress perturbe ton harmonie intérieure. Le Reiki rééquilibre tes énergies, relance la vitalité et apporte un grand apaisement.', href: '#reiki' }
+        : { name: 'Massage Kobido', why: 'Ton énergie est plutôt bonne. C\u2019est le moment idéal pour un soin de détente du visage et d\u2019éclat naturel, pour un pur moment de lâcher-prise.', href: '#kobido' };
     const faqFilters = [['all', 'Toutes les questions'], ['reconnexion', 'Reconnexion'], ['reiki', 'Reiki Usui'], ['kobido', 'Massage Kobido'], ['entreprises', 'Entreprises']].map((f) => {
       const on = fk === f[0];
       return { label: f[1], pressed: on ? 'true' : 'false', style: on ? 'background:#2A2218;color:#FBF3E4' : '', pick: () => this.setState({ faqFilter: f[0], open: 0 }) };
@@ -778,6 +828,7 @@ class Component extends DCLogic {
       tab,
       faq: faqx,
       faqFilters,
+      quizRows, quizDone: qDone, quizTodo: !qDone, quizScore: qScore, quizName: qRes.name, quizWhy: qRes.why, quizHref: qRes.href, quizReset: () => this.setState({ quiz: [0, 0, 0, 0] }),
       menu: this.state.menu,
       menuExpanded: this.state.menu ? 'true' : 'false',
       sent: this.state.sent,
