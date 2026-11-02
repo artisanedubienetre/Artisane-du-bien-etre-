@@ -251,16 +251,15 @@ body{margin:0}
         </div>
 
         <!-- Offre Découverte -->
-        <a href="#decouverte" style="display:flex;flex-wrap:wrap;gap:18px 36px;align-items:center;justify-content:space-between;margin-top:16px;background:#B88917;color:#2A2218;border-radius:24px;padding:clamp(22px,3vw,34px);text-decoration:none">
-          <div style="flex:1 1 380px;min-width:0">
-            <div style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px">Nouveau · Séance Découverte</div>
-            <div class="serif" style="font-size:clamp(30px,3.6vw,46px);line-height:1.05">Tu veux goûter à tout ? <em style="color:#6B4308">Trois soins en une séance.</em></div>
-            <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px"><span style="border:2px solid #2A2218;border-radius:999px;padding:4px 14px;font-weight:700;font-size:15px">Relaxation</span><span style="border:2px solid #2A2218;border-radius:999px;padding:4px 14px;font-weight:700;font-size:15px">Reiki Usui</span><span style="border:2px solid #2A2218;border-radius:999px;padding:4px 14px;font-weight:700;font-size:15px">Massage Kobido</span></div>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px">
-            <div><div class="serif" style="font-size:clamp(48px,6vw,76px);line-height:0.9">145 €</div><div style="font-size:15px;font-weight:700;margin-top:4px">1 h 30 au cabinet à Couëron</div></div>
-            <span class="pill pill-d">Découvrir la séance</span>
-          </div>
+        <a class="opt" href="#decouverte" style="margin-top:16px;min-height:0;flex-direction:row;flex-wrap:wrap;align-items:center;gap:18px 28px">
+          <span class="ico"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="16"></circle><path d="M39 39 L54 54"></path><path d="M18 24 A10 10 0 0 1 24 18"></path></svg></span>
+          <span style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:19px;font-weight:600;line-height:1.3">Je veux goûter à tout</span>
+            <span class="serif" style="font-size:34px;line-height:1">Découverte <em style="color:#8A5A0A;font-size:26px">· nouveau</em></span>
+            <span class="mut" style="font-size:15px">Relaxation + Reiki + Kobido · 1 h 30 · 145 €</span>
+          </span>
+          <span style="display:flex;gap:8px;flex:none"><img src="./assets/8cfab1f7656dd17e87624afdd89322f0.jpg" alt="Relaxation : bol chantant" style="width:76px;height:76px;object-fit:cover;border-radius:14px"><img src="./assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="Soin Reiki" style="width:76px;height:76px;object-fit:cover;object-position:center 30%;border-radius:14px"><img src="./assets/b2d56bf58034a7a5d0660073377ad934.jpg" alt="Massage Kobido" style="width:76px;height:76px;object-fit:cover;object-position:center 58%;border-radius:14px"></span>
+          <span style="font-weight:700;flex:none">Voir le détail →</span>
         </a>
 
         <!-- Aide à la décision -->
@@ -441,10 +440,12 @@ body{margin:0}
             <a class="pill pill-d" href="{{ ext.kobido }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.kobido }}" style="margin-top:auto">Réserver un massage Kobido</a>
           </article>
 
-          <article id="decouverte" style="grid-column:1 / -1;background:#B88917;color:#2A2218;border-radius:28px;padding:clamp(26px,3.4vw,44px);display:flex;flex-wrap:wrap;gap:28px 56px;scroll-margin-top:96px">
+          <article id="decouverte" style="grid-column:1 / -1;background:#FFF8EC;border:1px solid #DCC9A8;color:#2A2218;border-radius:28px;padding:clamp(26px,3.4vw,44px);display:flex;flex-wrap:wrap;gap:28px 56px;scroll-margin-top:96px">
             <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:18px">
-              <div style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Nouveau · Séance Découverte</div>
-              <h3 class="serif" style="margin:0;font-size:clamp(40px,4.6vw,64px);line-height:1">Trois soins, <em style="color:#6B4308">une seule séance</em></h3>
+              <div style="display:flex;gap:10px"><img src="./assets/8cfab1f7656dd17e87624afdd89322f0.jpg" alt="Relaxation : bol chantant" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;border-radius:14px"><img src="./assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="Soin Reiki" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;object-position:center 30%;border-radius:14px"><img src="./assets/b2d56bf58034a7a5d0660073377ad934.jpg" alt="Massage Kobido" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;object-position:center 58%;border-radius:14px"></div>
+              <div class="door serif" style="font-size:clamp(30px,3.4vw,42px);line-height:1;margin-bottom:0"><svg class="ci" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="16"></circle><path d="M39 39 L54 54"></path><path d="M18 24 A10 10 0 0 1 24 18"></path></svg>Je veux goûter à tout</div>
+              <div style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A5A0A;margin-top:-6px">Nouveau · Séance Découverte</div>
+              <h3 class="serif" style="margin:0;font-size:clamp(40px,4.6vw,64px);line-height:1">Trois soins, <em style="color:#8A5A0A">une seule séance</em></h3>
               <p style="margin:0;font-size:18px">Relaxation, Reiki Usui et massage Kobido enchaînés dans un même parcours, pour vivre un vrai temps pour toi et trouver ce qui te correspond le mieux.</p>
               <ul class="cl" style="font-size:17px;margin:0">
                 <li><strong>Un parcours complet :</strong> la relaxation pour ralentir, le Reiki pour te rééquilibrer, le Kobido pour détendre le visage et raviver l'éclat</li>
