@@ -28,5 +28,42 @@ class Component extends DCLogic {
   }
 }
 </script>
+<script>
+(function(){
+var V=[['orientation','Par où commencer'],['reconnexion','Je tourne en rond · Reconnexion'],['seances','Séances à la carte'],['entreprises','Entreprises'],['aurelie','Qui suis-je ?'],['faq','Questions'],['contact','Contact']];
+var root=document.documentElement,cur='';
+function idOf(h){try{return decodeURIComponent((h||'').replace(/^#/,''))}catch(e){return ''}}
+function viewOf(el){var s=el&&el.closest?el.closest('[data-v]'):null;return s?s.getAttribute('data-v'):null}
+function setNav(v){
+  var i=V.findIndex(function(x){return x[0]===v}),p=document.getElementById('vprev'),n=document.getElementById('vnext');
+  if(!p||!n)return;
+  if(i>0){p.hidden=false;p.textContent='← '+V[i-1][1];p.setAttribute('href','#'+V[i-1][0])}else{p.hidden=true}
+  if(i>=0&&i<V.length-1){n.hidden=false;n.textContent=V[i+1][1]+' →';n.setAttribute('href','#'+V[i+1][0])}else{n.hidden=true}
+}
+function go(h,push,first){
+  var id=idOf(h),el=id?document.getElementById(id):null,v=viewOf(el)||(id==='ecrire'?'contact':null)||(id==='haut'||!id?cur||'orientation':null);
+  if(!v&&el)v=cur||'orientation';
+  if(!v)v='orientation';
+  if(v!==cur){cur=v;root.setAttribute('data-view',v);setNav(v)}
+  if(push&&history.pushState&&('#'+id)!==location.hash){history.pushState(null,'',id?'#'+id:location.pathname)}
+  var t=el&&el.id!=='haut'?el:document.getElementById(v);
+  if(first&&!id)return;
+  requestAnimationFrame(function(){ if(t&&t.getBoundingClientRect){ if(el&&el.closest&&el.closest('[data-v]')===null&&id!=='ecrire'){window.scrollTo(0,0)} else {t.scrollIntoView({block:'start'})} } else window.scrollTo(0,0) });
+}
+function init(){
+  if(!document.querySelector('main [data-v]')){return setTimeout(init,60)}
+  go(location.hash,false,true);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a)return;
+    var h=a.getAttribute('href'); if(h==='#'||h.length<2)return;
+    if(e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey)return;
+    e.preventDefault(); go(h,true);
+    if(a.closest('#menu-mobile')){var mb=document.querySelector('button.menu-btn'); if(mb)setTimeout(function(){mb.click()},0)}
+  },true);
+  window.addEventListener('popstate',function(){go(location.hash,false)});
+}
+init();
+})();
+</script>
 </body>
 </html>
