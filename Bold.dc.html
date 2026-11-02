@@ -267,13 +267,14 @@ body{margin:0}
         <p class="tbl-hint" aria-hidden="true">Fais glisser le tableau vers la gauche pour voir toutes les offres →</p>
         <div style="overflow-x:auto;border-radius:18px;border:1px solid #DCC9A8" role="region" aria-label="Tableau comparatif des offres" tabindex="0">
           <table class="tbl">
-            <caption style="position:absolute;left:-9999px">Comparaison des quatre offres : Reconnexion, Reiki Usui, Massage Kobido et Entreprises</caption>
+            <caption style="position:absolute;left:-9999px">Comparaison des cinq offres : Reconnexion, Reiki Usui, Massage Kobido, Découverte et Entreprises</caption>
             <thead>
               <tr>
                 <td></td>
                 <th scope="col">Reconnexion</th>
                 <th scope="col">Reiki Usui</th>
                 <th scope="col">Massage Kobido</th>
+                <th scope="col">Découverte</th>
                 <th scope="col">Entreprises</th>
               </tr>
             </thead>
@@ -283,6 +284,7 @@ body{margin:0}
                 <td class="hl">tu hésites, tu tournes en rond et tu veux passer à l'action</td>
                 <td>tu es fatigué(e), chargé(e) émotionnellement ou en période de transition</td>
                 <td>tu veux détendre ton visage, ta nuque, t'offrir une vraie pause</td>
+                <td>tu veux goûter à tout en une séance : relaxation, Reiki et Kobido</td>
                 <td>ton équipe a besoin de souffler</td>
               </tr>
               <tr>
@@ -290,6 +292,7 @@ body{margin:0}
                 <td class="hl">4 séances individuelles + suivi et exercices en visioconférence entre les séances</td>
                 <td>Soin énergétique, au cabinet ou en ligne</td>
                 <td>Massage sur table, habillé(e), au cabinet</td>
+                <td>Parcours en 3 temps : relaxation, Reiki, Kobido, au cabinet</td>
                 <td>Relaxation en groupe ou soins individuels, sur site, au cabinet ou en ligne</td>
               </tr>
               <tr>
@@ -297,6 +300,7 @@ body{margin:0}
                 <td class="hl">Environ 1 h 30 par séance, sur plusieurs semaines</td>
                 <td>60 minutes</td>
                 <td>60 minutes</td>
+                <td>1 h 30</td>
                 <td>Sur mesure</td>
               </tr>
               <tr>
@@ -304,6 +308,7 @@ body{margin:0}
                 <td class="hl"><strong>125 €</strong> la séance<br>soit 500 € pour 4 séances<br>paiement en plusieurs fois</td>
                 <td><strong>65 €</strong> au cabinet<br><strong>50 €</strong> en ligne</td>
                 <td><strong>65 €</strong> au cabinet</td>
+                <td><strong>145 €</strong> au cabinet<br>3 soins en 1 séance</td>
                 <td>Sur devis<br>séance découverte offerte</td>
               </tr>
               <tr>
@@ -311,6 +316,7 @@ body{margin:0}
                 <td class="hl"><a class="pill pill-d" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}" style="min-height:44px;padding:0 18px;font-size:15px">Premier échange</a></td>
                 <td><a class="pill pill-d" href="{{ ext.reiki }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.reiki }}" style="min-height:44px;padding:0 18px;font-size:15px">Réserver</a></td>
                 <td><a class="pill pill-d" href="{{ ext.kobido }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.kobido }}" style="min-height:44px;padding:0 18px;font-size:15px">Réserver</a></td>
+                <td><a class="pill pill-d" href="mailto:aurelie.artisanedubienetre@gmail.com?subject=S%C3%A9ance%20D%C3%A9couverte" style="min-height:44px;padding:0 18px;font-size:15px">Réserver</a></td>
                 <td><a class="pill pill-d" href="#ecrire" style="min-height:44px;padding:0 18px;font-size:15px">Demander une proposition</a></td>
               </tr>
             </tbody>
@@ -420,6 +426,29 @@ body{margin:0}
               <dt class="mut">Contre-indications</dt><dd style="margin:0;font-weight:700">[à préciser]</dd>
             </dl>
             <a class="pill pill-d" href="{{ ext.kobido }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.kobido }}" style="margin-top:auto">Réserver un massage Kobido</a>
+          </article>
+
+          <article id="decouverte" style="grid-column:1 / -1;background:#B88917;color:#2A2218;border-radius:28px;padding:clamp(26px,3.4vw,44px);display:flex;flex-wrap:wrap;gap:28px 56px;scroll-margin-top:96px">
+            <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:18px">
+              <div style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Nouveau · Séance Découverte</div>
+              <h3 class="serif" style="margin:0;font-size:clamp(40px,4.6vw,64px);line-height:1">Trois soins, <em style="color:#6B4308">une seule séance</em></h3>
+              <p style="margin:0;font-size:18px">Relaxation, Reiki Usui et massage Kobido enchaînés dans un même parcours, pour vivre un vrai temps pour toi et trouver ce qui te correspond le mieux.</p>
+              <ul class="cl" style="font-size:17px;margin:0">
+                <li><strong>Un parcours complet :</strong> la relaxation pour ralentir, le Reiki pour te rééquilibrer, le Kobido pour détendre le visage et raviver l'éclat</li>
+                <li><strong>L'idéal pour une première fois :</strong> tu goûtes à chaque pratique sans avoir à choisir</li>
+                <li><strong>Une pause complète en 1 h 30,</strong> d'un seul tenant, au cabinet à Couëron</li>
+                <li><strong>Une suite sur mesure :</strong> à la fin, on voit ensemble ce qui t'a le plus fait du bien pour la suite</li>
+              </ul>
+            </div>
+            <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:20px;justify-content:flex-end">
+              <div class="serif" style="font-size:clamp(70px,9vw,120px);line-height:0.85">145 €</div>
+              <dl style="margin:0;display:grid;grid-template-columns:1fr auto;gap:10px 20px;font-size:17px;padding-top:18px;border-top:1px solid #2A2218">
+                <dt>Durée</dt><dd style="margin:0;font-weight:700">1 h 30</dd>
+                <dt>Au cabinet à Couëron</dt><dd style="margin:0;font-weight:700">145 €</dd>
+                <dt>Contenu</dt><dd style="margin:0;font-weight:700;text-align:right">Relaxation + Reiki + Kobido</dd>
+              </dl>
+              <a class="pill pill-d" href="mailto:aurelie.artisanedubienetre@gmail.com?subject=S%C3%A9ance%20D%C3%A9couverte" style="align-self:flex-start">Réserver la séance Découverte</a>
+            </div>
           </article>
 
         </div>
@@ -808,9 +837,11 @@ class Component extends DCLogic {
     });
     const qRes = qScore <= 8
       ? { name: 'Reconnexion, accompagnement individuel', why: 'Ton score montre un trop-plein ou une période délicate. Un espace d\u2019écoute et un travail guidé t\u2019aideront à libérer ce qui pèse.', href: '#reconnexion' }
-      : qScore <= 12
+      : qScore <= 10
         ? { name: 'Soin Reiki Usui', why: 'Ton énergie baisse et le stress perturbe ton harmonie intérieure. Le Reiki rééquilibre tes énergies, relance la vitalité et apporte un grand apaisement.', href: '#reiki' }
-        : { name: 'Massage Kobido', why: 'Ton énergie est plutôt bonne. C\u2019est le moment idéal pour un soin de détente du visage et d\u2019éclat naturel, pour un pur moment de lâcher-prise.', href: '#kobido' };
+        : qScore <= 13
+          ? { name: 'Séance Découverte, 1 h 30', why: 'Tu es entre deux : un peu de fatigue, un peu de tensions, et l\u2019envie de te faire du bien. La séance Découverte réunit relaxation, Reiki et massage Kobido pour goûter à tout et voir ce qui te correspond le mieux.', href: '#decouverte' }
+          : { name: 'Massage Kobido', why: 'Ton énergie est plutôt bonne. C\u2019est le moment idéal pour un soin de détente du visage et d\u2019éclat naturel, pour un pur moment de lâcher-prise.', href: '#kobido' };
     const faqFilters = [['all', 'Toutes les questions'], ['reconnexion', 'Reconnexion'], ['reiki', 'Reiki Usui'], ['kobido', 'Massage Kobido'], ['entreprises', 'Entreprises']].map((f) => {
       const on = fk === f[0];
       return { label: f[1], pressed: on ? 'true' : 'false', style: on ? 'background:#2A2218;color:#FBF3E4' : '', pick: () => this.setState({ faqFilter: f[0], open: 0 }) };
