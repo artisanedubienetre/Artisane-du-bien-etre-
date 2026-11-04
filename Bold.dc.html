@@ -13,14 +13,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0}
-.b{font-family:'DM Sans',system-ui,sans-serif;background:#044D2F;color:#FBF3E4;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.b{font-family:'DM Sans',system-ui,sans-serif;background:#044D2F;color:#FBF3E4;font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
 .b *{box-sizing:border-box}
 .b a{color:inherit}
 .w{max-width:1240px;margin:0 auto;padding-left:clamp(20px,5vw,48px);padding-right:clamp(20px,5vw,48px)}
 .s{padding-top:clamp(64px,9vw,130px);padding-bottom:clamp(64px,9vw,130px)}
 .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.015em}
-.chap{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#B88917}
+.chap{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#D9B24A}
 .chap::after{content:"";height:1px;width:56px;background:currentColor;opacity:0.7}
 .bone{background:#F5EBDC;color:#2A2218}
 .bone .chap{color:#8A5A0A}
@@ -57,6 +59,17 @@ body{margin:0}
 .opt:hover .ic{stroke:#2A2218}
 .ci{width:26px;height:26px;flex:none;fill:none;stroke:currentColor;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
 .mbar{display:none}
+.cta-sticky{display:none}
+@media (min-width:1321px){.hd,.navd{flex-wrap:nowrap !important}}
+@media (max-width:1320px){.navd{display:none !important}.menu-btn{display:inline-flex !important}}
+@media (min-width:761px) and (max-width:1500px){.navd{flex-wrap:nowrap !important;gap:0 !important}.tab{padding:0 9px;gap:6px;font-size:14px}.tab svg{display:none}.cta-sticky .lg{display:none}}
+@media (min-width:1501px){.cta-sticky .sm{display:none}}
+@media (min-width:761px){.cta-sticky{display:inline-flex;min-height:46px !important;padding:0 24px !important;font-size:16px !important;white-space:nowrap}}
+.pill{transition:transform .15s ease,background-color .15s ease}
+.pill:active{transform:scale(.97)}
+.press .real{transition:border-color .15s ease,transform .15s ease}
+.press .real:hover{border-color:#8A5A0A;transform:translateY(-2px)}
+#menu-mobile{max-height:calc(100vh - 70px);overflow-y:auto}
 .menu-btn{display:none}
 #orientation,#reconnexion,#seances,#entreprises,#aurelie,#faq,#contact{scroll-margin-top:72px}
 .tab{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid transparent;font-size:14.5px;font-weight:600;line-height:1.2;text-decoration:none;white-space:nowrap}
@@ -147,7 +160,7 @@ body{margin:0}
         <img src="./assets/25c90e4014949585e91a3965b789fd7b.jpg" alt="Aurélie Aké" style="width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid #B88917;flex:none">
         <div style="line-height:1.25;min-width:0">
           <h1 style="margin:0;font-size:30px;line-height:1;font-weight:400"><a href="#haut" class="serif" style="text-decoration:none;font-size:30px;line-height:1;display:block">artisane <em style="color:#B88917">du bien-être</em></a></h1>
-          <div style="font-size:17px;font-weight:600;margin-top:10px;line-height:1.4;color:#FBF3E4"><strong style="color:#B88917;font-weight:700">Aurélie Aké</strong> · Maison du Port, Couëron (44220) · Visio partout en France</div>
+          <div style="font-size:17px;font-weight:600;margin-top:10px;line-height:1.4;color:#FBF3E4"><strong style="color:#D9B24A;font-weight:700">Aurélie Aké</strong> · Maison du Port, Couëron (44220) · Visio partout en France</div>
         </div>
       </div>
       <div class="cta-head" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
@@ -160,7 +173,7 @@ body{margin:0}
 
   <!-- Navigation collante -->
   <header style="position:sticky;top:0;z-index:50;background:#044D2F;border-bottom:1px solid rgba(251,243,228,0.16)">
-    <div class="w" style="max-width:1480px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;min-height:64px;padding-top:6px;padding-bottom:6px">
+    <div class="w hd" style="max-width:1480px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;min-height:64px;padding-top:6px;padding-bottom:6px">
       <nav aria-label="Navigation principale" class="navd" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center">
         <a class="tab" href="#orientation" style="{{ tab.orientation.style }}" aria-current="{{ tab.orientation.cur }}"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="22"></circle><path d="M40 24 L35 35 L24 40 L29 29 Z"></path></svg>Par où commencer</a>
         <a class="tab" href="#reconnexion" style="{{ tab.reconnexion.style }}" aria-current="{{ tab.reconnexion.cur }}"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M32 12 A20 20 0 1 1 12.7 37.6"></path><path d="M7.5 43 L12.7 37.6 L18.5 42.5"></path><circle cx="32" cy="32" r="3.5"></circle></svg>Je tourne en rond</a>
@@ -172,6 +185,7 @@ body{margin:0}
         <sc-if value="{{ internal }}" hint-placeholder-val="{{ false }}"><a class="tab" href="#reserver" style="background:#B88917;color:#2A2218;font-weight:700">Réserver</a></sc-if>
       </nav>
       <div style="display:flex;gap:12px;align-items:center;margin-left:auto">
+        <a class="pill pill-a cta-sticky" aria-label="Réserver un premier échange" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}"><span class="lg">Réserver un premier échange</span><span class="sm">Réserver</span></a>
         <a class="menu-btn" href="https://www.instagram.com/artisanedubienetre_reiki/" target="_blank" rel="noopener noreferrer" aria-label="Instagram d'Artisane du Bien-être (s'ouvre dans un nouvel onglet)" style="width:46px;height:46px;border-radius:50%;border:2px solid #FBF3E4;color:#FBF3E4;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg></a>
         <button type="button" class="pill pill-o menu-btn" onClick="{{ toggleMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="menu-mobile" style="min-height:46px;padding:0 22px;font-size:15px">Menu</button>
       </div>
@@ -179,13 +193,14 @@ body{margin:0}
     <sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
       <nav id="menu-mobile" aria-label="Menu mobile" style="border-top:1px solid rgba(251,243,228,0.16)">
         <div class="w" style="display:flex;flex-direction:column;padding-top:8px;padding-bottom:18px">
-          <a class="serif" href="#orientation" style="text-decoration:none;font-size:28px;padding:9px 0;color:#B88917">Par où commencer</a>
-          <a class="serif" href="#reconnexion" style="text-decoration:none;font-size:28px;padding:9px 0">Je tourne en rond</a>
-          <a class="serif" href="#reiki" style="text-decoration:none;font-size:28px;padding:9px 0">J'ai besoin de souffler</a>
-          <a class="serif" href="#kobido" style="text-decoration:none;font-size:28px;padding:9px 0">Je m'offre une pause</a>
-          <a class="serif" href="#entreprises" style="text-decoration:none;font-size:28px;padding:9px 0">Mon équipe est sous pression</a>
-          <a class="serif" href="#aurelie" style="text-decoration:none;font-size:22px;padding:9px 0">Aurélie</a>
-          <a class="serif" href="#faq" style="text-decoration:none;font-size:22px;padding:9px 0">Questions</a>
+          <a class="serif" onClick="{{ closeMenu }}" href="#orientation" style="text-decoration:none;font-size:28px;padding:9px 0;color:#B88917">Par où commencer</a>
+          <a class="serif" onClick="{{ closeMenu }}" href="#reconnexion" style="text-decoration:none;font-size:28px;padding:9px 0">Je tourne en rond</a>
+          <a class="serif" onClick="{{ closeMenu }}" href="#reiki" style="text-decoration:none;font-size:28px;padding:9px 0">J'ai besoin de souffler</a>
+          <a class="serif" onClick="{{ closeMenu }}" href="#kobido" style="text-decoration:none;font-size:28px;padding:9px 0">Je m'offre une pause</a>
+          <a class="serif" onClick="{{ closeMenu }}" href="#entreprises" style="text-decoration:none;font-size:28px;padding:9px 0">Mon équipe est sous pression</a>
+          <a class="serif" onClick="{{ closeMenu }}" href="#aurelie" style="text-decoration:none;font-size:22px;padding:9px 0">Aurélie</a>
+          <a class="serif" onClick="{{ closeMenu }}" href="#faq" style="text-decoration:none;font-size:22px;padding:9px 0">Questions</a>
+          <a class="pill pill-a" href="{{ ext.premier }}" target="{{ ext.t }}" rel="noopener noreferrer" onClick="{{ act.premier }}" style="margin-top:14px">Réserver un premier échange</a>
         </div>
       </nav>
     </sc-if>
@@ -922,6 +937,7 @@ class Component extends DCLogic {
       sent: this.state.sent,
       notSent: !this.state.sent,
       toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      closeMenu: () => this.setState({ menu: false }),
       send: (e) => {
         if (e && e.preventDefault) e.preventDefault();
         const g = (id) => { const el = document.getElementById(id); return el ? (el.value || '').trim() : ''; };
