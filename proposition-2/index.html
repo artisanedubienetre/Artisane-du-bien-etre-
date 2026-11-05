@@ -807,10 +807,16 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
   });
 
   /* accordéon */
-  var pns=[].slice.call(document.querySelectorAll('.pn'));
-  pns.forEach(function(p){p.querySelector('button').addEventListener('click',function(){
-    pns.forEach(function(x){var o=x===p;x.classList.toggle('open',o);x.querySelector('button').setAttribute('aria-expanded',o?'true':'false')});
-  })});
+  var pns=[].slice.call(document.querySelectorAll('.pn')),accEl=document.getElementById('acc'),pi=0,pt=null,pView=false,pHold=false;
+  function openPn(i){pi=i;pns.forEach(function(x,k){var o=k===i;x.classList.toggle('open',o);x.querySelector('button').setAttribute('aria-expanded',o?'true':'false')})}
+  function pStop(){if(pt){clearInterval(pt);pt=null}}
+  function pStart(){pStop();if(!pView||pHold||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;pt=setInterval(function(){openPn((pi+1)%pns.length)},3400)}
+  pns.forEach(function(p,i){p.querySelector('button').addEventListener('click',function(){openPn(i);pStart()})});
+  accEl.addEventListener('mouseenter',function(){pHold=true;pStop()});
+  accEl.addEventListener('mouseleave',function(){pHold=false;pStart()});
+  accEl.addEventListener('focusin',function(){pHold=true;pStop()});
+  accEl.addEventListener('focusout',function(){pHold=false;pStart()});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(en){pView=en[0].isIntersecting;pView?pStart():pStop()},{threshold:.6}).observe(accEl)}
 
   /* faq */
   var ITEMS=DATA.ITEMS,TAGS=DATA.TAGS,FK='all',cards=document.getElementById('cards'),fl=document.getElementById('fl');
