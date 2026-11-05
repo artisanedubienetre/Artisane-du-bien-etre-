@@ -426,6 +426,10 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
 @keyframes spin2{from{transform:rotate(0)}to{transform:rotate(720deg)}}
 .spin.go{animation:spin2 1.8s cubic-bezier(.45,.05,.25,1) 1 both}
 /* « J'ai besoin de souffler » respire : inspiration, pause, expiration, une fois */
+/* « sous pression » : le titre est écrasé, tremble, puis se relâche */
+.press{display:inline-block;transform-origin:0 100%}
+@keyframes press{0%{transform:scale(1,1)}22%{transform:scale(1.03,.55)}30%{transform:scale(1.03,.55) translateX(-2px)}38%{transform:scale(1.03,.55) translateX(2px)}46%{transform:scale(1.03,.55) translateX(-2px)}54%{transform:scale(1.03,.55) translateX(2px)}62%{transform:scale(1.03,.56) translateX(0)}82%{transform:scale(1,1.05)}100%{transform:scale(1,1)}}
+.press.go{animation:press 3.4s cubic-bezier(.4,0,.2,1) 1}
 .breathe{display:inline-block;transform-origin:0 60%}
 @keyframes breathe{0%{transform:scale(1)}40%{transform:scale(1.035)}55%{transform:scale(1.035)}100%{transform:scale(1)}}
 @keyframes breathe-w{0%{transform:scale(1);letter-spacing:-.04em}40%{transform:scale(1.035);letter-spacing:-.012em}55%{transform:scale(1.035);letter-spacing:-.012em}100%{transform:scale(1);letter-spacing:-.04em}}
@@ -674,7 +678,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
 <section class="sec ent" id="entreprises" aria-labelledby="en-h">
   <div class="w">
     <nav class="crumb" aria-label="Fil d'Ariane"><a href="#soins">← Les soins selon toi</a><span aria-hidden="true">·</span><span>Porte 4 sur 4</span></nav>
-    <h2 id="en-h" class="rv">Mon équipe est sous pression</h2>
+    <h2 id="en-h" class="rv"><span class="press">Mon équipe est sous pression</span></h2>
     <p class="sub rv" style="--d:1">Et si vos équipes prenaient enfin le temps de respirer ?</p>
     <p class="lead rv" style="--d:2">Des séances courtes, adaptées au rythme professionnel, pour contribuer à réduire le stress, à améliorer la concentration et à installer un climat de travail plus serein.</p>
     <div class="cols">
@@ -849,6 +853,14 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
     br.addEventListener('animationend',function(){br.classList.remove('go')});
     new IntersectionObserver(function(en){en.forEach(function(e){
       if(e.isIntersecting){br.classList.remove('go');void br.offsetWidth;br.classList.add('go')}else br.classList.remove('go')})},{threshold:.9}).observe(br.parentNode);
+  })();
+
+  /* titre « Mon équipe est sous pression » : écrasé, il tremble puis se relâche une fois */
+  (function(){
+    var pr=document.querySelector('.press');if(!pr||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+    pr.addEventListener('animationend',function(){pr.classList.remove('go')});
+    new IntersectionObserver(function(en){en.forEach(function(e){
+      if(e.isIntersecting){pr.classList.remove('go');void pr.offsetWidth;pr.classList.add('go')}else pr.classList.remove('go')})},{threshold:.9}).observe(pr.parentNode);
   })();
 
   /* titre « Je m'offre une pause » : l'écrin s'ouvre à chaque apparition à l'écran */
