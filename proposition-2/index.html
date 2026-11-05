@@ -192,6 +192,8 @@ thead th:first-child{border-radius:var(--r) 0 0 0}
 thead th:last-child{border-radius:0 var(--r) 0 0}
 td,thead th{transition:background-color .25s ease,color .25s ease}
 td.on{background:#EBDDA6 !important}
+.ci{transform-origin:0 50%;transition:transform .3s cubic-bezier(.2,.8,.2,1);will-change:transform}
+td.on .ci,thead th.on .ci{transform:scale(1.08)}
 thead th.on{background:var(--accent);color:var(--accent-ink)}
 tbody th{font-weight:600;width:14%}
 tbody tr:nth-child(even) th,tbody tr:nth-child(even) td{background:#C3D3BB}
@@ -861,6 +863,11 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
   (function(){
     var t=document.querySelector('.cmp table'); if(!t) return;
     var rows=[].slice.call(t.rows), cur=-1;
+    rows.forEach(function(r){[].forEach.call(r.cells,function(c,k){
+      if(k===0&&c.tagName==='TH') return;
+      var d=document.createElement('div'); d.className='ci';
+      while(c.firstChild) d.appendChild(c.firstChild); c.appendChild(d);
+    })});
     function set(i){
       if(i===cur) return; cur=i;
       rows.forEach(function(r){[].forEach.call(r.cells,function(c,k){c.classList.toggle('on',i>0&&k===i)})});
