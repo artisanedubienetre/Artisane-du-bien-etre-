@@ -413,7 +413,8 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
 .btn.pulse{--ring:228,185,71;animation:pulse 2.4s ease-out infinite}
 .btn.dark.pulse{--ring:11,46,30}
 .btn.pulse:hover,.btn.pulse:focus-visible{animation:none}
-@media (prefers-reduced-motion:reduce){.btn.pulse{animation:none}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(var(--ring),0)}50%{box-shadow:0 0 0 12px rgba(var(--ring),.45)}}
+@media (prefers-reduced-motion:reduce){.btn.pulse,.btn.pulse::before{animation:glow 3.2s ease-in-out infinite !important}.btn.pulse:hover,.btn.pulse:focus-visible{animation:none !important}}
 </style>
 </head>
 <body>
