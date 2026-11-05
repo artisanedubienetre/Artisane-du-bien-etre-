@@ -190,6 +190,9 @@ th,td{padding:20px 22px;vertical-align:top;font-size:var(--step-body);line-heigh
 thead th{font-family:var(--display);font-weight:700;font-size:var(--step-lead);letter-spacing:-.03em;line-height:1;background:var(--sage-ink);color:var(--sage)}
 thead th:first-child{border-radius:var(--r) 0 0 0}
 thead th:last-child{border-radius:0 var(--r) 0 0}
+td,thead th{transition:background-color .25s ease,color .25s ease}
+td.on{background:#EBDDA6 !important}
+thead th.on{background:var(--accent);color:var(--accent-ink)}
 tbody th{font-weight:600;width:14%}
 tbody tr:nth-child(even) th,tbody tr:nth-child(even) td{background:#C3D3BB}
 td b{display:block;font-family:var(--display);font-size:var(--step-lead);letter-spacing:-.03em;line-height:1.05;margin-top:6px}
@@ -854,6 +857,20 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
       if(e.isIntersecting){gt=setTimeout(function(){gf.classList.add('open')},350)}else gf.classList.remove('open')})},{threshold:.9}).observe(gf.parentNode);
   })();
 
+  /* surlignage de colonne du tableau */
+  (function(){
+    var t=document.querySelector('.cmp table'); if(!t) return;
+    var rows=[].slice.call(t.rows), cur=-1;
+    function set(i){
+      if(i===cur) return; cur=i;
+      rows.forEach(function(r){[].forEach.call(r.cells,function(c,k){c.classList.toggle('on',i>0&&k===i)})});
+    }
+    t.addEventListener('mouseover',function(e){var c=e.target.closest('td,th'); if(c) set(c.cellIndex)});
+    t.addEventListener('mouseleave',function(){set(-1)});
+    t.addEventListener('focusin',function(e){var c=e.target.closest('td,th'); if(c) set(c.cellIndex)});
+    t.addEventListener('focusout',function(){set(-1)});
+    t.addEventListener('click',function(e){var c=e.target.closest('td,th'); if(c&&matchMedia('(hover:none)').matches) set(c.cellIndex===cur?-1:c.cellIndex)});
+  })();
   /* accordéon */
   var pns=[].slice.call(document.querySelectorAll('.pn')),accEl=document.getElementById('acc'),pi=0,pt=null,pView=false,pHold=false;
   function openPn(i){pi=i;pns.forEach(function(x,k){var o=k===i;x.classList.toggle('open',o);x.querySelector('button').setAttribute('aria-expanded',o?'true':'false')})}
