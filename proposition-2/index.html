@@ -420,6 +420,12 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
 .spin{display:inline-block;position:relative;z-index:2;transform-origin:50% 50%}
 @keyframes spin2{from{transform:rotate(0)}to{transform:rotate(720deg)}}
 .spin.go{animation:spin2 1.8s cubic-bezier(.45,.05,.25,1) 1 both}
+/* « J'ai besoin de souffler » respire : inspiration, pause, expiration, une fois */
+.breathe{display:inline-block;transform-origin:0 60%}
+@keyframes breathe{0%{transform:scale(1)}40%{transform:scale(1.035)}55%{transform:scale(1.035)}100%{transform:scale(1)}}
+@keyframes breathe-w{0%{transform:scale(1);letter-spacing:-.04em}40%{transform:scale(1.035);letter-spacing:-.012em}55%{transform:scale(1.035);letter-spacing:-.012em}100%{transform:scale(1);letter-spacing:-.04em}}
+.breathe.go{animation:breathe 3.6s ease-in-out 1}
+@media (min-width:760px){.breathe.go{animation-name:breathe-w}}
 </style>
 </head>
 <body>
@@ -604,7 +610,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
       <img class="pic rv" src="assets/1feda458d74ac29455afa660d20ebea9.jpg" width="717" height="751" alt="Séance de Reiki : des mains posées sur le front d'une personne allongée">
       <div class="rv" style="--d:2">
         <nav class="crumb" aria-label="Fil d'Ariane" style="margin-bottom:20px"><a href="#soins">← Les soins selon toi</a><span aria-hidden="true">·</span><span>Porte 2 sur 4</span></nav>
-        <h2 id="re-h">J'ai besoin de souffler</h2>
+        <h2 id="re-h"><span class="breathe">J'ai besoin de souffler</span></h2>
         <p class="k">Reiki Usui</p>
         <p class="desc">Une pratique énergétique douce pour relâcher les tensions, apaiser le mental et te recentrer, surtout en période de fatigue émotionnelle ou de transition.</p>
         <h4>Déroulé</h4>
@@ -822,6 +828,14 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
     sp.addEventListener('animationend',function(){sp.classList.remove('go')});
     new IntersectionObserver(function(en){en.forEach(function(e){
       if(e.isIntersecting){sp.classList.remove('go');void sp.offsetWidth;sp.classList.add('go')}else sp.classList.remove('go')})},{threshold:.9}).observe(sp.parentNode);
+  })();
+
+  /* titre « J'ai besoin de souffler » : il respire une fois à l'apparition */
+  (function(){
+    var br=document.querySelector('.breathe');if(!br||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+    br.addEventListener('animationend',function(){br.classList.remove('go')});
+    new IntersectionObserver(function(en){en.forEach(function(e){
+      if(e.isIntersecting){br.classList.remove('go');void br.offsetWidth;br.classList.add('go')}else br.classList.remove('go')})},{threshold:.9}).observe(br.parentNode);
   })();
 
   /* accordéon */
