@@ -407,6 +407,13 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
   *,*::before,*::after{animation:none !important;transition:none !important}
   .js .rv{opacity:1;transform:none}
 }
+
+/* appel à l'action : pulsation douce (pas de clignotement brusque) */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(var(--ring),.65);transform:scale(1)}35%{transform:scale(1.045)}70%{box-shadow:0 0 0 18px rgba(var(--ring),0)}100%{box-shadow:0 0 0 0 rgba(var(--ring),0);transform:scale(1)}}
+.btn.pulse{--ring:228,185,71;animation:pulse 2.4s ease-out infinite}
+.btn.dark.pulse{--ring:11,46,30}
+.btn.pulse:hover,.btn.pulse:focus-visible{animation:none}
+@media (prefers-reduced-motion:reduce){.btn.pulse{animation:none}}
 </style>
 </head>
 <body>
@@ -498,7 +505,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
     </div>
     <div class="band rv">
       <div><h2>Tu hésites encore entre deux offres ?</h2><p>Un premier échange t'aide à choisir la plus adaptée à ta situation.</p></div>
-      <a class="btn" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
+      <a class="btn pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
     </div>
   </div>
 </section>
@@ -542,7 +549,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
         <p class="four"><b>4</b><span>séances pour revenir à toi.</span></p>
         <p class="price"><b>125 €</b>la séance · soit 500 € pour 4 séances · paiement possible en plusieurs fois</p>
         <p>Environ 1 h 30 par séance · en visioconférence · échanges et exercices entre les séances</p>
-        <p><a class="btn dark" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a></p>
+        <p><a class="btn dark pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a></p>
       </div>
     </div>
     <div class="acc rv" id="acc" role="list" aria-label="Les cinq temps de l'accompagnement">
@@ -597,7 +604,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
         <h4>Déroulé</h4>
         <ul class="st"><li>Échange préalable sur ton besoin du moment</li><li>Soin par imposition des mains, en silence ou en parlant</li><li>Temps de retour autour d'une boisson chaude</li></ul>
         <dl class="facts"><div><dt>Durée</dt><dd>45 à 60 minutes</dd></div><div><dt>Au cabinet à Couëron</dt><dd>65 € pour 60 minutes</dd></div><div><dt>En ligne</dt><dd>50 € pour 45 minutes</dd></div></dl>
-        <a class="btn dark" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a>
+        <a class="btn dark pulse" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a>
       </div>
     </article>
 
@@ -611,7 +618,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
         <h4>Déroulé</h4>
         <ul class="st"><li>Échange préalable sur tes attentes</li><li>Massage sur table, tu restes habillé(e)</li><li>Temps de retour autour d'une boisson chaude</li></ul>
         <dl class="facts"><div><dt>Durée</dt><dd>60 minutes</dd></div><div><dt>Au cabinet à Couëron</dt><dd>65 €</dd></div><div><dt>Contre-indications</dt><dd>[à préciser]</dd></div></dl>
-        <a class="btn dark" href="https://my.weezevent.com/massage-kobido-1" target="_blank" rel="noopener noreferrer">Réserver un massage Kobido</a>
+        <a class="btn dark pulse" href="https://my.weezevent.com/massage-kobido-1" target="_blank" rel="noopener noreferrer">Réserver un massage Kobido</a>
       </div>
     </article>
 
@@ -666,7 +673,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
       <p>Aller mieux, ce n'est pas seulement calmer le mental ou retrouver de l'énergie. C'est aussi entendre ce que l'on veut vraiment, et se donner la permission de construire une vie qui nous ressemble.</p>
     </div>
     <div class="tags"><span>Maître en Reiki Usui</span><span>Techniques issues de la PNL</span><span>Massage Kobido</span><span>Depuis 2019</span></div>
-    <a class="btn cta" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
+    <a class="btn cta pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
     <img class="pic" src="assets/25c90e4014949585e91a3965b789fd7b.jpg" width="538" height="751" alt="Aurélie Aké, souriante, une tasse à la main">
   </div>
 </section>
