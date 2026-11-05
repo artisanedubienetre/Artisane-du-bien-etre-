@@ -416,6 +416,10 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
 .btn.pulse.go{animation:pulse 1.25s ease-out 4}
 .btn.pulse.go:hover,.btn.pulse.go:focus-visible{animation:none}
 @media (prefers-reduced-motion:reduce){.btn.pulse.go{animation:glow 2.5s ease-in-out 2 !important}.btn.pulse.go:hover,.btn.pulse.go:focus-visible{animation:none !important}}
+/* « Je tourne en rond » fait deux tours sur lui-même à l'apparition */
+.spin{display:inline-block;position:relative;z-index:2;transform-origin:50% 50%}
+@keyframes spin2{from{transform:rotate(0)}to{transform:rotate(720deg)}}
+.spin.go{animation:spin2 1.8s cubic-bezier(.45,.05,.25,1) 1 both}
 </style>
 </head>
 <body>
@@ -538,7 +542,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
     <nav class="crumb" aria-label="Fil d'Ariane"><a href="#soins">← Les soins selon toi</a><span aria-hidden="true">·</span><span>Porte 1 sur 4</span></nav>
     <div class="top">
       <div>
-        <h2 id="r-h" class="rv">Je tourne en rond</h2>
+        <h2 id="r-h" class="rv"><span class="spin">Je tourne en rond</span></h2>
         <p class="need rv" style="--d:1">Ton besoin : Faire le point, retrouver du sens et avancer en confiance.</p>
         <div class="txt rv" style="--d:2">
           <p>Ce soin s'adresse à celles et ceux qui sont à la croisée des chemins. Il t'aide à lever le flou mental, à écouter tes envies profondes et à faire des choix qui te ressemblent.</p>
@@ -810,6 +814,14 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
       if(e.isIntersecting){off(b);void b.offsetWidth;b.classList.add('go');tm.set(b,setTimeout(function(){b.classList.remove('go')},5000))}
       else off(b)})},{threshold:.7});
     bt.forEach(function(b){io.observe(b)});
+  })();
+
+  /* titre « Je tourne en rond » : deux tours à chaque apparition à l'écran */
+  (function(){
+    var sp=document.querySelector('.spin');if(!sp||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+    sp.addEventListener('animationend',function(){sp.classList.remove('go')});
+    new IntersectionObserver(function(en){en.forEach(function(e){
+      if(e.isIntersecting){sp.classList.remove('go');void sp.offsetWidth;sp.classList.add('go')}else sp.classList.remove('go')})},{threshold:.9}).observe(sp.parentNode);
   })();
 
   /* accordéon */
