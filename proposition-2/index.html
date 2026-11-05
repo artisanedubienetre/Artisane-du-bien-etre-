@@ -408,13 +408,14 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
   .js .rv{opacity:1;transform:none}
 }
 
-/* appel à l'action : pulsation douce (pas de clignotement brusque) */
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(var(--ring),.65);transform:scale(1)}35%{transform:scale(1.045)}70%{box-shadow:0 0 0 18px rgba(var(--ring),0)}100%{box-shadow:0 0 0 0 rgba(var(--ring),0);transform:scale(1)}}
-.btn.pulse{--ring:228,185,71;animation:pulse 2.4s ease-out infinite}
+/* appel à l'action : le bouton clignote 5 secondes quand il apparaît à l'écran */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(var(--ring),.85);transform:scale(1)}40%{transform:scale(1.06)}75%{box-shadow:0 0 0 20px rgba(var(--ring),0)}100%{box-shadow:0 0 0 0 rgba(var(--ring),0);transform:scale(1)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(var(--ring),0)}50%{box-shadow:0 0 0 14px rgba(var(--ring),.55)}}
+.btn.pulse{--ring:228,185,71}
 .btn.dark.pulse{--ring:11,46,30}
-.btn.pulse:hover,.btn.pulse:focus-visible{animation:none}
-@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(var(--ring),0)}50%{box-shadow:0 0 0 12px rgba(var(--ring),.45)}}
-@media (prefers-reduced-motion:reduce){.btn.pulse,.btn.pulse::before{animation:glow 3.2s ease-in-out infinite !important}.btn.pulse:hover,.btn.pulse:focus-visible{animation:none !important}}
+.btn.pulse.go{animation:pulse 1.25s ease-out 4}
+.btn.pulse.go:hover,.btn.pulse.go:focus-visible{animation:none}
+@media (prefers-reduced-motion:reduce){.btn.pulse.go{animation:glow 2.5s ease-in-out 2 !important}.btn.pulse.go:hover,.btn.pulse.go:focus-visible{animation:none !important}}
 </style>
 </head>
 <body>
@@ -799,6 +800,17 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
     a.addEventListener('mouseenter',function(){show(a.dataset.for)});
     a.addEventListener('focus',function(){show(a.dataset.for)});
   });
+
+  /* clignotement des boutons de réservation : 5 s à chaque apparition à l'écran */
+  (function(){
+    var bt=[].slice.call(document.querySelectorAll('.btn.pulse'));if(!bt.length||!('IntersectionObserver' in window))return;
+    var tm=new WeakMap();
+    function off(b){clearTimeout(tm.get(b));b.classList.remove('go')}
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){var b=e.target;
+      if(e.isIntersecting){off(b);void b.offsetWidth;b.classList.add('go');tm.set(b,setTimeout(function(){b.classList.remove('go')},5000))}
+      else off(b)})},{threshold:.7});
+    bt.forEach(function(b){io.observe(b)});
+  })();
 
   /* accordéon */
   var pns=[].slice.call(document.querySelectorAll('.pn')),accEl=document.getElementById('acc'),pi=0,pt=null,pView=false,pHold=false;
