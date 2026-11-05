@@ -426,6 +426,14 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
 @keyframes breathe-w{0%{transform:scale(1);letter-spacing:-.04em}40%{transform:scale(1.035);letter-spacing:-.012em}55%{transform:scale(1.035);letter-spacing:-.012em}100%{transform:scale(1);letter-spacing:-.04em}}
 .breathe.go{animation:breathe 3.6s ease-in-out 1}
 @media (min-width:760px){.breathe.go{animation-name:breathe-w}}
+/* « Je m'offre une pause » : un écrin doré s'ouvre du centre vers les côtés */
+.gift{display:inline-block;position:relative}
+.gift.armed{overflow:hidden;padding:.15em 0;margin:-.15em 0}
+.gift.armed::before,.gift.armed::after{content:"";position:absolute;top:0;bottom:0;width:50.5%;background:var(--accent);transition:transform 1.1s cubic-bezier(.65,0,.2,1)}
+.gift.armed::before{left:0}
+.gift.armed::after{right:0}
+.gift.armed.open::before{transform:translateX(-101%)}
+.gift.armed.open::after{transform:translateX(101%)}
 </style>
 </head>
 <body>
@@ -624,7 +632,7 @@ footer p{margin-top:12px;color:var(--muted);font-size:var(--step-small);max-widt
       <img class="pic rv" src="assets/b2d56bf58034a7a5d0660073377ad934.jpg" width="749" height="751" alt="Massage Kobido du visage">
       <div class="rv" style="--d:2">
         <nav class="crumb" aria-label="Fil d'Ariane" style="margin-bottom:20px"><a href="#soins">← Les soins selon toi</a><span aria-hidden="true">·</span><span>Porte 3 sur 4</span></nav>
-        <h2 id="ko-h">Je m'offre une pause</h2>
+        <h2 id="ko-h"><span class="gift">Je m'offre une pause</span></h2>
         <p class="k">Massage Kobido</p>
         <p class="desc">Un massage japonais du visage, de la nuque et de la zone des clavicules, pour détendre les traits, relâcher les tensions et favoriser l'éclat du teint.</p>
         <h4>Déroulé</h4>
@@ -836,6 +844,14 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
     br.addEventListener('animationend',function(){br.classList.remove('go')});
     new IntersectionObserver(function(en){en.forEach(function(e){
       if(e.isIntersecting){br.classList.remove('go');void br.offsetWidth;br.classList.add('go')}else br.classList.remove('go')})},{threshold:.9}).observe(br.parentNode);
+  })();
+
+  /* titre « Je m'offre une pause » : l'écrin s'ouvre à chaque apparition à l'écran */
+  (function(){
+    var gf=document.querySelector('.gift');if(!gf||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+    var gt=null;gf.classList.add('armed');
+    new IntersectionObserver(function(en){en.forEach(function(e){clearTimeout(gt);
+      if(e.isIntersecting){gt=setTimeout(function(){gf.classList.add('open')},350)}else gf.classList.remove('open')})},{threshold:.9}).observe(gf.parentNode);
   })();
 
   /* accordéon */
