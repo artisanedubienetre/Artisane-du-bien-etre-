@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Artisane du bien-être · Reiki Usui, massage Kobido et accompagnement à Couëron</title>
+<meta name="description" content="Accompagnement individuel, Reiki Usui et massage Kobido à Couëron (44) et en visioconférence, avec Aurélie Aké.">
+<link rel="preload" href="fonts/league-spartan-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"League Spartan";font-weight:500;font-display:swap;src:url(fonts/league-spartan-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"League Spartan";font-weight:700;font-display:swap;src:url(fonts/league-spartan-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-weight:400;font-display:swap;src:url(fonts/figtree-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-weight:600;font-display:swap;src:url(fonts/figtree-latin-600-normal.woff2) format("woff2")}
+:root{
+  --paper:#F4F7F1;--mist:#E3EBDD;--sage:#CFDCC8;--forest:#044D2F;--deep:#032E1C;--text:#0B2E1E;--soft:#3C5648;
+  --gold:#D4A634;--gold-hi:#E4B947;--gold-ink:#1B1405;--ring:228,185,71;
+  --display:"League Spartan",system-ui,sans-serif;--body:"Figtree",system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);--r:24px;--w:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1.05;margin:0}
+p{margin:0 0 14px}
+:focus-visible{outline:3px solid var(--forest);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--gold);color:var(--gold-ink);padding:10px 16px;border-radius:999px;z-index:100}
+.skip:focus{left:8px}
+.w{max-width:var(--w);margin:0 auto;padding:0 24px}
+.sec{padding:clamp(64px,9vw,128px) 0}
+.sec h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.lead{font-size:clamp(1.1rem,1.6vw,1.3rem);max-width:56ch}
+.muted{color:var(--soft)}
+
+/* boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 26px;border-radius:999px;border:2px solid transparent;font:600 1rem/1.2 var(--body);text-decoration:none;cursor:pointer;background:var(--gold);color:var(--gold-ink);transition:transform .16s var(--ease-out),background-color .18s ease,color .18s ease,border-color .18s ease}
+.btn:active{transform:scale(.97)}
+.btn.out{background:transparent;color:inherit;border-color:currentColor}
+.btn.dark{background:var(--forest);color:var(--paper)}
+.btn.sm{min-height:42px;padding:9px 20px;font-size:.95rem}
+@media (hover:hover) and (pointer:fine){.btn:hover{background:var(--gold-hi)}.btn.dark:hover{background:var(--deep)}.btn.out:hover{background:var(--text);color:var(--paper);border-color:var(--text)}.on-dark .btn.out:hover{background:var(--paper);color:var(--deep);border-color:var(--paper)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(var(--ring),.85);transform:scale(1)}40%{transform:scale(1.06)}75%{box-shadow:0 0 0 20px rgba(var(--ring),0)}100%{box-shadow:0 0 0 0 rgba(var(--ring),0);transform:scale(1)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(var(--ring),0)}50%{box-shadow:0 0 0 6px rgba(var(--ring),.6)}}
+.btn.dark.pulse{--ring:11,46,30}
+.btn.pulse.go{animation:pulse 1.25s ease-out 4}
+.btn.pulse.go:hover,.btn.pulse.go:focus-visible{animation:none}
+@media (prefers-reduced-motion:reduce){.btn.pulse.go{animation:glow 2.5s ease-in-out 2}.btn.pulse.go:hover,.btn.pulse.go:focus-visible{animation:none}}
+
+/* en-tête */
+.bar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid rgba(11,46,30,.12)}
+.bar .in{max-width:var(--w);margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:24px}
+.logo{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:1.3rem;text-decoration:none;white-space:nowrap}
+.bar nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+.bar nav a{text-decoration:none;padding:8px 14px;border-radius:999px;font-size:.98rem;font-weight:600}
+.bar nav a.btn{margin-left:8px;padding:9px 22px}
+@media (hover:hover) and (pointer:fine){.bar nav a:not(.btn):hover{background:var(--mist)}}
+.menu{display:none;margin-left:auto;min-height:44px;padding:8px 18px;border-radius:999px;border:2px solid var(--text);background:none;color:inherit;font:600 .95rem var(--body)}
+@media (max-width:980px){
+  .menu{display:inline-flex;align-items:center}
+  .bar nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);flex-direction:column;align-items:stretch;padding:12px 24px 24px;border-bottom:1px solid rgba(11,46,30,.12);gap:0}
+  .bar nav.open{display:flex}
+  .bar nav a{padding:14px 8px;border-radius:0;border-bottom:1px solid rgba(11,46,30,.1)}
+  .bar nav a.btn{margin:16px 0 0;border:2px solid transparent;border-radius:999px;justify-content:center}
+}
+
+/* hero */
+.hero{padding:clamp(40px,6vw,88px) 0 clamp(56px,8vw,112px)}
+.hero .w{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,96px);align-items:center}
+.hero h1{font-size:clamp(3.2rem,8.2vw,7rem);line-height:.92;letter-spacing:-.05em;color:var(--forest)}
+.hero .lead{margin:28px 0 0;font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.45;color:var(--text);max-width:34ch}
+.hero .who{margin:18px 0 28px;color:var(--soft)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero .img{position:relative}
+.hero .img img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:46% 50%;border-radius:999px 999px var(--r) var(--r);background:var(--mist)}
+.rate{position:absolute;left:-28px;bottom:36px;background:var(--paper);border-radius:var(--r);padding:14px 20px;box-shadow:0 10px 30px rgba(3,46,28,.14);display:flex;align-items:center;gap:12px;text-decoration:none}
+.rate b{font-family:var(--display);font-weight:500;font-size:2rem;letter-spacing:-.04em;line-height:1}
+.rate span{font-size:.92rem;line-height:1.3;color:var(--soft)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:1.05rem}
+@media (max-width:860px){.hero .w{grid-template-columns:1fr}.hero .img{order:-1;max-width:420px;margin:0 auto;width:100%}.rate{left:12px}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero .txt>*{animation:rise .7s var(--ease-out) both}
+.hero .txt>:nth-child(2){animation-delay:.08s}.hero .txt>:nth-child(3){animation-delay:.16s}.hero .txt>:nth-child(4){animation-delay:.24s}
+@media (prefers-reduced-motion:reduce){.hero .txt>*{animation:none}}
+
+/* portes */
+.doors{background:var(--mist)}
+.doors .head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:48px}
+.doors .head p{margin:0;color:var(--soft)}
+.dgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.door{display:flex;flex-direction:column;text-decoration:none;background:var(--paper);border-radius:var(--r);overflow:hidden;transition:transform .2s var(--ease-out)}
+.door img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.door .t{padding:18px 18px 22px;display:grid;gap:4px}
+.door h3{font-size:1.35rem;line-height:1.05}
+.door .n{font-weight:600;color:var(--forest)}
+.door .d{font-size:.92rem;color:var(--soft);line-height:1.4}
+.door.hi{background:var(--forest);color:var(--paper)}
+.door.hi .n{color:var(--gold)}.door.hi .d{color:#DCE6D8}
+@media (hover:hover) and (pointer:fine){.door:hover{transform:translateY(-6px)}}
+.door:active{transform:scale(.98)}
+@media (max-width:1000px){.dgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:min(260px,74vw);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;margin:0 -24px;padding-left:24px;padding-right:24px}.door{scroll-snap-align:start}.doors .head{grid-template-columns:1fr;gap:12px}}
+.hesit{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;margin-top:40px;padding:24px 32px;border-radius:var(--r);background:var(--paper)}
+.hesit p{margin:0}.hesit b{font-family:var(--display);font-weight:500;font-size:1.4rem;letter-spacing:-.02em;display:block}
+
+/* lignes de soins */
+.row .w{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,96px);align-items:center}
+.row.flip .w{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+.row.flip .pic{order:2}
+.pic img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r)}
+.row:nth-of-type(odd) .pic img{border-radius:999px 999px var(--r) var(--r);aspect-ratio:4/5}
+.row .tag{display:inline-block;margin:14px 0 18px;font-weight:600;color:var(--forest);background:var(--mist);padding:6px 16px;border-radius:999px;font-size:.95rem}
+.row h2{max-width:14ch}
+.facts{margin:24px 0 28px;display:grid;gap:0;border-top:1px solid rgba(11,46,30,.18)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(11,46,30,.18)}
+.facts dt{color:var(--soft)}.facts dd{margin:0;font-weight:600;text-align:right}
+.note{font-size:.92rem;color:var(--soft);margin-top:16px}
+.deroule{margin:0 0 8px;padding-left:1.2em}.deroule li{margin-bottom:4px}
+@media (max-width:860px){.row .w,.row.flip .w{grid-template-columns:1fr}.row.flip .pic{order:0}.pic{max-width:440px}.row h2{max-width:none}}
+.alt{background:var(--paper)}.tint{background:var(--mist)}.tint .tag{background:var(--paper)}
+
+/* étapes Reconnexion */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:s;border-top:1px solid rgba(11,46,30,.25)}
+.steps li{padding:20px 20px 8px 0;counter-increment:s}
+.steps li::before{content:counter(s);display:block;font-family:var(--display);font-size:1rem;color:var(--forest);font-weight:700;margin-bottom:8px}
+.steps b{font-family:var(--display);font-weight:500;font-size:1.5rem;letter-spacing:-.03em;display:block;line-height:1.1}
+.steps span{font-size:.95rem;color:var(--soft);display:block;margin-top:6px}
+.steps-end{margin:28px 0 0;max-width:62ch}
+#reconnexion>.w+.w{display:block;margin-top:clamp(40px,6vw,72px)}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+
+/* à la carte + découverte + entreprises */
+.carte{background:var(--mist)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.card{background:var(--paper);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.card .b{padding:24px 28px 30px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:1.7rem}
+.card .b p{color:var(--soft);margin:0}
+.card .pr{font-weight:600;margin:10px 0 18px;color:var(--text)}
+.card .b .btn{align-self:flex-start;margin-top:auto}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.deco{background:var(--forest);color:var(--paper)}
+.deco .w{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,96px);align-items:center}
+.deco h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+.deco .tag{display:inline-block;margin:0 0 18px;font-weight:600;background:rgba(242,245,238,.14);padding:6px 16px;border-radius:999px;font-size:.95rem}
+.deco ul{margin:22px 0;padding-left:1.2em;color:#DCE6D8}.deco li{margin-bottom:8px}
+.deco .price{font-family:var(--display);font-weight:500;font-size:clamp(3rem,6vw,5rem);letter-spacing:-.05em;color:var(--gold);line-height:1}
+.deco .price small{font-family:var(--body);font-size:1rem;letter-spacing:0;color:#DCE6D8;margin-left:10px}
+.deco .gal{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.deco .gal img{width:100%;object-fit:cover;border-radius:var(--r);aspect-ratio:3/4}
+.deco .gal img:nth-child(2){margin-top:36px}
+.deco .note{color:#DCE6D8}
+@media (max-width:860px){.deco .w{grid-template-columns:1fr}.deco .gal{max-width:420px}}
+.ent .three{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:44px 0 36px}
+.ent .three img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);margin-bottom:16px}
+.ent .three h3{font-size:1.5rem;margin-bottom:6px}.ent .three p{color:var(--soft);margin:0}
+.ent .head{max-width:60ch}
+@media (max-width:760px){.ent .three{grid-template-columns:1fr}}
+
+/* à propos */
+.about{background:var(--mist)}
+.about .w{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,96px);align-items:center}
+.about img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:999px 999px var(--r) var(--r)}
+.chips{list-style:none;margin:22px 0 28px;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.chips li{background:var(--paper);padding:8px 18px;border-radius:999px;font-weight:600;font-size:.95rem}
+@media (max-width:860px){.about .w{grid-template-columns:1fr}.about img{max-width:380px}}
+
+/* avis */
+.rev .top{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:end;margin-bottom:40px}
+.rev .score{display:flex;align-items:center;gap:16px}
+.rev .score b{font-family:var(--display);font-weight:500;font-size:3.4rem;letter-spacing:-.05em;line-height:1}
+.rev .score span{color:var(--soft);line-height:1.35}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:min(380px,82vw);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 20px;margin:0 calc(50% - 50vw);padding-left:max(24px,calc(50vw - 576px));padding-right:24px;scrollbar-width:thin;scroll-padding-left:max(24px,calc(50vw - 576px))}
+.rail figure{margin:0;scroll-snap-align:start;background:var(--mist);border-radius:var(--r);padding:28px 28px 24px;display:flex;flex-direction:column;gap:18px;justify-content:space-between}
+.rail blockquote{margin:0;font-size:1.1rem;line-height:1.55}
+.rail figcaption{font-weight:600;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.rail figcaption span{color:var(--soft);font-weight:400;font-size:.9rem}
+.arrows{display:flex;gap:8px}
+.arrows button{width:48px;height:48px;border-radius:50%;border:2px solid var(--text);background:none;color:inherit;cursor:pointer;font-size:1.2rem;transition:transform .16s var(--ease-out),background-color .18s ease}
+.arrows button:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.arrows button:hover{background:var(--text);color:var(--paper)}}
+
+/* faq */
+.faq{background:var(--paper)}
+.faq .w{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,96px);align-items:start}
+.faq .side{position:sticky;top:110px}
+.faq .side p{color:var(--soft);margin-top:16px}
+.qs details{border-top:1px solid rgba(11,46,30,.22)}
+.qs details:last-child{border-bottom:1px solid rgba(11,46,30,.22)}
+.qs summary{list-style:none;cursor:pointer;padding:22px 52px 22px 0;font-family:var(--display);font-weight:500;font-size:clamp(1.2rem,2vw,1.5rem);letter-spacing:-.02em;line-height:1.2;position:relative}
+.qs summary::-webkit-details-marker{display:none}
+.qs summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s var(--ease-out)}
+.qs details[open] summary::after{transform:rotate(-135deg);margin-top:-4px}
+.qs .ans{padding:0 0 26px;max-width:62ch}
+.qs .ans ul{margin:0 0 14px;padding-left:1.2em;list-style:disc}
+.qs .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media (max-width:860px){.faq .w{grid-template-columns:1fr}.faq .side{position:static}}
+
+/* contact */
+.contact{background:var(--forest);color:var(--paper)}
+.contact .w{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.contact h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+.contact .lead{color:#DCE6D8;margin-top:18px}
+.contact .infos{margin:32px 0 0;display:grid;gap:14px;color:#DCE6D8}
+.contact .infos b{color:var(--paper);display:block}
+.contact .infos a{color:var(--paper)}
+form{background:var(--paper);color:var(--text);border-radius:var(--r);padding:clamp(24px,4vw,40px);display:grid;gap:16px}
+form h3{font-size:1.7rem}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+input,textarea{font:400 1rem var(--body);color:var(--text);background:#fff;border:2px solid rgba(11,46,30,.25);border-radius:14px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:130px;resize:vertical}
+input:focus,textarea:focus{outline:3px solid var(--forest);outline-offset:1px;border-color:var(--forest)}
+.chk{display:flex;gap:12px;align-items:flex-start;font-weight:400;font-size:.9rem;color:var(--soft)}
+.chk input{width:22px;min-height:22px;height:22px;margin-top:2px;flex:none}
+.todo{background:#EBDDA6;padding:0 .25em;border-radius:4px;color:var(--text)}
+.ok{font-size:.92rem;color:var(--soft);margin:0}
+@media (max-width:860px){.contact .w{grid-template-columns:1fr}}
+
+footer{background:var(--deep);color:var(--paper);padding:48px 0 40px;font-size:.95rem}
+footer .w{display:grid;grid-template-columns:1.2fr 1fr;gap:32px 64px}
+footer .logo{display:block;margin-bottom:10px}
+footer p{color:#DCE6D8;max-width:60ch}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;justify-content:flex-end}
+footer a{color:var(--paper)}
+footer .legal{grid-column:1/-1;border-top:1px solid rgba(242,245,238,.2);padding-top:20px;font-size:.88rem}
+@media (max-width:760px){footer .w{grid-template-columns:1fr}footer nav{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu principal</a>
+<header class="bar"><div class="in">
+  <a class="logo" href="#haut">artisane du bien-être</a>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Navigation principale">
+    <a href="#soins">Les soins selon toi</a>
+    <a href="#reconnexion">Reconnexion</a>
+    <a href="#reiki">Reiki</a>
+    <a href="#kobido">Kobido</a>
+    <a href="#aurelie">Aurélie</a>
+    <a href="#questions">Questions</a>
+    <a class="btn sm" href="#contact">Réserver</a>
+  </nav>
+</div></header>
+
+<main id="contenu">
+<section class="hero" id="haut"><div class="w">
+  <div class="txt">
+    <h1>artisane du bien-être</h1>
+    <p class="lead">Accompagnement individuel, Reiki Usui et massage Kobido à Couëron (44) et en visioconférence.</p>
+    <p class="who"><strong>Aurélie Aké</strong> · Maison du Port, Couëron (44220) · Visio partout en France</p>
+    <div class="cta">
+      <a class="btn pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
+      <a class="btn out" href="#soins">Trouver mon soin</a>
+    </div>
+  </div>
+  <div class="img">
+    <img src="assets/bol-mains.jpg" width="1280" height="719" alt="Des mains tenant un bol chantant, dans une lumière douce" fetchpriority="high">
+    <a class="rate" href="https://www.google.com/maps/place/Artisane+du+bien-%C3%AAtre/" target="_blank" rel="noopener noreferrer"><b>5,0</b><span><span class="stars" aria-hidden="true">★★★★★</span><br>20 avis Google</span></a>
+  </div>
+</div></section>
+
+<section class="sec doors" id="soins" aria-labelledby="soins-h"><div class="w">
+  <div class="head">
+    <h2 id="soins-h">Les soins selon toi</h2>
+    <p>Où en es-tu aujourd'hui ? Que tu cherches à libérer des tensions physiques, clarifier ton esprit ou retrouver ton alignement, choisis la porte qui résonne avec ton besoin du moment.</p>
+  </div>
+  <div class="dgrid">
+    <a class="door" href="#reconnexion"><img src="assets/portrait-nb.jpg" alt="" loading="lazy" width="1000" height="1334" style="object-position:50% 28%"><span class="t"><h3>Je tourne en rond</h3><span class="n">Reconnexion</span><span class="d">4 séances individuelles · 125 € la séance</span></span></a>
+    <a class="door" href="#reiki"><img src="assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="" loading="lazy" width="717" height="751"><span class="t"><h3>J'ai besoin de souffler</h3><span class="n">Reiki Usui</span><span class="d">45 à 60 min · à partir de 50 €</span></span></a>
+    <a class="door" href="#kobido"><img src="assets/b2d56bf58034a7a5d0660073377ad934.jpg" alt="" loading="lazy" width="749" height="751"><span class="t"><h3>Je m'offre une pause</h3><span class="n">Massage Kobido</span><span class="d">60 min · 65 € au cabinet</span></span></a>
+    <a class="door hi" href="#decouverte"><img src="assets/spa-lavande.jpg" alt="" loading="lazy" width="1400" height="933"><span class="t"><h3>Je suis entre deux</h3><span class="n">Découverte</span><span class="d">Reconnexion + Reiki + Kobido · 1 h 30 · 145 €</span></span></a>
+    <a class="door" href="#entreprises"><img src="assets/mains-equipe.jpg" alt="" loading="lazy" width="1600" height="1067" style="object-position:88% 50%"><span class="t"><h3>Mon équipe est sous pression</h3><span class="n">Entreprises</span><span class="d">Sur mesure · séance découverte offerte</span></span></a>
+  </div>
+  <div class="hesit">
+    <p><b>Tu hésites encore entre deux offres ?</b>Un premier échange t'aide à choisir la plus adaptée à ta situation.</p>
+    <a class="btn dark pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
+  </div>
+</div></section>
+
+<section class="sec row" id="reconnexion" aria-labelledby="r-h"><div class="w">
+  <div class="pic"><img src="assets/portrait-nb.jpg" width="1000" height="1334" alt="Portrait en noir et blanc d'une femme pensive" loading="lazy" style="object-position:50% 25%"></div>
+  <div>
+    <span class="tag">Reconnexion · accompagnement individuel</span>
+    <h2 id="r-h">Je tourne en rond</h2>
+    <p class="lead" style="margin-top:18px">Faire le point, retrouver du sens et avancer en confiance. Ce soin s'adresse à celles et ceux qui sont à la croisée des chemins : il t'aide à lever le flou mental, à écouter tes envies profondes et à faire des choix qui te ressemblent.</p>
+    <dl class="facts">
+      <div><dt>Format</dt><dd>4 séances individuelles</dd></div>
+      <div><dt>Durée</dt><dd>Environ 1 h 30, en visioconférence</dd></div>
+      <div><dt>Tarif</dt><dd>125 € la séance · 500 € les 4</dd></div>
+    </dl>
+    <p class="muted" style="margin:-12px 0 24px;font-size:.95rem">Échanges et exercices entre les séances. Paiement possible en plusieurs fois.</p>
+    <a class="btn dark pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
+  </div>
+</div>
+<div class="w">
+  <ol class="steps" aria-label="Les cinq étapes de l'accompagnement">
+    <li><b>Clarifier</b><span>ce que tu veux vraiment.</span></li>
+    <li><b>Retrouver</b><span>tes besoins, tes envies et tes priorités.</span></li>
+    <li><b>Comprendre</b><span>ce qui te bloque ou te fait tourner en rond.</span></li>
+    <li><b>Choisir</b><span>avec plus de confiance et de cohérence.</span></li>
+    <li><b>Agir</b><span>concrètement, pour faire évoluer ce qui doit l'être.</span></li>
+  </ol>
+  <p class="steps-end muted">Mon rôle n'est pas de te donner des réponses toutes faites, mais de t'aider à retrouver assez de clarté pour trouver les tiennes. Avec douceur, mais avec une vraie direction.</p>
+</div></section>
+
+<section class="sec row flip tint" id="reiki" aria-labelledby="re-h"><div class="w">
+  <div class="pic"><img src="assets/1feda458d74ac29455afa660d20ebea9.jpg" width="717" height="751" alt="Séance de Reiki : des mains posées sur le front d'une personne allongée" loading="lazy"></div>
+  <div>
+    <span class="tag">Reiki Usui</span>
+    <h2 id="re-h">J'ai besoin de souffler</h2>
+    <p class="lead" style="margin-top:18px">Une pratique énergétique douce pour relâcher les tensions, apaiser le mental et te recentrer, surtout en période de fatigue émotionnelle ou de transition.</p>
+    <ol class="deroule"><li>Échange préalable sur ton besoin du moment</li><li>Soin par imposition des mains, en silence ou en parlant</li><li>Temps de retour autour d'une boisson chaude</li></ol>
+    <dl class="facts">
+      <div><dt>Durée</dt><dd>45 à 60 minutes</dd></div>
+      <div><dt>Au cabinet à Couëron</dt><dd>65 € pour 60 minutes</dd></div>
+      <div><dt>En ligne</dt><dd>50 € pour 45 minutes</dd></div>
+    </dl>
+    <a class="btn dark pulse" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a>
+  </div>
+</div></section>
+
+<section class="sec row" id="kobido" aria-labelledby="ko-h"><div class="w">
+  <div class="pic"><img src="assets/b2d56bf58034a7a5d0660073377ad934.jpg" width="749" height="751" alt="Massage Kobido du visage" loading="lazy"></div>
+  <div>
+    <span class="tag">Massage Kobido</span>
+    <h2 id="ko-h">Je m'offre une pause</h2>
+    <p class="lead" style="margin-top:18px">Un massage japonais du visage, de la nuque et de la zone des clavicules, pour détendre les traits, relâcher les tensions et favoriser l'éclat du teint.</p>
+    <ol class="deroule"><li>Échange préalable sur tes attentes</li><li>Massage sur table, tu restes habillé(e)</li><li>Temps de retour autour d'une boisson chaude</li></ol>
+    <dl class="facts">
+      <div><dt>Durée</dt><dd>60 minutes</dd></div>
+      <div><dt>Au cabinet à Couëron</dt><dd>65 €</dd></div>
+      <div><dt>Contre-indications</dt><dd><mark class="todo">[à préciser]</mark></dd></div>
+    </dl>
+    <a class="btn dark pulse" href="https://my.weezevent.com/massage-kobido-1" target="_blank" rel="noopener noreferrer">Réserver un massage Kobido</a>
+  </div>
+</div></section>
+
+<section class="sec deco on-dark" id="decouverte" aria-labelledby="d-h"><div class="w">
+  <div>
+    <span class="tag">Séance Découverte</span>
+    <h2 id="d-h">Je suis entre deux</h2>
+    <p class="lead" style="margin-top:18px;color:#DCE6D8">Trois soins, une seule séance. Reconnexion, Reiki Usui et massage Kobido enchaînés dans un même parcours, pour vivre un vrai temps pour toi et trouver ce qui te correspond le mieux.</p>
+    <ul>
+      <li>Un parcours complet : un temps de Reconnexion pour faire le point et retrouver ta direction, le Reiki pour te rééquilibrer, le Kobido pour détendre le visage et raviver l'éclat</li>
+      <li>L'idéal pour une première fois : tu goûtes à chaque pratique sans avoir à choisir</li>
+      <li>Une pause complète en 1 h 30, d'un seul tenant, au cabinet à Couëron</li>
+      <li>Une suite sur mesure : à la fin, on voit ensemble ce qui t'a le plus fait du bien pour la suite</li>
+    </ul>
+    <p class="price">145 €<small>1 h 30 · au cabinet à Couëron</small></p>
+    <p style="margin-top:24px"><a class="btn pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver la séance Découverte</a></p>
+    <p class="note">Le Reiki et le massage Kobido sont des pratiques de bien-être. Ils ne se substituent ni à un avis médical ni à un traitement.</p>
+  </div>
+  <div class="gal"><img src="assets/25c90e4014949585e91a3965b789fd7b.jpg" width="538" height="751" alt="" loading="lazy" style="object-position:50% 25%"><img src="assets/spa-lavande.jpg" width="1400" height="933" alt="" loading="lazy"></div>
+</div></section>
+
+<section class="sec carte" id="seances" aria-labelledby="c-h"><div class="w">
+  <h2 id="c-h">Séances à la carte</h2>
+  <p class="lead" style="margin-top:16px">Un temps pour toi, quand tu en as besoin.</p>
+  <div class="two">
+    <article class="card"><img src="assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="" loading="lazy" width="717" height="751" style="object-position:50% 30%"><div class="b"><h3>Reiki Usui</h3><p>Le soin Rééquilibrage &amp; Lâcher-prise. Idéal si tu te sens débordé(e), anxieux(se) ou vidé(e).</p><p class="pr">à partir de 50 €</p><a class="btn dark sm pulse" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a></div></article>
+    <article class="card"><img src="assets/b2d56bf58034a7a5d0660073377ad934.jpg" alt="" loading="lazy" width="749" height="751" style="object-position:50% 30%"><div class="b"><h3>Massage Kobido</h3><p>Le rituel Éclat &amp; Détente du visage. Idéal si ta fatigue se lit sur ton visage et que tu souhaites allier soin anti-âge et lâcher-prise.</p><p class="pr">65 € au cabinet</p><a class="btn dark sm pulse" href="https://my.weezevent.com/massage-kobido-1" target="_blank" rel="noopener noreferrer">Réserver un massage Kobido</a></div></article>
+  </div>
+</div></section>
+
+<section class="sec ent" id="entreprises" aria-labelledby="e-h"><div class="w">
+  <div class="head"><span class="tag" style="display:inline-block;margin:0 0 18px;background:var(--mist);padding:6px 16px;border-radius:999px;font-weight:600;font-size:.95rem;color:var(--forest)">Entreprises</span>
+  <h2 id="e-h">Mon équipe est sous pression</h2>
+  <p class="lead" style="margin-top:18px">Et si vos équipes prenaient enfin le temps de respirer ? Des séances courtes, adaptées au rythme professionnel, pour contribuer à réduire le stress, à améliorer la concentration et à installer un climat de travail plus serein.</p></div>
+  <div class="three">
+    <div><img src="assets/relaxation.jpg" alt="" loading="lazy" width="1200" height="800" style="object-position:38% 50%"><h3>Relaxation guidée</h3><p>Une méditation guidée en groupe, pour se recentrer et renforcer la cohésion d'équipe.</p></div>
+    <div><img src="assets/massage-dos.jpg" alt="" loading="lazy" width="1400" height="1050"><h3>Massage Kobido</h3><p>Un soin individuel de détente, pour une vraie pause.</p></div>
+    <div><img src="assets/mains-equipe.jpg" alt="" loading="lazy" width="1600" height="1067" style="object-position:88% 50%"><h3>Séance énergétique</h3><p>Une séance individuelle inspirée d'une méthode japonaise de détente.</p></div>
+  </div>
+  <a class="btn dark pulse" href="#contact">Demander une proposition</a>
+  <p class="note" style="display:inline-block;margin:0 0 0 18px">Sur site, au cabinet ou en ligne · Formules sur mesure · Séance découverte offerte</p>
+</div></section>
+
+<section class="sec about" id="aurelie" aria-labelledby="a-h"><div class="w">
+  <img src="assets/25c90e4014949585e91a3965b789fd7b.jpg" width="538" height="751" alt="Aurélie Aké, souriante, une tasse à la main" loading="lazy">
+  <div>
+    <h2 id="a-h">Je suis Aurélie.</h2>
+    <p class="lead" style="margin-top:20px">Énergéticienne, Maître en Reiki Usui, praticienne en techniques d'accompagnement au changement (issues de la PNL) et en massage Kobido, j'accompagne depuis 2019 celles et ceux qui veulent retrouver apaisement, clarté et cohérence.</p>
+    <p>Aller mieux, ce n'est pas seulement calmer le mental ou retrouver de l'énergie. C'est aussi entendre ce que l'on veut vraiment, et se donner la permission de construire une vie qui nous ressemble.</p>
+    <ul class="chips"><li>Maître en Reiki Usui</li><li>Techniques issues de la PNL</li><li>Massage Kobido</li><li>Depuis 2019</li></ul>
+    <a class="btn dark pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a>
+  </div>
+</div></section>
+
+<section class="sec rev" id="avis" aria-labelledby="av-h"><div class="w">
+  <div class="top">
+    <div><h2 id="av-h">Ils sont ravis</h2>
+      <div class="score" style="margin-top:20px"><b>5,0</b><span><span class="stars" aria-hidden="true">★★★★★</span><br>sur 5 · 20 avis Google</span></div></div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+      <a class="btn out" href="https://www.google.com/maps/place/Artisane+du+bien-%C3%AAtre/" target="_blank" rel="noopener noreferrer">Lire tous les avis sur Google</a>
+      <div class="arrows"><button type="button" id="rp" aria-label="Avis précédents">←</button><button type="button" id="rn" aria-label="Avis suivants">→</button></div>
+    </div>
+  </div>
+</div>
+<div class="rail" id="rail" tabindex="0" aria-label="Avis clients, défilement horizontal">
+<figure><blockquote>« Belle rencontre lors d&#x27;un soin Kobido du visage qui m&#x27;a apporté une profonde détente intérieure. Son accueil m&#x27;a mise en confiance. »</blockquote><figcaption>Valérie M.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Découverte du Reiki : une merveilleuse aventure ! Elle est douce, pédagogue, d&#x27;une bienveillance et d&#x27;un accompagnement fin et efficace. »</blockquote><figcaption>Aurélie L.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Un soin Kobido très dynamique mais très relaxant. Mon visage était plus lumineux et plus détendu. »</blockquote><figcaption>Sophie A.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Une découverte du Reiki, une expérience incroyable. Avec douceur et bienveillance, je me suis tout de suite sentie très à l&#x27;aise. »</blockquote><figcaption>Cadjoleene M.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Quand tout semble aller mal, elle m&#x27;aide à me poser les bonnes questions et retrouver mon mindset. »</blockquote><figcaption>Chris N.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« La séance de Reiki m&#x27;a transporté dans un doux voyage où j&#x27;ai pu lâcher prise totalement. »</blockquote><figcaption>Laura F.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Une séance énergétique avec Aurélie, c&#x27;est se ressourcer, se rebooster, se revaloriser. »</blockquote><figcaption>Clarisse D.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Surprenant. Les résultats physiques et psychologiques ont été bluffants. Sceptique au départ, je recommande fortement. »</blockquote><figcaption>Laetitia P.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Des moments pleins de douceur et de bienveillance. Je me suis sentie très sereine, l&#x27;esprit plus léger et bien ressourcée. »</blockquote><figcaption>Valérie P.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Elle m&#x27;a aidée à me recentrer et m&#x27;apaiser pendant une période compliquée, grâce à ses mots, ses questions et ses soins. »</blockquote><figcaption>Ophélie T.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« On m&#x27;avait conseillé le Reiki pour mieux vivre le changement de saison. Aurélie a tout de suite compris ma démarche. »</blockquote><figcaption>Alexandra L.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Plusieurs séances de Reiki et des moments très agréables. Merci pour l&#x27;écoute et la bienveillance tout au long des séances. »</blockquote><figcaption>Nadine N.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Aurélie est d&#x27;une grande douceur et pleine de bienveillance. Elle prend le temps d&#x27;échanger pour vraiment comprendre la situation. »</blockquote><figcaption>Wendy B.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Une thérapeute très agréable, à l&#x27;écoute, qui m&#x27;a accompagnée efficacement et sereinement dans ma réflexion. »</blockquote><figcaption>Laetitia B.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Superbe moment ! Ça m&#x27;a vraiment relaxée et je me sens plus alignée. À refaire très vite ! »</blockquote><figcaption>Morane<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« J&#x27;étais épuisée moralement. Avec une écoute attentive et une séance de Reiki, Aurélie m&#x27;a redonné une énergie incroyable ! »</blockquote><figcaption>Bénédycte V.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« À chaque fois je suis ressortie apaisée et reboostée ! Tous les outils proposés m&#x27;ont permis de me recentrer. »</blockquote><figcaption>Marie B.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Un lieu agréable et cosy : professionnalisme, détente et calme étaient au rendez-vous. On en redemande ! »</blockquote><figcaption>Sandrine T.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Très beau lieu. Séance apaisante et relaxante. J&#x27;étais non loin du burn-out. Aurélie a su mettre en pratique son professionnalisme. »</blockquote><figcaption>Sabrina T.<span>Avis Google · 5 sur 5</span></figcaption></figure><figure><blockquote>« Aurélie est bienveillante et chaleureuse, le soin Kobido était un véritable mélange de douceur et de relaxation. »</blockquote><figcaption>Maëlie R.<span>Avis Google · 5 sur 5</span></figcaption></figure>
+</div></section>
+
+<section class="sec faq" id="questions" aria-labelledby="q-h"><div class="w">
+  <div class="side"><h2 id="q-h">Quelle question te retient ?</h2><p>Chaque réponse te mène vers la bonne offre, avec le bouton pour passer à l'action.</p></div>
+  <div class="qs">
+<details><summary>Reconnexion, Reiki ou Kobido : comment choisir ?</summary><div class="ans"><p>Si tu tournes en rond ou si tu hésites sur des choix, Reconnexion est faite pour toi. Si tu es fatigué(e) et que tu as besoin de relâcher, choisis le Reiki. Si tu veux t&#x27;offrir une pause pour ton visage et ta nuque, le massage Kobido t&#x27;attend. Un doute ? Un premier échange t&#x27;aide à trancher.</p><div class="ctas"><a class="btn dark sm" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a><a class="btn out sm" href="#soins">Comparer les offres</a></div></div></details>
+<details><summary>Je tourne en rond : par où commencer ?</summary><div class="ans"><p>Par un premier échange. Nous regardons ensemble où tu en es et si l&#x27;accompagnement Reconnexion correspond à ce que tu recherches. Tu n&#x27;as pas besoin d&#x27;avoir les réponses avant de commencer : nous les faisons émerger ensemble.</p><div class="ctas"><a class="btn dark sm" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a></div></div></details>
+<details><summary>Cet accompagnement est-il fait pour moi ?</summary><div class="ans"><p>Reconnexion s&#x27;adresse aux personnes qui ressentent le besoin de changement, de clarté ou d&#x27;une nouvelle direction, et qui souhaitent être accompagnées pour comprendre ce qu&#x27;elles veulent réellement et passer à l&#x27;action.</p><div class="ctas"><a class="btn dark sm" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a><a class="btn out sm" href="#reconnexion">Découvrir Reconnexion</a></div></div></details>
+<details><summary>Quelle différence avec une séance ponctuelle ?</summary><div class="ans"><p>Une séance permet de prendre du recul et de t&#x27;apaiser à un moment donné. Reconnexion s&#x27;inscrit dans la durée : comprendre ce qui se joue, clarifier ce que tu veux et mettre en place des changements concrets.</p><div class="ctas"><a class="btn dark sm" href="#reconnexion">Découvrir Reconnexion</a><a class="btn out sm" href="#seances">Voir les séances à la carte</a></div></div></details>
+<details><summary>Pourquoi 125 € la séance ?</summary><div class="ans"><p>Reconnexion n&#x27;est pas une succession de séances isolées : c&#x27;est un accompagnement personnalisé sur plusieurs semaines, avec un vrai travail de fond sur tes besoins, tes choix et leur mise en œuvre. Chaque séance coûte 125 €, soit 500 € pour les 4 séances, avec paiement possible en plusieurs fois.</p><div class="ctas"><a class="btn dark sm" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a></div></div></details>
+<details><summary>C&#x27;est quoi le Reiki ?</summary><div class="ans"><p>Le Reiki est une technique japonaise de relaxation et de régulation du stress qui se pratique par un toucher léger et fixe (ou une simple proximité des mains) sur différents points du corps.</p><p>C’est une invitation au relâchement complet. Allongé et entièrement habillé, vous n&#x27;avez absolument rien à faire, aucune posture à tenir, ni aucune pensée à guider. Vous vous laissez simplement porter.</p><p><strong>3 raisons de l&#x27;essayer :</strong></p><ul><li>Une déconnexion cérébrale immédiate</li><li>Une recharge de vos batteries internes</li><li>Une cure de détox pour votre charge mentale</li></ul><div class="ctas"><a class="btn dark sm" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a></div></div></details>
+<details><summary>J&#x27;ai besoin de souffler : que me conseilles-tu ?</summary><div class="ans"><p>Une séance de Reiki Usui : un temps pour relâcher les tensions, apaiser le mental et te recentrer. Tu peux parler… ou rester en silence, c&#x27;est toi qui choisis. Une séance dure 60 minutes.</p><div class="ctas"><a class="btn dark sm" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a></div></div></details>
+<details><summary>Dois-je connaître le Reiki pour essayer ?</summary><div class="ans"><p>Non, aucune connaissance particulière n&#x27;est nécessaire, ni pour une séance de Reiki ni pour l&#x27;accompagnement Reconnexion. Les outils sont choisis en fonction de tes besoins et de ce qui peut réellement t&#x27;aider.</p><div class="ctas"><a class="btn dark sm" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a></div></div></details>
+<details><summary>Je ne peux pas venir à Couëron : est-ce possible à distance ?</summary><div class="ans"><p>Oui. Le Reiki existe en ligne (50 € au lieu de 65 € au cabinet) et l&#x27;accompagnement Reconnexion se fait en visioconférence, partout en France.</p><div class="ctas"><a class="btn dark sm" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance en ligne</a><a class="btn out sm" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Premier échange en visio</a></div></div></details>
+<details><summary>C&#x27;est quoi le massage Kobido ?</summary><div class="ans"><p>Le massage Kobido est une technique japonaise de massage du visage.</p><p>Également appelé « lifting japonais naturel », le massage Kobido combine des mouvements rapides et rythmés, des techniques manuelles plus précises et des pressions exercées sur différentes zones du visage. Il associe notamment des gestes de massage, de pression et des manœuvres destinées à détendre et stimuler les tissus du visage.</p><p><strong>3 raisons de l&#x27;essayer :</strong></p><ul><li>Les effets immédiats après une séance</li><li>Une amélioration globale de l’apparence du visage, avec des traits qui paraissent plus reposés ou plus toniques</li><li>Les gestes rythmés et les pressions exercées sur le visage et le cou favorisent un moment de relaxation.</li></ul><div class="ctas"><a class="btn dark sm" href="https://my.weezevent.com/massage-kobido-1" target="_blank" rel="noopener noreferrer">Réserver un massage Kobido</a></div></div></details>
+<details><summary>Reiki ou Kobido : lequel choisir pour m&#x27;offrir une pause ?</summary><div class="ans"><p>Le Reiki relâche le mental et les émotions, le Kobido détend le visage, la nuque et les clavicules. Les deux durent 60 minutes. Choisis selon ce dont tu as besoin aujourd&#x27;hui.</p><div class="ctas"><a class="btn dark sm" href="https://my.weezevent.com/massage-kobido-1" target="_blank" rel="noopener noreferrer">Réserver un massage Kobido</a><a class="btn out sm" href="https://my.weezevent.com/seance-reiki-usui" target="_blank" rel="noopener noreferrer">Réserver une séance de Reiki</a></div></div></details>
+<details><summary>Comment se passe un massage Kobido ?</summary><div class="ans"><p>Un échange préalable sur tes attentes, puis un massage sur table : tu restes habillé(e). Il travaille le visage, la nuque et la zone des clavicules, avec un temps de retour autour d&#x27;une boisson chaude. Les éventuelles contre-indications sont à vérifier avant de réserver [à préciser].</p><div class="ctas"><a class="btn dark sm" href="https://my.weezevent.com/massage-kobido-1" target="_blank" rel="noopener noreferrer">Réserver un massage Kobido</a></div></div></details>
+<details><summary>J&#x27;aimerais proposer ça à mon équipe : comment ça se passe ?</summary><div class="ans"><p>Je propose des séances courtes, adaptées au rythme professionnel : relaxation guidée en groupe, massage Kobido ou séance énergétique en individuel, sur site, au cabinet ou en ligne. Les formules sont sur mesure et la séance découverte est offerte.</p><div class="ctas"><a class="btn dark sm" href="#contact">Demander une proposition</a></div></div></details>
+<details><summary>Ces pratiques remplacent-elles un suivi médical ou psychologique ?</summary><div class="ans"><p>Non. Le Reiki, le massage Kobido et les techniques d&#x27;accompagnement sont des pratiques de bien-être. Elles ne se substituent ni à un avis médical, ni à un traitement, ni à un suivi psychologique.</p></div></details>
+  </div>
+</div></section>
+
+<section class="sec contact on-dark" id="contact" aria-labelledby="ct-h"><div class="w">
+  <div>
+    <h2 id="ct-h">On en parle ?</h2>
+    <p class="lead">Dis-moi en quelques mots où tu en es, ou réserve directement un créneau. Je te réponds personnellement.</p>
+    <p style="margin-top:28px"><a class="btn pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Choisir un créneau</a></p>
+    <div class="infos">
+      <div><b>Au cabinet</b>Maison du Port, Couëron (44220), près de Nantes</div>
+      <div><b>En visioconférence</b>Partout en France</div>
+      <div><b>Contact</b><a href="mailto:aurelie.artisanedubienetre@gmail.com">aurelie.artisanedubienetre@gmail.com</a> · <mark class="todo">[téléphone]</mark><br><a href="https://www.instagram.com/artisanedubienetre_reiki/" target="_blank" rel="noopener noreferrer">@artisanedubienetre_reiki</a></div>
+    </div>
+  </div>
+  <form id="f" novalidate>
+    <h3>Écris-moi</h3>
+    <p class="ok" style="margin-top:-6px">Les champs marqués d'un astérisque sont obligatoires.</p>
+    <label>Prénom *<input name="p" autocomplete="given-name" required></label>
+    <label>Adresse e-mail *<input name="m" type="email" autocomplete="email" required></label>
+    <label>Ton message *<textarea name="t" required></textarea></label>
+    <label class="chk"><input type="checkbox" name="c" required><span>J'accepte que mes données soient utilisées pour répondre à ma demande. <mark class="todo">[Lien vers la politique de confidentialité]</mark></span></label>
+    <button class="btn dark" type="submit">Envoyer</button>
+    <p class="ok" id="fo" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="w">
+  <div><a class="logo" href="#haut">artisane du bien-être</a><p>Accompagnement individuel, Reiki Usui et massage Kobido à Couëron (44) et en visioconférence.</p></div>
+  <nav aria-label="Informations légales"><a href="#contact">Mentions légales</a><a href="cgv.html">CGV</a><a href="#contact">Confidentialité</a><a href="https://www.instagram.com/artisanedubienetre_reiki/" target="_blank" rel="noopener noreferrer">Instagram</a></nav>
+  <p class="legal">Les pratiques proposées (Reiki, massage Kobido, techniques d'accompagnement) relèvent du bien-être et ne se substituent ni à un avis médical, ni à un traitement, ni à un suivi psychologique.<br>© 2026 Artisane du Bien-être · Entreprise individuelle, Nantes · SIRET <mark class="todo">[numéro]</mark></p>
+</div></footer>
+
+<script>
+(function(){
+  /* menu mobile */
+  var mb=document.querySelector('.menu'),nv=document.getElementById('nav');
+  mb.addEventListener('click',function(){var o=nv.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+  nv.addEventListener('click',function(e){if(e.target.closest('a')){nv.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+  /* clignotement des boutons de réservation, 5 s quand ils sont bien visibles */
+  var bt=[].slice.call(document.querySelectorAll('.btn.pulse'));
+  if('IntersectionObserver' in window){
+    var tm=new WeakMap();
+    function off(b){clearTimeout(tm.get(b));b.classList.remove('go')}
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){var b=e.target;
+      if(e.isIntersecting){off(b);void b.offsetWidth;b.classList.add('go');tm.set(b,setTimeout(function(){b.classList.remove('go')},5000))}else off(b)})},{threshold:.7});
+    bt.forEach(function(b){io.observe(b)});
+  }
+  /* avis : flèches */
+  var rl=document.getElementById('rail');
+  function step(d){rl.scrollBy({left:d*(rl.querySelector('figure').offsetWidth+16),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+  document.getElementById('rp').addEventListener('click',function(){step(-1)});
+  document.getElementById('rn').addEventListener('click',function(){step(1)});
+  /* liens des boutons de la FAQ */
+  /* formulaire : ouvre la messagerie avec un mail pré-rempli */
+  var f=document.getElementById('f'),fo=document.getElementById('fo');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var p=f.p.value.trim(),m=f.m.value.trim(),t=f.t.value.trim();
+    if(!p||!m||!t||!f.c.checked||!/^\S+@\S+\.\S+$/.test(m)){fo.textContent='Merci de remplir tous les champs, avec une adresse e-mail valide, et d\'accepter l\'utilisation de tes données.';return}
+    fo.textContent='Ton application de messagerie s\'ouvre. Envoie le mail pré-rempli. Si rien ne s\'ouvre, écris-moi directement à aurelie.artisanedubienetre@gmail.com.';
+    window.location.href='mailto:aurelie.artisanedubienetre@gmail.com?subject='+encodeURIComponent('Message depuis le site, de '+p)+'&body='+encodeURIComponent(t+'\n\n'+p+'\n'+m);
+  });
+})();
+</script>
+</body>
+</html>
