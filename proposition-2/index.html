@@ -109,7 +109,9 @@ header.bar{position:sticky;top:0;z-index:50;background:var(--bg)}
 @media print{.pg{display:none}}
 /* pluie de mots du bonheur sur le disque doré */
 .rain{position:absolute;width:125vh;height:125vh;min-width:760px;min-height:760px;right:calc(-125vh*.42);top:50%;margin-top:calc(-62.5vh);border-radius:50%;overflow:hidden;pointer-events:none;container-type:size}
-.rain i{position:absolute;top:0;font-style:normal;font-family:var(--display);font-weight:700;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;opacity:0;will-change:transform,opacity;animation:fall linear infinite;animation-play-state:paused}
+.rain i{position:absolute;top:0;font-style:normal;font-family:var(--display);font-weight:700;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;opacity:0;will-change:transform,opacity;animation:fall linear infinite,sway ease-in-out infinite alternate;animation-play-state:paused}
+.rain i.f{width:var(--z,6px);height:var(--z,6px);border-radius:50%;background:var(--ink);font-size:0}
+@keyframes sway{from{translate:-22px 0;rotate:-5deg}to{translate:22px 0;rotate:5deg}}
 .rain.on i{animation-play-state:running}
 @keyframes fall{0%{transform:translate3d(0,-3em,0);opacity:0}12%{opacity:var(--o,.5)}85%{opacity:var(--o,.5)}100%{transform:translate3d(0,calc(100cqh + 1em),0);opacity:0}}
 @media (max-width:820px){.rain{width:150vw;height:150vw;min-width:0;min-height:0;right:-60vw;top:auto;bottom:-70vw;margin:0}}
@@ -883,15 +885,17 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
     var r=document.querySelector('.rain');
     if(!r||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
     var W=['Joie','Sérénité','Douceur','Légèreté','Paix','Lumière','Sourire','Harmonie','Bien-être','Confiance','Gratitude','Calme','Plénitude','Espoir','Élan','Équilibre','Apaisement','Tendresse','Bonheur','Souffle'];
-    var n=window.innerWidth<=820?9:15,i,el,k;
-    for(i=0;i<n;i++){
-      el=document.createElement('i');el.textContent=W[(i*7)%W.length];
-      k=i/n;
-      el.style.left=(4+((i*37)%53))+'%';
-      el.style.fontSize=(1+((i*13)%9)/10*1.1).toFixed(2)+'rem';
-      el.style.setProperty('--o',(.62+((i*17)%5)*.08).toFixed(2));
-      el.style.animationDuration=(10+((i*11)%7)*1.3).toFixed(1)+'s';
-      el.style.animationDelay=(-k*14).toFixed(1)+'s';
+    var n=window.innerWidth<=820?9:15,fl=window.innerWidth<=820?8:16,i,el,k;
+    for(i=0;i<n+fl;i++){
+      el=document.createElement('i');
+      var dot=i>=n,j=dot?i-n:i;
+      if(dot){el.className='f';el.style.setProperty('--z',(3+((j*7)%5)*1.4).toFixed(1)+'px')}
+      else{el.textContent=W[(i*7)%W.length];el.style.fontSize=(1+((i*13)%9)/10*1.1).toFixed(2)+'rem'}
+      k=j/(dot?fl:n);
+      el.style.left=(3+((i*37)%55))+'%';
+      el.style.setProperty('--o',(dot?.55+((j*3)%4)*.1:.62+((i*17)%5)*.08).toFixed(2));
+      el.style.animationDuration=(dot?12+((j*5)%6)*1.6:15+((i*11)%7)*1.8).toFixed(1)+'s,'+(3.5+((i*7)%5)*.9).toFixed(1)+'s';
+      el.style.animationDelay=(-k*(dot?16:22)).toFixed(1)+'s,'+(-((i*13)%7)).toFixed(1)+'s';
       r.appendChild(el);
     }
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){en.forEach(function(e){r.classList.toggle('on',e.isIntersecting)})}).observe(r.parentNode);
