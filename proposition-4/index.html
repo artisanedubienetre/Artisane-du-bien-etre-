@@ -159,6 +159,33 @@ p{margin:0 0 14px}
 .card2 .pr{font-weight:500;margin:10px 0 18px}
 @media (max-width:760px){.card2{grid-template-columns:1fr}}
 
+
+/* quiz d'orientation */
+.quiz{background:var(--green);color:#F2F2F0}
+.quiz .intro{display:grid;grid-template-columns:1fr 1fr;gap:24px clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.quiz .intro p{color:#E3EAE5;max-width:52ch;margin:0}
+.quiz .how{font-family:var(--serif);font-size:clamp(1.4rem,2.4vw,2rem);margin:0 0 18px}
+.qrows{border-top:1px solid rgba(242,242,240,.5)}
+.qr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) auto;gap:12px 32px;align-items:center;padding:22px 0;border-bottom:1px solid rgba(242,242,240,.5)}
+.qr h3{font-size:clamp(1.6rem,2.6vw,2.2rem)}
+.qr .hint{margin:0;min-height:3em;display:flex;align-items:center;color:#E3EAE5}
+.qb{display:flex;gap:10px}
+.qb button{width:52px;height:52px;border-radius:50%;border:1px solid #F2F2F0;background:transparent;color:#F2F2F0;font:400 1.25rem var(--sans);cursor:pointer;transition:transform .16s var(--ease-out),background-color .18s ease,color .18s ease}
+@media (hover:hover) and (pointer:fine){.qb button:hover{background:rgba(242,242,240,.2)}}
+.qb button:active{transform:scale(.94)}
+.qb button[aria-pressed=true]{background:#F2F2F0;color:var(--green-d)}
+.qb button:focus-visible,.quiz .btn:focus-visible{outline-color:#F2F2F0}
+.qres{margin-top:28px;background:var(--bg);color:var(--ink);border-radius:28px;padding:clamp(24px,3.4vw,48px);min-height:190px}
+.qres.todo p{font-family:var(--serif);font-size:clamp(1.3rem,2vw,1.7rem);color:var(--soft);margin:0}
+.qres .sc{color:var(--soft);margin:0}
+.qres h3{font-size:clamp(2rem,4vw,3.2rem);margin:8px 0 14px;max-width:20ch}
+.qres p.why{max-width:60ch}
+.qres .acts{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
+.qres .btn{background:var(--green);color:#fff;border-color:var(--green)}
+.qres .btn.s{background:transparent;color:var(--green)}
+.quiz .fine{margin-top:16px;font-size:.92rem;color:#E3EAE5}
+@media (max-width:900px){.quiz .intro{grid-template-columns:1fr}.qr{grid-template-columns:1fr}}
+
 /* témoignages */
 .rv .it{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;padding:34px 0;border-top:1px solid var(--line)}
 .rv .it:last-of-type{border-bottom:1px solid var(--line)}
@@ -224,7 +251,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
   <button class="menu" type="button" aria-expanded="false" aria-controls="panel" aria-label="Menu"><i></i><i></i></button>
   <div class="r"><a class="btn sm" href="#contact">Réserver</a></div>
   <nav class="panel" id="panel" aria-label="Navigation principale">
-    <a href="#soins">Les soins selon toi</a><a href="#services">Services</a><a href="#reconnexion">Reconnexion</a><a href="#reiki">Reiki Usui</a><a href="#kobido">Massage Kobido</a><a href="#entreprises">Entreprises</a><a href="#aurelie">À propos</a><a href="#avis">Témoignages</a><a href="#questions">Questions</a><a href="#contact">Contact</a>
+    <a href="#orientation">Quiz d'orientation</a><a href="#soins">Les soins selon toi</a><a href="#services">Services</a><a href="#reconnexion">Reconnexion</a><a href="#reiki">Reiki Usui</a><a href="#kobido">Massage Kobido</a><a href="#entreprises">Entreprises</a><a href="#aurelie">À propos</a><a href="#avis">Témoignages</a><a href="#questions">Questions</a><a href="#contact">Contact</a>
   </nav>
 </div></header>
 
@@ -233,7 +260,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
   <h1>ton chemin vers l'apaisement</h1>
   <div>
     <p>Bienvenue chez Artisane du bien-être, où ton équilibre passe avant tout. Aurélie Aké t'accompagne : accompagnement individuel, Reiki Usui et massage Kobido à Couëron (44) et en visioconférence.</p>
-    <div class="cta"><a class="btn out pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver</a></div>
+    <div class="cta"><a class="btn out pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver</a><a class="btn out" href="#orientation">Trouver mon soin</a></div>
     <p class="meta"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 · <a href="https://www.google.com/maps/place/Artisane+du+bien-%C3%AAtre/" target="_blank" rel="noopener noreferrer">20 avis Google</a></p>
   </div>
 </div></section>
@@ -260,10 +287,20 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
   </div>
 </div></section>
 
+<section class="sec quiz" id="orientation" aria-labelledby="q0-h"><div class="w">
+  <div class="intro">
+    <div><p class="lab" style="color:#F2F2F0">Par où commencer</p><h2 class="big" id="q0-h">Où en es-tu aujourd'hui ?</h2></div>
+    <p>Prends un instant pour faire le point. Que tu cherches à libérer des tensions physiques, clarifier ton esprit ou retrouver ton alignement, choisis la porte qui résonne avec ton besoin du moment et découvre le soin idéal pour y répondre.</p>
+  </div>
+  <p class="how">Note chaque point de 1 (très bas) à 4 (très bien) pour découvrir le soin conseillé.</p>
+  <div class="qrows" id="qrows"></div>
+  <div class="qres todo" id="qres" aria-live="polite"><p>Note les 4 points pour voir le soin conseillé.</p></div>
+  <p class="fine">Cette orientation est indicative et ne remplace pas un avis médical.</p>
+</div></section>
+
 <section class="sec sand doors" id="soins" aria-labelledby="soins-h"><div class="w">
   <div class="stitle"><h2 class="big" id="soins-h">Les soins selon toi</h2>
-    <p class="serif-p" style="margin-top:28px;max-width:30ch">Où en es-tu aujourd'hui ?</p>
-    <p class="muted" style="max-width:60ch">Que tu cherches à libérer des tensions physiques, clarifier ton esprit ou retrouver ton alignement, choisis la porte qui résonne avec ton besoin du moment.</p></div>
+    <p class="serif-p" style="margin-top:28px;max-width:30ch">Choisis la porte qui résonne avec ton besoin du moment.</p></div>
   <div class="rows">
     <a class="row" href="#reconnexion"><img src="assets/portrait-nb.jpg" alt="" loading="lazy" width="1000" height="1334" style="object-position:50% 25%"><div><span class="tag">Reconnexion</span><h3>Je tourne en rond</h3></div><p class="d">4 séances individuelles · 125 € la séance</p><span class="go" aria-hidden="true">→</span></a>
     <a class="row" href="#reiki"><img src="assets/1feda458d74ac29455afa660d20ebea9.jpg" alt="" loading="lazy" width="717" height="751"><div><span class="tag">Reiki Usui</span><h3>J'ai besoin de souffler</h3></div><p class="d">45 à 60 min · à partir de 50 €</p><span class="go" aria-hidden="true">→</span></a>
@@ -469,6 +506,21 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
       if(e.isIntersecting){off(b);void b.offsetWidth;b.classList.add('go');tm.set(b,setTimeout(function(){b.classList.remove('go')},5000))}else off(b)})},{threshold:.7});
     bt.forEach(function(b){io.observe(b)});
   }
+  /* quiz d'orientation */
+  var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions", "Épuisement total, corps lourd, aucune énergie", "Fatigue persistante, besoin de recharger les batteries", "Énergie correcte, mais des petites baisses dans la journée", "Plein(e) d’énergie et de vitalité"]}, {"t": "Paix intérieure", "h": ["stress, lâcher-prise, anxiété", "Stress intense, émotions submergées, anxiété permanente", "Agitation mentale, ruminations, difficulté à déconnecter", "Globalement calme, quelques pics de stress récents", "Serein(e), ancré(e) et apaisé(e)"]}, {"t": "Moral et clarté d’esprit", "h": ["motivation, vision de la vie, confiance", "Moral en berne, brouillard mental, sentiment de blocage", "Doute, besoin d’y voir clair sur une situation ou sur soi", "Envie d’avancer mais léger manque d’élan ou de recul", "Confiant(e), motivé(e) et clair(e) dans ses choix"]}, {"t": "Corps et visage", "h": ["tensions du visage, besoin de détente et d’éclat", "Visage très marqué par la fatigue, mâchoires serrées, front crispé", "Besoin urgent de détendre les traits et le haut du corps", "Envie de prendre soin de soi et de raviver l’éclat de sa peau", "Peau et visage détendus, lumineux"]}], "res": [{"name": "Reconnexion, accompagnement individuel", "why": "Ton score montre un trop-plein ou une période délicate. Un espace d’écoute et un travail guidé t’aideront à libérer ce qui pèse.", "href": "#reconnexion"}, {"name": "Soin Reiki Usui", "why": "Ton énergie baisse et le stress perturbe ton harmonie intérieure. Le Reiki rééquilibre tes énergies, relance la vitalité et apporte un grand apaisement.", "href": "#reiki"}, {"name": "Séance Découverte, 1 h 30", "why": "Tu es entre deux : un peu de fatigue, un peu de tensions, et l’envie de te faire du bien. La séance Découverte réunit un temps de Reconnexion, du Reiki et un massage Kobido pour goûter à tout et voir ce qui te correspond le mieux.", "href": "#decouverte"}, {"name": "Massage Kobido", "why": "Ton énergie est plutôt bonne. C’est le moment idéal pour un soin de détente du visage et d’éclat naturel, pour un pur moment de lâcher-prise.", "href": "#kobido"}]},QZ=DATA.QZ,state=[0,0,0,0],qrows=document.getElementById('qrows'),qres=document.getElementById('qres');
+  function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+  function drawQuiz(){
+    qrows.innerHTML=QZ.map(function(q,i){var v=state[i];
+      return '<div class="qr"><h3>'+esc(q.t)+'</h3><p class="hint">'+esc(v?q.h[v]:q.h[0])+'</p><div class="qb" role="group" aria-label="'+esc(q.t)+', de 1 à 4">'+[1,2,3,4].map(function(k){return '<button type="button" data-i="'+i+'" data-k="'+k+'" aria-pressed="'+(v===k)+'" aria-label="'+k+'">'+k+'</button>'}).join('')+'</div></div>'}).join('');
+    var done=state.every(function(x){return x>0}),score=state.reduce(function(a,b){return a+b},0);
+    if(!done){qres.className='qres todo';qres.innerHTML='<p>Note les 4 points pour voir le soin conseillé.</p>';return}
+    var r=score<=8?DATA.res[0]:score<=10?DATA.res[1]:score<=13?DATA.res[2]:DATA.res[3];
+    qres.className='qres';
+    qres.innerHTML='<p class="sc">Ton score : '+score+' sur 16</p><h3>'+esc(r.name)+'</h3><p class="why">'+esc(r.why)+'</p><div class="acts"><a class="btn" href="'+r.href+'">Découvrir cette offre</a><button type="button" class="btn s" id="qreset">Refaire le quiz</button></div>';
+    document.getElementById('qreset').addEventListener('click',function(){state=[0,0,0,0];drawQuiz()});
+  }
+  qrows.addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(!b)return;state[+b.dataset.i]=+b.dataset.k;drawQuiz();var nb=qrows.querySelector('button[data-i="'+b.dataset.i+'"][data-k="'+b.dataset.k+'"]');if(nb)nb.focus({preventScroll:true})});
+  drawQuiz();
   var f=document.getElementById('f'),fo=document.getElementById('fo');
   f.addEventListener('submit',function(e){
     e.preventDefault();
