@@ -110,7 +110,7 @@ header.bar{position:sticky;top:0;z-index:50;background:var(--bg)}
 /* pluie de mots du bonheur sur le disque doré */
 .rain{position:absolute;width:125vh;height:125vh;min-width:760px;min-height:760px;right:calc(-125vh*.42);top:50%;margin-top:calc(-62.5vh);border-radius:50%;overflow:hidden;pointer-events:none;container-type:size}
 .rain i{position:absolute;top:0;font-style:normal;font-family:var(--display);font-weight:700;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;opacity:0;will-change:transform,opacity;animation:fall linear infinite,sway ease-in-out infinite alternate;animation-play-state:paused}
-.rain i.f{width:var(--z,6px);height:var(--z,6px);border-radius:50%;background:var(--ink);font-size:0}
+.rain i.f{width:var(--z,3px);height:var(--z,3px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2F5EE' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 1v22M2.5 6.5l19 11M2.5 17.5l19-11M12 4.5l-2.2-2M12 4.5l2.2-2M12 19.5l-2.2 2M12 19.5l2.2 2M4.8 8.4l-.4 2.8M4.8 8.4l2.7-.9M19.2 15.6l.4-2.8M19.2 15.6l-2.7.9M4.8 15.6l-.4-2.8M4.8 15.6l2.7.9M19.2 8.4l.4 2.8M19.2 8.4l-2.7-.9'/%3E%3C/svg%3E") center/contain no-repeat;font-size:0}
 @keyframes sway{from{translate:-22px 0;rotate:-5deg}to{translate:22px 0;rotate:5deg}}
 .rain.on i{animation-play-state:running}
 @keyframes fall{0%{transform:translate3d(0,-3em,0);opacity:0}12%{opacity:var(--o,.5)}85%{opacity:var(--o,.5)}100%{transform:translate3d(0,calc(100cqh + 1em),0);opacity:0}}
@@ -889,7 +889,7 @@ var DATA={"QZ": [{"t": "Énergie physique", "h": ["vitalité, fatigue, tensions"
     for(i=0;i<n+fl;i++){
       el=document.createElement('i');
       var dot=i>=n,j=dot?i-n:i;
-      if(dot){el.className='f';el.style.setProperty('--z',(3+((j*7)%5)*1.4).toFixed(1)+'px')}
+      if(dot){el.className='f';el.style.setProperty('--z',(3+((j*7)%3)*.5).toFixed(1)+'px')}
       else{el.textContent=W[(i*7)%W.length];el.style.fontSize=(1+((i*13)%9)/10*1.1).toFixed(2)+'rem'}
       k=j/(dot?fl:n);
       el.style.left=(3+((i*37)%55))+'%';
