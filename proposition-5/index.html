@@ -374,6 +374,16 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .glance td.on .ci b{color:var(--green-d)}
 }
 @media (prefers-reduced-motion:reduce){.glance .lift{transition:opacity .01s}}
+@media (hover:hover) and (min-width:701px){
+.svc .list{position:relative}
+.svc .lift{position:absolute;top:0;left:0;width:0;height:0;background:#FFFFFF;border-radius:8px;box-shadow:0 26px 48px -10px rgba(47,59,53,.30),0 0 0 1px rgba(47,59,53,.08);opacity:0;pointer-events:none;z-index:1;transition:left .32s var(--ease-out),top .32s var(--ease-out),width .32s var(--ease-out),height .32s var(--ease-out),opacity .2s ease}
+.svc .lift.on{opacity:1}
+.svc .it>*{position:relative;z-index:2;transition:transform .24s var(--ease-out);transform-origin:0 50%}
+.svc .it p,.svc .it h3{max-width:94%}
+.svc .it.on>*{transform:scale(1.06)}
+.svc .it.on h3{color:var(--green-d)}
+}
+@media (prefers-reduced-motion:reduce){.svc .lift{transition:opacity .01s}}
 </style>
 </head>
 <body>
@@ -630,6 +640,24 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
   function fromHash(){var d=openDoor(location.hash.slice(1));if(d)alignTop(d)}
   window.addEventListener('hashchange',fromHash);fromHash();
   var lb=document.getElementById('lessbtn');if(lb)lb.addEventListener('click',function(){var m=document.getElementById('more');m.open=false;m.scrollIntoView({behavior:'auto',block:'center'});m.querySelector('summary').focus({preventScroll:true})});
+  /* effet carte sur Mes services */
+  (function(){
+    var l=document.querySelector('.svc .list');if(!l||!matchMedia('(hover:hover)').matches)return;
+    var its=[].slice.call(l.querySelectorAll('.it')),lift=document.createElement('div');lift.className='lift';lift.setAttribute('aria-hidden','true');l.appendChild(lift);
+    var cur=null;
+    function set(it){
+      if(it===cur)return;var was=!!cur;cur=it;its.forEach(function(x){x.classList.toggle('on',x===it)});
+      if(it&&matchMedia('(min-width:701px)').matches){
+        if(!was)lift.style.transition='none';
+        lift.style.left=(it.offsetLeft-16)+'px';lift.style.top=(it.offsetTop-14)+'px';lift.style.width=(it.offsetWidth+32)+'px';lift.style.height=(it.offsetHeight+28)+'px';
+        if(!was){void lift.offsetWidth;lift.style.transition=''}
+        lift.classList.add('on');
+      }else lift.classList.remove('on');
+    }
+    its.forEach(function(it){it.addEventListener('mouseenter',function(){set(it)});it.addEventListener('focusin',function(){set(it)})});
+    l.addEventListener('mouseleave',function(){set(null)});
+    l.addEventListener('focusout',function(e){if(!l.contains(e.relatedTarget))set(null)});
+  })();
   /* surlignage de colonne du tableau */
   (function(){
     var t=document.querySelector('.glance table'); if(!t) return;
