@@ -365,6 +365,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .svc .list{position:relative}
 .svc .lift{position:absolute;top:0;left:0;width:0;height:0;background:#FFFFFF;border-radius:8px;box-shadow:0 26px 48px -10px rgba(47,59,53,.30),0 0 0 1px rgba(47,59,53,.08);opacity:0;pointer-events:none;z-index:1;transition:left .32s var(--ease-out),top .32s var(--ease-out),width .32s var(--ease-out),height .32s var(--ease-out),opacity .2s ease}
 .svc .lift.on{opacity:1}
+.svc .it{position:relative}
 .svc .it>*{position:relative;z-index:2;transition:transform .24s var(--ease-out);transform-origin:0 50%}
 .svc .it p,.svc .it h3{max-width:94%}
 .svc .it.on>*{transform:scale(1.06)}
@@ -397,16 +398,19 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .svc .hint-b{margin:-28px 0 36px;color:var(--soft);display:none}
 @media (hover:none),(max-width:700px){
 .svc .body{display:block}
-.svc .ben{opacity:1;pointer-events:auto;margin-top:16px}
+.svc .ben{opacity:1;pointer-events:auto;margin-top:16px;position:static}
 .svc .ben li{opacity:1;transform:none}
 }
 @media (hover:hover) and (min-width:701px){
 .svc .hint-b{display:block}
-.svc .body>p{transition:opacity .2s ease}
-.svc .it.on .body>p{opacity:0}
-.svc .it.on .ben{opacity:1;pointer-events:auto}
+.svc .it.on>*:not(.ben){transform:scale(1.06)}
+.svc .it>.ben{position:absolute;left:calc(100% + 16px);top:-14px;width:calc(100% + 32px);height:calc(100% + 28px);box-sizing:border-box;z-index:3;margin:0;padding:34px 30px 30px 40px;background:#FBFAF6;border-radius:0 10px 10px 0;box-shadow:0 26px 48px -10px rgba(47,59,53,.30),0 0 0 1px rgba(47,59,53,.08);opacity:0;pointer-events:none;transform-origin:0 50%;transform:perspective(1600px) rotateY(-96deg);transition:transform .65s var(--ease-out),opacity .2s ease;backface-visibility:hidden;align-content:start;gap:12px;overflow:hidden}
+.svc .it>.ben::before{content:"";position:absolute;left:0;top:0;bottom:0;width:26px;background:linear-gradient(90deg,rgba(47,59,53,.16),rgba(47,59,53,0))}
+.svc .it:nth-child(4)>.ben{left:auto;right:calc(100% + 16px);padding:34px 40px 30px 30px;border-radius:10px 0 0 10px;transform-origin:100% 50%;transform:perspective(1600px) rotateY(96deg)}
+.svc .it:nth-child(4)>.ben::before{left:auto;right:0;background:linear-gradient(270deg,rgba(47,59,53,.16),rgba(47,59,53,0))}
+.svc .it.on>.ben{opacity:1;pointer-events:auto;transform:perspective(1600px) rotateY(0)}
 .svc .it.on .ben li{opacity:1;transform:none}
-.svc .it.on .ben li:nth-child(2){transition-delay:.04s}.svc .it.on .ben li:nth-child(3){transition-delay:.09s}.svc .it.on .ben li:nth-child(4){transition-delay:.14s}.svc .it.on .ben li:nth-child(5){transition-delay:.19s}
+.svc .it.on .ben li:nth-child(2){transition-delay:.3s}.svc .it.on .ben li:nth-child(3){transition-delay:.38s}.svc .it.on .ben li:nth-child(4){transition-delay:.46s}.svc .it.on .ben li:nth-child(5){transition-delay:.54s}
 }
 @media (prefers-reduced-motion:reduce){.svc .ben li{transition:opacity .01s;transform:none}}
 .hero .w{position:relative}
@@ -504,10 +508,10 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
   <h2 class="big stitle" id="sv-h"><span class="mk" aria-hidden="true"><svg viewBox="0 0 10 20"><line x1="1.5" y1="1" x2="8.5" y2="19" stroke="currentColor" stroke-width="1.4"/></svg></span>Mes services</h2>
   <p class="hint-b">Passe sur une pratique pour découvrir ses bienfaits.</p>
   <div class="list">
-    <div class="it"><h3>Reconnexion</h3><p class="q">L'accompagnement, c'est…</p><div class="body"><p>Un chemin en quatre séances pour faire le point quand on tourne en rond. S'appuyant sur des techniques issues de la PNL, on pose les bonnes questions, une à une, jusqu'à retrouver une direction qui te ressemble.</p><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Y voir plus clair dans tes envies et tes priorités</li><li>Lever le flou mental et sortir du « tourner en rond »</li><li>Faire des choix avec plus de confiance</li><li>Passer à l'action, pas à pas</li></ul></div><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
-    <div class="it"><h3>Reiki Usui</h3><p class="q">Le Reiki, c'est…</p><div class="body"><p>Une pratique japonaise de détente née au début du XXᵉ siècle avec Mikao Usui. « Rei » désigne l'énergie universelle, « ki » l'énergie vitale. Les mains posées doucement, sans pression, invitent le corps et l'esprit à relâcher.</p><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Relâcher les tensions du corps et de l'esprit</li><li>Apaiser le mental et le stress</li><li>Te recentrer en période de fatigue ou de transition</li><li>Ressentir une détente profonde</li></ul></div><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
-    <div class="it"><h3>Massage Kobido</h3><p class="q">Le massage Kobido, c'est…</p><div class="body"><p>Un massage du visage transmis depuis des siècles au Japon, que l'on appelle « la voie ancienne de la beauté ». Des gestes précis et enveloppants détendent les traits et réveillent l'éclat du teint.</p><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Détendre les traits du visage et la nuque</li><li>Relâcher les tensions accumulées</li><li>Favoriser l'éclat du teint</li><li>T'offrir un vrai temps de lâcher-prise</li></ul></div><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
-    <div class="it"><h3>Séance Découverte</h3><p class="q">La Découverte, c'est…</p><div class="body"><p>Une porte d'entrée : tu goûtes aux trois pratiques en une seule séance, sans avoir à choisir à l'avance. À la fin, tu sais ce qui t'a le plus fait du bien.</p><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Goûter à chaque pratique sans avoir à choisir</li><li>Vivre un vrai temps pour toi, d'un seul tenant</li><li>Repérer ce qui te fait le plus de bien</li><li>Construire la suite sur mesure</li></ul></div><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
+    <div class="it"><h3>Reconnexion</h3><p class="q">L'accompagnement, c'est…</p><div class="body"><p>Un chemin en quatre séances pour faire le point quand on tourne en rond. S'appuyant sur des techniques issues de la PNL, on pose les bonnes questions, une à une, jusqu'à retrouver une direction qui te ressemble.</p></div><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Y voir plus clair dans tes envies et tes priorités</li><li>Lever le flou mental et sortir du « tourner en rond »</li><li>Faire des choix avec plus de confiance</li><li>Passer à l'action, pas à pas</li></ul><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
+    <div class="it"><h3>Reiki Usui</h3><p class="q">Le Reiki, c'est…</p><div class="body"><p>Une pratique japonaise de détente née au début du XXᵉ siècle avec Mikao Usui. « Rei » désigne l'énergie universelle, « ki » l'énergie vitale. Les mains posées doucement, sans pression, invitent le corps et l'esprit à relâcher.</p></div><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Relâcher les tensions du corps et de l'esprit</li><li>Apaiser le mental et le stress</li><li>Te recentrer en période de fatigue ou de transition</li><li>Ressentir une détente profonde</li></ul><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
+    <div class="it"><h3>Massage Kobido</h3><p class="q">Le massage Kobido, c'est…</p><div class="body"><p>Un massage du visage transmis depuis des siècles au Japon, que l'on appelle « la voie ancienne de la beauté ». Des gestes précis et enveloppants détendent les traits et réveillent l'éclat du teint.</p></div><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Détendre les traits du visage et la nuque</li><li>Relâcher les tensions accumulées</li><li>Favoriser l'éclat du teint</li><li>T'offrir un vrai temps de lâcher-prise</li></ul><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
+    <div class="it"><h3>Séance Découverte</h3><p class="q">La Découverte, c'est…</p><div class="body"><p>Une porte d'entrée : tu goûtes aux trois pratiques en une seule séance, sans avoir à choisir à l'avance. À la fin, tu sais ce qui t'a le plus fait du bien.</p></div><ul class="ben" aria-label="Les bienfaits"><li class="bl">Les bienfaits</li><li>Goûter à chaque pratique sans avoir à choisir</li><li>Vivre un vrai temps pour toi, d'un seul tenant</li><li>Repérer ce qui te fait le plus de bien</li><li>Construire la suite sur mesure</li></ul><a class="more ul" href="#glance">Les offres en un coup d'œil</a></div>
   </div>
   <details class="bizacc glance" id="glance"><summary><span class="mk" aria-hidden="true"><svg viewBox="0 0 10 20"><line x1="1.5" y1="1" x2="8.5" y2="19" stroke="currentColor" stroke-width="1.4"/></svg></span><span class="bt"><b>Les offres en un coup d'œil</b><small>Comparer les cinq offres</small></span><span class="chev" aria-hidden="true"></span></summary><div class="bbody">
     <p class="tip">Fais glisser le tableau vers la gauche pour voir toutes les offres →</p>
