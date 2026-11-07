@@ -314,6 +314,19 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 @media (max-width:860px){.ap-top{grid-template-columns:1fr}.steps.s3{grid-template-columns:1fr}}
 .svc .it p.q{font-family:var(--serif);font-size:1.3rem;color:var(--green-d);margin:0 0 10px}
 .svc .it a.more{margin-top:auto;padding-top:16px}
+
+.bizacc{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bizacc>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:28px 0}
+.bizacc>summary::-webkit-details-marker{display:none}
+.bizacc .mk{color:var(--green);font-size:2.8rem;margin:0}
+.bizacc .bt b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.6vw,2.3rem);line-height:1.2}
+.bizacc .bt small{display:block;margin-top:6px;color:var(--green);font-size:1rem;font-weight:500}
+.bizacc[open] .bt small{visibility:hidden}
+.bizacc[open] .chev{transform:rotate(-135deg) translate(-3px,-3px)}
+.bizacc::details-content{block-size:0;overflow:clip;transition:block-size .35s var(--ease-out),content-visibility .35s allow-discrete}
+.bizacc[open]::details-content{block-size:auto}
+.bizacc .bbody{padding:8px 0 clamp(32px,4vw,56px)}
+.bizacc .three{margin:40px 0 32px}
 </style>
 </head>
 <body>
@@ -367,7 +380,17 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
     <div class="it"><h3>Massage Kobido</h3><p class="q">Le massage Kobido, c'est…</p><p>Un massage du visage transmis depuis des siècles au Japon, que l'on appelle « la voie ancienne de la beauté ». Des gestes précis et enveloppants détendent les traits et réveillent l'éclat du teint.</p><a class="more ul" href="#kobido">En savoir plus</a></div>
     <div class="it"><h3>Séance Découverte</h3><p class="q">La Découverte, c'est…</p><p>Une porte d'entrée : tu goûtes aux trois pratiques en une seule séance, sans avoir à choisir à l'avance. À la fin, tu sais ce qui t'a le plus fait du bien.</p><a class="more ul" href="#decouverte">En savoir plus</a></div>
   </div>
-  <div class="foot"><a class="btn out" href="#entreprises">Offres pour les entreprises</a></div>
+  <details class="bizacc" id="entreprises"><summary><span class="mk" aria-hidden="true"><svg viewBox="0 0 10 20"><line x1="1.5" y1="1" x2="8.5" y2="19" stroke="currentColor" stroke-width="1.4"/></svg></span><span class="bt"><b>Si vous êtes une entreprise, vous êtes également les bienvenues.</b><small>Découvrir l'offre pour les équipes</small></span><span class="chev" aria-hidden="true"></span></summary><div class="bbody">
+    <p class="serif-p" style="max-width:34ch">Et si vos équipes prenaient enfin le temps de respirer ?</p>
+    <p class="muted" style="max-width:62ch">Une équipe qui va bien travaille mieux, et souvent, il suffit d'une vraie pause pour que tout se détende. Je viens sur site, vous accueille au cabinet ou propose des séances en ligne : des temps courts, adaptés au rythme professionnel, pour contribuer à réduire le stress, à améliorer la concentration et à installer un climat de travail plus serein.</p>
+    <div class="three">
+    <div><span class="fr" style="margin-bottom:16px"><img src="assets/relaxation.jpg" alt="" loading="lazy" width="1200" height="800" style="object-position:38% 50%"></span><h3>Relaxation guidée</h3><p>Une méditation guidée en groupe, pour se recentrer et renforcer la cohésion d'équipe.</p></div>
+    <div><span class="fr" style="margin-bottom:16px"><img src="assets/massage-dos.jpg" alt="" loading="lazy" width="1400" height="1050"></span><h3>Massage Kobido</h3><p>Un soin individuel de détente, pour une vraie pause.</p></div>
+    <div><span class="fr" style="margin-bottom:16px"><img src="assets/mains-equipe.jpg" alt="" loading="lazy" width="1600" height="1067" style="object-position:88% 50%"></span><h3>Séance énergétique</h3><p>Une séance individuelle inspirée d'une méthode japonaise de détente.</p></div>
+  </div>
+    <a class="btn pulse" href="#contact">Demander une proposition</a>
+    <p class="note">Sur site, au cabinet ou en ligne · Formules sur mesure · Séance découverte offerte</p>
+  </div></details>
 </div></section>
 
 <section class="sec sand doors" id="soins" aria-labelledby="soins-h"><div class="w">
@@ -458,20 +481,6 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
   <p class="fine">Cette orientation est indicative et ne remplace pas un avis médical.</p>
 </div></section>
 
-<section class="sec sand biz" id="entreprises" aria-labelledby="en-h"><div class="w">
-  <p class="lab">Entreprises</p>
-  <h2 class="big" id="en-h"><span class="mk" aria-hidden="true"><svg viewBox="0 0 10 20"><line x1="1.5" y1="1" x2="8.5" y2="19" stroke="currentColor" stroke-width="1.4"/></svg></span>Mon équipe est sous pression</h2>
-  <p class="serif-p" style="margin-top:28px;max-width:34ch">Et si vos équipes prenaient enfin le temps de respirer ?</p>
-  <p class="muted" style="max-width:62ch">Des séances courtes, adaptées au rythme professionnel, pour contribuer à réduire le stress, à améliorer la concentration et à installer un climat de travail plus serein.</p>
-  <div class="three">
-    <div><span class="fr" style="margin-bottom:16px"><img src="assets/relaxation.jpg" alt="" loading="lazy" width="1200" height="800" style="object-position:38% 50%"></span><h3>Relaxation guidée</h3><p>Une méditation guidée en groupe, pour se recentrer et renforcer la cohésion d'équipe.</p></div>
-    <div><span class="fr" style="margin-bottom:16px"><img src="assets/massage-dos.jpg" alt="" loading="lazy" width="1400" height="1050"></span><h3>Massage Kobido</h3><p>Un soin individuel de détente, pour une vraie pause.</p></div>
-    <div><span class="fr" style="margin-bottom:16px"><img src="assets/mains-equipe.jpg" alt="" loading="lazy" width="1600" height="1067" style="object-position:88% 50%"></span><h3>Séance énergétique</h3><p>Une séance individuelle inspirée d'une méthode japonaise de détente.</p></div>
-  </div>
-  <a class="btn pulse" href="#contact">Demander une proposition</a>
-  <p class="note">Sur site, au cabinet ou en ligne · Formules sur mesure · Séance découverte offerte</p>
-</div></section>
-
 <section class="sec about" id="aurelie" aria-labelledby="a-h"><div class="w">
   <span class="fr"><img src="assets/25c90e4014949585e91a3965b789fd7b.jpg" width="538" height="751" alt="Aurélie Aké, souriante, une tasse à la main" loading="lazy"></span>
   <div class="r">
@@ -549,7 +558,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 <script>
 (function(){
   /* portes : ouvrir l'accordéon ciblé (liens internes, quiz, menu) */
-  function openDoor(id){var d=id&&document.getElementById(id);if(d&&d.classList&&d.classList.contains('door')){d.open=true;return d}return null}
+  function openDoor(id){var d=id&&document.getElementById(id);if(d&&d.classList&&(d.classList.contains('door')||d.classList.contains('bizacc'))){d.open=true;return d}return null}
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)openDoor(a.getAttribute('href').slice(1))});
   function fromHash(){var d=openDoor(location.hash.slice(1));if(d)setTimeout(function(){d.scrollIntoView({behavior:'auto',block:'start'})},60)}
   window.addEventListener('hashchange',fromHash);fromHash();
