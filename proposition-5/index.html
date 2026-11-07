@@ -745,6 +745,12 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 <script>
 (function(){
   /* portes : ouvrir l'accordéon ciblé (liens internes, quiz, menu) */
+  (function(){var g=document.getElementById('glance');if(!g)return;var sm=g.querySelector('summary'),manual=false,tick=false;
+    sm.addEventListener('click',function(){manual=true});
+    function chk(){tick=false;var vh=window.innerHeight,top=sm.getBoundingClientRect().top;
+      if(top>vh*.88){manual=false;if(g.open)g.open=false;return}
+      if(!manual&&!g.open&&top<vh*.5&&top>-vh)g.open=true}
+    window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(chk)}},{passive:true});chk()})();
   function openDoor(id){var d=id&&document.getElementById(id);if(d&&d.classList&&(d.classList.contains('door')||d.classList.contains('bizacc'))){d.open=true;return d}return null}
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)openDoor(a.getAttribute('href').slice(1))});
   var barEl=document.querySelector('.bar');
