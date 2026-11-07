@@ -119,7 +119,9 @@ p{margin:0 0 14px}
 .row h3{font-size:clamp(1.7rem,3vw,2.6rem)}
 .door>summary.row>div{position:static}
 .row .tag{position:absolute;left:0;top:-38px;height:38px;display:flex;align-items:center;padding:0 38px 0 20px;font-size:1rem;line-height:1;font-weight:500;color:#fff;background:var(--green);border-radius:12px 0 0 0;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%);white-space:nowrap;transition:background-color .2s ease}
-.door[open]>summary .tag{background:var(--green-d)}
+.door>summary .tag{background:var(--tc,var(--green))}
+#reconnexion{--tc:#4A6B5A}#reiki{--tc:#4F6A80}#kobido{--tc:#9C5F4E}#decouverte{--tc:#8F6F32}
+.door[open]>summary .tag{filter:brightness(.82)}
 .row .d{font-size:1.05rem}
 .row .d{color:var(--soft)}
 .row .go{font-size:1.6rem;transition:transform .25s var(--ease-out)}
@@ -260,8 +262,10 @@ p{margin:0 0 14px}
 .qs summary::-webkit-details-marker{display:none}
 .qtag{position:absolute;left:0;top:-27px;height:27px;display:flex;align-items:center;padding:0 26px 0 14px;font-family:var(--sans);font-size:.78rem;line-height:1;background:var(--green);color:#F2F2F0;letter-spacing:.01em;border-radius:9px 0 0 0;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 100%,0 100%);white-space:nowrap}
 .qtag.general{background:var(--sand);color:var(--ink)}
+.qtag.reconnexion{background:#4A6B5A}
+.qtag.reiki{background:#4F6A80}
+.qtag.kobido{background:#9C5F4E}
 .qtag.entreprises{background:var(--ink)}
-.qtag.reiki{background:var(--green-d)}
 .qs summary::after{content:"";position:absolute;right:8px;top:50%;width:14px;height:14px;margin-top:-10px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .2s var(--ease-out)}
 .qs details[open] summary::after{transform:rotate(-135deg);margin-top:-4px}
 .qs details::details-content{block-size:0;overflow:clip;transition:block-size .3s var(--ease-out),content-visibility .3s allow-discrete}
