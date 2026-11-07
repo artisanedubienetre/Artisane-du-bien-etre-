@@ -409,6 +409,24 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .svc .it.on .ben li:nth-child(2){transition-delay:.04s}.svc .it.on .ben li:nth-child(3){transition-delay:.09s}.svc .it.on .ben li:nth-child(4){transition-delay:.14s}.svc .it.on .ben li:nth-child(5){transition-delay:.19s}
 }
 @media (prefers-reduced-motion:reduce){.svc .ben li{transition:opacity .01s;transform:none}}
+.hero .w{position:relative}
+.orb{position:absolute;right:clamp(-72px,-3vw,-16px);top:clamp(0px,1vw,24px);width:clamp(340px,34vw,520px);aspect-ratio:1;border-radius:50%;background:var(--green);overflow:hidden;pointer-events:none;container-type:size;animation:grow 1.2s var(--ease-out) both}
+.orb img{position:absolute;left:50%;top:50%;width:46%;height:46%;translate:-50% -50%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 6px rgba(242,242,240,.18);animation:fade 1.2s .3s ease both}
+.rain{position:absolute;inset:0;overflow:hidden;border-radius:50%;container-type:size}
+.rain i{position:absolute;top:0;font-style:normal;font-family:var(--serif);color:#F2F2F0;white-space:nowrap;opacity:0;will-change:transform,opacity;animation:fall linear infinite,sway ease-in-out infinite alternate;animation-play-state:paused}
+.rain i.f{width:var(--z,3px);height:var(--z,3px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2F2F0' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 1v22M2.5 6.5l19 11M2.5 17.5l19-11M12 4.5l-2.2-2M12 4.5l2.2-2M12 19.5l-2.2 2M12 19.5l2.2 2'/%3E%3C/svg%3E") center/contain no-repeat;font-size:0}
+.rain.on i{animation-play-state:running}
+@keyframes sway{from{translate:-18px 0;rotate:-5deg}to{translate:18px 0;rotate:5deg}}
+@keyframes fall{0%{transform:translate3d(0,-3em,0);opacity:0}12%{opacity:var(--o,.5)}85%{opacity:var(--o,.5)}100%{transform:translate3d(0,calc(100cqh + 1em),0);opacity:0}}
+@keyframes grow{from{transform:scale(.86);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (max-width:860px){.orb{position:relative;right:auto;top:auto;width:min(78vw,380px);margin:28px auto 0}}
+.hero{overflow:clip}
+.hero .row2{grid-template-columns:1fr;gap:clamp(36px,5vw,64px);align-items:start}
+.hero .facts-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,3vw,48px)}
+.hero .facts-strip li{flex-direction:column;justify-content:flex-start;gap:4px;padding:16px 0;border-bottom:0}
+.hero .facts-strip b{text-align:left}
+@media (max-width:860px){.hero .facts-strip{grid-template-columns:1fr 1fr}.hero .facts-strip li{border-bottom:1px solid var(--line)}}
 </style>
 </head>
 <body>
@@ -425,6 +443,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 <main id="contenu">
 <section class="hero" id="haut"><div class="w">
   <h1>ton chemin vers l'apaisement</h1>
+  <div class="orb" aria-hidden="true"><div class="rain"></div><img src="assets/portrait-fenetre.jpg" width="200" height="200" alt="" decoding="async"></div>
   <div class="row2">
     <div>
       <p class="lead">Bienvenue chez Artisane du bien-être, où ton équilibre passe avant tout. Aurélie Aké t'accompagne pour retrouver apaisement, clarté et énergie : par la parole, les mains ou le massage, à ton rythme.</p>
@@ -666,6 +685,27 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
   function fromHash(){var d=openDoor(location.hash.slice(1));if(d)alignTop(d)}
   window.addEventListener('hashchange',fromHash);fromHash();
   var lb=document.getElementById('lessbtn');if(lb)lb.addEventListener('click',function(){var m=document.getElementById('more');m.open=false;m.scrollIntoView({behavior:'auto',block:'center'});m.querySelector('summary').focus({preventScroll:true})});
+  /* pluie de mots dans le disque du hero */
+  (function(){
+    var r=document.querySelector('.rain');
+    if(!r||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+    var W=['Joie','Sérénité','Douceur','Légèreté','Paix','Lumière','Sourire','Harmonie','Bien-être','Confiance','Gratitude','Calme','Plénitude','Espoir','Élan','Équilibre','Apaisement','Tendresse','Bonheur','Souffle'];
+    var n=10,fl=14,i,el,k;
+    for(i=0;i<n+fl;i++){
+      el=document.createElement('i');
+      var dot=i>=n,j=dot?i-n:i;
+      if(dot){el.className='f';el.style.setProperty('--z',(3+((j*7)%3)*.5).toFixed(1)+'px')}
+      else{el.textContent=W[(i*7)%W.length];el.style.fontSize=(.95+((i*13)%9)/10*.9).toFixed(2)+'rem'}
+      k=j/(dot?fl:n);
+      el.style.left=(8+((i*37)%62))+'%';
+      el.style.setProperty('--o',(dot?.55+((j*3)%4)*.1:.62+((i*17)%5)*.08).toFixed(2));
+      el.style.animationDuration=(dot?12+((j*5)%6)*1.6:15+((i*11)%7)*1.8).toFixed(1)+'s,'+(3.5+((i*7)%5)*.9).toFixed(1)+'s';
+      el.style.animationDelay=(-k*(dot?16:22)).toFixed(1)+'s,'+(-((i*13)%7)).toFixed(1)+'s';
+      r.appendChild(el);
+    }
+    if('IntersectionObserver' in window)new IntersectionObserver(function(en){en.forEach(function(e){r.classList.toggle('on',e.isIntersecting)})}).observe(r.parentNode);
+    else r.classList.add('on');
+  })();
   /* effet carte sur Mes services */
   (function(){
     var l=document.querySelector('.svc .list');if(!l||!matchMedia('(hover:hover)').matches)return;
