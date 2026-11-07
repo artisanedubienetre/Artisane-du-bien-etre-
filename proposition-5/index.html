@@ -824,6 +824,8 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
     qres.className='qres';
     qres.innerHTML='<p class="sc">Ton score : '+score+' sur 16</p><h3>'+esc(r.name)+'</h3><p class="why">'+esc(r.why)+'</p><div class="acts"><a class="btn" href="'+(BK[r.href]||r.href)+'" target="_blank" rel="noopener noreferrer">Réserver</a><button type="button" class="btn s" id="qreset">Refaire le quiz</button></div>';
     document.getElementById('qreset').addEventListener('click',function(){state=[0,0,0,0];drawQuiz()});
+    requestAnimationFrame(function(){var rc=qres.getBoundingClientRect(),hb=document.querySelector('.bar'),top=(hb?hb.offsetHeight:80)+8,bot=window.innerHeight-90;
+      if(rc.top<top||rc.bottom>bot){qres.scrollIntoView({behavior:(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth',block:'center'})}});
   }
   qrows.addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(!b)return;state[+b.dataset.i]=+b.dataset.k;drawQuiz();var nb=qrows.querySelector('button[data-i="'+b.dataset.i+'"][data-k="'+b.dataset.k+'"]');if(nb)nb.focus({preventScroll:true})});
   drawQuiz();
