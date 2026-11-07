@@ -351,6 +351,16 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .glance td small{display:block;font-size:.92rem;color:var(--soft);margin-top:2px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:900px){.glance th,.glance td{padding:16px}}
+@media (max-width:700px){
+.glance .tw{scroll-snap-type:x mandatory;scroll-padding-inline-start:104px;overscroll-behavior-x:contain}
+.glance table{min-width:0;width:max-content;table-layout:fixed}
+.glance tbody th,.glance thead th:first-child{position:sticky;left:0;z-index:2;width:104px;min-width:104px;max-width:104px;padding:16px 12px;font-size:.95rem;font-weight:500;box-shadow:1px 0 0 var(--line)}
+.glance thead th:first-child{background:var(--ink)}
+.glance tbody tr th{background:#EBE8E1}
+.glance tbody tr:nth-child(even) th{background:#E2DFD8}
+.glance thead th:not(:first-child),.glance td{width:calc(100vw - 40px - 104px - 2px);min-width:calc(100vw - 40px - 104px - 2px);scroll-snap-align:start}
+.glance thead th:not(:first-child){font-size:1.35rem}
+}
 </style>
 </head>
 <body>
