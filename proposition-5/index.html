@@ -371,6 +371,20 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .svc .it.on h3{color:var(--green-d)}
 }
 @media (prefers-reduced-motion:reduce){.svc .lift{transition:opacity .01s}}
+@media (min-width:701px){
+.glance .tw{overflow:visible;border:0;background:transparent}
+.glance table{background:var(--sand);border:1px solid var(--line)}
+.glance td.on,.glance thead th.on{position:relative;z-index:3}
+.glance td.on{background:#fff !important;box-shadow:-10px 0 0 0 #fff,10px 0 0 0 #fff,-14px 0 30px -10px rgba(47,59,53,.32),14px 0 30px -10px rgba(47,59,53,.32)}
+.glance thead th.on{box-shadow:-10px 0 0 0 var(--green),10px 0 0 0 var(--green),-14px 0 30px -10px rgba(47,59,53,.32),14px 0 30px -10px rgba(47,59,53,.32)}
+.glance thead th.on::before,.glance tbody tr:last-child td.on::after{content:"";position:absolute;left:-10px;right:-10px;height:14px}
+.glance thead th.on::before{top:-14px;background:var(--green);border-radius:14px 14px 0 0;box-shadow:0 -10px 24px -12px rgba(47,59,53,.3)}
+.glance tbody tr:last-child td.on::after{bottom:-14px;background:#fff;border-radius:0 0 14px 14px;box-shadow:0 12px 24px -12px rgba(47,59,53,.3)}
+.glance td.on .ci,.glance thead th.on .ci{transform:scale(1.12)}
+.glance thead th.on .ci{transform:scale(1.15)}
+.glance td.on b{color:var(--green-d)}
+.glance .ci{transition:transform .3s var(--ease-out)}
+}
 </style>
 </head>
 <body>
