@@ -405,9 +405,9 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .svc .body{display:grid}
 .svc .body>*{grid-area:1/1}
 .svc .ben{list-style:none;margin:0;padding:0;display:grid;gap:8px;align-content:start;opacity:0;pointer-events:none;transition:opacity .2s ease}
-.svc .ben li{position:relative;padding-left:18px;line-height:1.4;color:var(--ink);font-size:.98rem;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .4s var(--ease-out)}
-.svc .ben li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--green)}
-.svc .ben li.bl{padding-left:0;font-family:var(--serif);font-size:1.15rem;color:var(--green-d);margin-bottom:2px}
+.svc .ben li{position:relative;padding-left:18px;line-height:1.65;color:var(--ink);font-size:1.0625rem;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .4s var(--ease-out)}
+.svc .ben li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--green)}
+.svc .ben li.bl{padding-left:0;font-family:var(--serif);font-size:1.3rem;line-height:1.3;color:var(--green-d);margin-bottom:2px}
 .svc .ben li.bl::before{display:none}
 .svc .hint-b{margin:-28px 0 36px;color:var(--soft);display:none}
 @media (hover:none),(max-width:700px){
@@ -418,6 +418,8 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 @media (hover:hover) and (min-width:701px){
 .svc .hint-b{display:block}
 .svc .it.on>*:not(.ben){transform:scale(1.06)}
+.svc .it>.ben li:not(.bl){font-size:1.127rem}
+.svc .it>.ben li.bl{font-size:1.38rem}
 .svc .it>.ben{position:absolute;left:calc(100% + 16px);top:-14px;width:calc(100% + 32px);height:calc(100% + 28px);box-sizing:border-box;z-index:3;margin:0;padding:34px 30px 30px 40px;background:#FBFAF6;border-radius:0 10px 10px 0;box-shadow:0 26px 48px -10px rgba(47,59,53,.30),0 0 0 1px rgba(47,59,53,.08);opacity:0;pointer-events:none;transform-origin:0 50%;transform:perspective(1600px) rotateY(-96deg);transition:transform .65s var(--ease-out),opacity .2s ease;backface-visibility:hidden;align-content:start;gap:12px;overflow:hidden}
 .svc .it>.ben::before{content:"";position:absolute;left:0;top:0;bottom:0;width:26px;background:linear-gradient(90deg,rgba(47,59,53,.16),rgba(47,59,53,0))}
 .svc .it:nth-child(4)>.ben{left:auto;right:calc(100% + 16px);padding:34px 40px 30px 30px;border-radius:10px 0 0 10px;transform-origin:100% 50%;transform:perspective(1600px) rotateY(96deg)}
