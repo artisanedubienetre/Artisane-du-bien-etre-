@@ -109,7 +109,7 @@ p{margin:0 0 14px}
 
 /* portes (lignes façon « Pros ») */
 .doors .intro{max-width:30ch}
-.rows{border-top:1px solid var(--line)}
+.rows{padding-top:38px}
 .row{display:grid;grid-template-columns:96px minmax(0,1.2fr) minmax(0,1fr) auto;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;position:relative}
 .row .fr{width:96px;height:128px}
 .row img{width:100%;height:100%;object-fit:cover}
@@ -117,7 +117,8 @@ p{margin:0 0 14px}
 .row>*{position:relative;z-index:1}
 @media (hover:hover) and (pointer:fine){.row:hover::before{opacity:.7}}
 .row h3{font-size:clamp(1.7rem,3vw,2.6rem)}
-.row .tag{display:inline-block;font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.2;font-weight:500;color:#fff;background:var(--green);padding:6px 18px;border-radius:999px;margin-bottom:12px;transition:background-color .2s ease}
+.door>summary.row>div{position:static}
+.row .tag{position:absolute;left:0;top:-38px;height:38px;display:flex;align-items:center;padding:0 38px 0 20px;font-size:1rem;line-height:1;font-weight:500;color:#fff;background:var(--green);border-radius:12px 0 0 0;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%);white-space:nowrap;transition:background-color .2s ease}
 .door[open]>summary .tag{background:var(--green-d)}
 .row .d{font-size:1.05rem}
 .row .d{color:var(--soft)}
@@ -128,7 +129,9 @@ p{margin:0 0 14px}
 .hesit p{margin:0;font-family:var(--serif);font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.2;max-width:34ch}
 
 /* portes en accordéon */
-.door{border-bottom:1px solid var(--line)}
+.door{border-top:1px solid var(--line);margin-top:38px}
+.door:first-child{margin-top:0}
+.door:last-child{border-bottom:1px solid var(--line)}
 .door>summary.row{border-bottom:0;list-style:none;cursor:pointer}
 .door>summary::-webkit-details-marker{display:none}
 .chev{width:14px;height:14px;margin:0 8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translate(-3px,-3px);transition:transform .25s var(--ease-out)}
