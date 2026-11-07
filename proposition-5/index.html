@@ -428,6 +428,11 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .hero .facts-strip b{text-align:left}
 @media (max-width:860px){.hero .facts-strip{grid-template-columns:1fr 1fr}.hero .facts-strip li{border-bottom:1px solid var(--line)}}
 .dbody.deco .facts dt{color:rgba(242,242,240,.8)}
+.addr{font-style:normal;justify-self:center;display:flex;align-items:center;gap:16px;padding:18px 28px;border:1px solid var(--line);border-radius:16px;background:var(--bg);line-height:1.45;position:relative;z-index:1;animation:rise .9s 1.2s var(--ease-out) both}
+.addr .pin{color:var(--green);flex:none}
+.addr b{display:block;font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.1;margin-bottom:2px}
+.trail{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+@media (max-width:860px){.trail{display:none}.addr{justify-self:start}}
 </style>
 </head>
 <body>
@@ -443,13 +448,14 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 
 <main id="contenu">
 <section class="hero" id="haut"><div class="w">
-  <h1>ton chemin vers l'apaisement</h1>
+  <h1>ton chemin vers <span class="hend">l'apaisement</span></h1>
   <div class="orb" aria-hidden="true"><div class="rain"></div><img src="assets/portrait-fenetre.jpg" width="200" height="200" alt="" decoding="async"></div>
   <div class="row2">
     <div>
       <p class="lead">Bienvenue chez Artisane du bien-être, où ton équilibre passe avant tout. Aurélie Aké t'accompagne pour retrouver apaisement, clarté et énergie : par la parole, les mains ou le massage, à ton rythme.</p>
       <div class="cta"><a class="btn pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver</a><a class="btn out" href="#orientation">Trouver mon soin</a></div>
     </div>
+    <address class="addr"><svg class="pin" viewBox="0 0 24 32" width="22" height="30" aria-hidden="true"><path d="M12 1C6 1 2 5.4 2 10.8 2 18 12 31 12 31s10-13 10-20.2C22 5.4 18 1 12 1z" fill="currentColor"/><circle cx="12" cy="11" r="3.6" fill="#F2F2F0"/></svg><span><b>Maison du Port</b>4 quai Commandant Lucas<br>44220 Couëron</span></address>
     <ul class="facts-strip" aria-label="En un coup d'œil">
       <li><span>Avis Google</span><b><span class="stars" aria-hidden="true">★★★★★</span> 5,0 · 20 avis</b></li>
       <li><span>Au cabinet</span><b>Couëron (44)</b></li>
@@ -457,6 +463,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
       <li><span>Depuis</span><b>2019</b></li>
     </ul>
   </div>
+  <svg class="trail" aria-hidden="true" focusable="false"><defs><mask id="tm" maskUnits="userSpaceOnUse"><path id="tmp" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/></mask></defs><path id="tp" fill="none" stroke="#4A6B5A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 11" mask="url(#tm)"/><circle id="t0" r="6" fill="#4A6B5A"/><circle id="t2" r="6" fill="#4A6B5A"/></svg>
 </div></section>
 
 <section class="sec sand approche" id="approche" aria-labelledby="ap-h"><div class="w">
@@ -647,7 +654,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
     <p class="serif-p" style="margin-top:40px;max-width:20ch">Prête à franchir la porte ? Je te réponds personnellement.</p>
     <p><a class="btn pulse" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Choisir un créneau</a></p>
     <div class="infos">
-      <div><b>Au cabinet</b>Maison du Port, Couëron (44220), près de Nantes</div>
+      <div><b>Au cabinet</b>Maison du Port, 4 quai Commandant Lucas, 44220 Couëron, près de Nantes</div>
       <div><b>En visioconférence</b>Partout en France</div>
       <div><b>Contact</b><a href="mailto:aurelie.artisanedubienetre@gmail.com">aurelie.artisanedubienetre@gmail.com</a> · <mark class="todo">[téléphone]</mark></div>
     </div>
@@ -708,6 +715,34 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
     }
     if('IntersectionObserver' in window)new IntersectionObserver(function(en){en.forEach(function(e){r.classList.toggle('on',e.isIntersecting)})}).observe(r.parentNode);
     else r.classList.add('on');
+  })();
+  /* balisage : du titre à l'adresse, puis à la photo */
+  (function(){
+    var w=document.querySelector('.hero .w'),sv=w&&w.querySelector('.trail'),he=w&&w.querySelector('.hend'),ad=w&&w.querySelector('.addr'),ob=w&&w.querySelector('.orb');
+    if(!sv||!he||!ad||!ob)return;
+    var tp=sv.querySelector('#tp'),tm=sv.querySelector('#tmp'),c0=sv.querySelector('#t0'),c2=sv.querySelector('#t2'),rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,first=true,tmr;
+    function rel(el){var a=el.getBoundingClientRect(),b=w.getBoundingClientRect();return{l:a.left-b.left,r:a.right-b.left,t:a.top-b.top,b:a.bottom-b.top,cx:a.left-b.left+a.width/2,cy:a.top-b.top+a.height/2}}
+    function draw(){
+      if(getComputedStyle(sv).display==='none')return;
+      var h=rel(he),a=rel(ad),o=rel(ob);
+      /* l'orbe est animé (scale) : on calcule sur sa taille de repos */
+      var od=ob.offsetWidth,ocx=ob.offsetLeft+od/2,obt=ob.offsetTop+od;
+      var x0=h.r+14,y0=h.t+(h.b-h.t)*.62,x1=a.cx,y1=a.t-8,x2=a.r+12,y2=a.cy,x3=ocx,y3=obt+10;
+      var d='M'+x0+' '+y0+' C'+(x0+110)+' '+(y0+50)+' '+(x1+60)+' '+(y1-170)+' '+x1+' '+y1+' M'+x2+' '+y2+' C'+(x2+170)+' '+y2+' '+x3+' '+(y3+170)+' '+x3+' '+y3;
+      tp.setAttribute('d',d);tm.setAttribute('d',d);
+      c0.setAttribute('cx',x0);c0.setAttribute('cy',y0);c2.setAttribute('cx',x3);c2.setAttribute('cy',y3);
+      if(first&&!rm){
+        first=false;var L=tm.getTotalLength();
+        tm.style.strokeDasharray=L;tm.style.strokeDashoffset=L;c0.style.opacity=0;c2.style.opacity=0;
+        tm.getBoundingClientRect();
+        tm.style.transition='stroke-dashoffset 2.4s .6s cubic-bezier(.65,0,.35,1)';tm.style.strokeDashoffset=0;
+        c0.style.transition='opacity .4s .5s';c0.style.opacity=1;c2.style.transition='opacity .4s 2.8s';c2.style.opacity=1;
+      }else if(first){first=false}
+    }
+    function later(){clearTimeout(tmr);tmr=setTimeout(function(){var f=first;draw()},120)}
+    window.addEventListener('resize',function(){clearTimeout(tmr);tmr=setTimeout(function(){tm.style.transition='none';draw()},150)});
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);else draw();
+    window.addEventListener('load',draw);
   })();
   /* effet carte sur Mes services */
   (function(){
