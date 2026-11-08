@@ -336,13 +336,17 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 
 .approche{padding-bottom:clamp(56px,8vw,112px)}
 .ap-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(48px,6vw,88px)}
+.ap-fig{grid-area:1/1;margin:0;align-self:stretch;min-height:170px;border-radius:14px;overflow:hidden;position:relative}
+.ap-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 49%;display:block}
+.ap-top h2{grid-area:2/1}
+.ap-txt{grid-area:1/2;align-self:center}
 .ap-top .serif-p{max-width:22ch}
 .steps.s3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .ideal{font-family:var(--serif);font-size:clamp(1.25rem,1.8vw,1.55rem);line-height:1.25;color:var(--green-d);margin:0 0 8px;max-width:40ch}
 .det .sub{font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,2rem);line-height:1.1;margin:-6px 0 18px;color:var(--green)}
 .biz .three{margin-top:48px}
 .biz .btn{margin-top:4px}
-@media (max-width:860px){.ap-top{grid-template-columns:1fr}.steps.s3{grid-template-columns:1fr}}
+@media (max-width:860px){.ap-top{grid-template-columns:1fr}.ap-fig,.ap-top h2,.ap-txt{grid-area:auto}.ap-fig{min-height:0;height:170px}.steps.s3{grid-template-columns:1fr}}
 .svc .it p.q{font-family:var(--serif);font-size:1.3rem;color:var(--green-d);margin:0 0 10px}
 .svc .it a.more{margin-top:auto;padding-top:16px}
 
@@ -528,8 +532,9 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 
 <section class="sec sand approche" id="approche" aria-labelledby="ap-h"><div class="w">
   <div class="ap-top">
+    <figure class="ap-fig"><img src="assets/main-ouverte.jpg" alt="Une main ouverte, dans une lumière douce" loading="lazy" decoding="async"></figure>
     <h2 class="big" id="ap-h"><span class="mk" aria-hidden="true"><svg viewBox="0 0 10 20"><line x1="1.5" y1="1" x2="8.5" y2="19" stroke="currentColor" stroke-width="1.4"/></svg></span>Comment je t'accompagne</h2>
-    <div>
+    <div class="ap-txt">
       <p class="serif-p">Aller mieux, ce n'est pas seulement calmer le mental ou retrouver de l'énergie.</p>
       <p class="muted" style="max-width:52ch">C'est aussi entendre ce que l'on veut vraiment, et se donner la permission de construire une vie qui nous ressemble.</p>
     </div>
