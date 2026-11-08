@@ -381,7 +381,9 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .gl::-webkit-scrollbar{display:none}
 .gc{flex:none;width:min(264px,78vw);scroll-snap-align:start}
 }
-@media (prefers-reduced-motion:reduce){.gc{transition:none}}
+@keyframes gblink{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--tc) 70%,transparent);transform:scale(1);filter:brightness(1)}50%{box-shadow:0 0 0 12px color-mix(in srgb,var(--tc) 0%,transparent);transform:scale(1.07);filter:brightness(1.18)}}
+@media (hover:hover){.gc:hover .btn{animation:gblink 1.1s ease-in-out infinite}}
+@media (prefers-reduced-motion:reduce){.gc{transition:none}.gc:hover .btn{animation:none}}
 .gl:focus-visible{outline-offset:2px}
 
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
