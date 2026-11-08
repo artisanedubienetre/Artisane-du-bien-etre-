@@ -846,7 +846,15 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
         lift.classList.add('on');
       }else lift.classList.remove('on');
     }
-    its.forEach(function(it){it.addEventListener('mouseenter',function(){set(it)});it.addEventListener('focusin',function(){set(it)})});
+    its.forEach(function(it){it.addEventListener('focusin',function(){set(it)})});
+    /* le survol est déterminé par la position de la souris sur la colonne (et non par l'élément touché) :
+       la page des bienfaits ouverte recouvre la pratique voisine, la survoler ouvre donc cette pratique */
+    l.addEventListener('mousemove',function(e){
+      var r=l.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,i,it;
+      for(i=0;i<its.length;i++){it=its[i];
+        if(x>=it.offsetLeft&&x<=it.offsetLeft+it.offsetWidth&&y>=it.offsetTop&&y<=it.offsetTop+it.offsetHeight){set(it);return}
+      }
+    });
     l.addEventListener('mouseleave',function(){set(null)});
     l.addEventListener('focusout',function(e){if(!l.contains(e.relatedTarget))set(null)});
   })();
