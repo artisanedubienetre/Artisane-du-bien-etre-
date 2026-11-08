@@ -7,6 +7,7 @@
 <meta name="description" content="Accompagnement individuel, Reiki Usui et massage Kobido à Couëron (44) et en visioconférence, avec Aurélie Aké.">
 <link rel="preload" href="fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+.hero .trail{display:none !important}
 @font-face{font-family:"Libre Caslon Display";font-weight:400;font-display:swap;src:url(fonts/libre-caslon-display-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"DM Sans";font-weight:400;font-display:swap;src:url(fonts/dm-sans-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"DM Sans";font-weight:500;font-display:swap;src:url(fonts/dm-sans-latin-500-normal.woff2) format("woff2")}
@@ -451,7 +452,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid color-mix(in
 .orb{position:absolute;right:clamp(-72px,-3vw,-16px);top:clamp(0px,1vw,24px);width:clamp(340px,34vw,520px);aspect-ratio:1;border-radius:50%;background:var(--green);overflow:hidden;pointer-events:none;container-type:size;animation:grow 1.2s var(--ease-out) both}
 .orb img{position:absolute;left:50%;top:50%;width:46%;height:46%;translate:-50% -50%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 6px rgba(27,20,5,.18);animation:fade 1.2s .3s ease both}
 .rain{position:absolute;inset:0;overflow:hidden;border-radius:50%;container-type:size}
-.rain i{position:absolute;top:0;font-style:normal;font-family:var(--serif);color:var(--on);white-space:nowrap;opacity:0;will-change:transform,opacity;animation:fall linear infinite,sway ease-in-out infinite alternate;animation-play-state:paused}
+.rain i{position:absolute;top:0;font-style:normal;font-family:var(--serif);color:#fff;white-space:nowrap;opacity:0;will-change:transform,opacity;animation:fall linear infinite,sway ease-in-out infinite alternate;animation-play-state:paused}
 .rain i.f{width:var(--z,3px);height:var(--z,3px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2F2F0' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 1v22M2.5 6.5l19 11M2.5 17.5l19-11M12 4.5l-2.2-2M12 4.5l2.2-2M12 19.5l-2.2 2M12 19.5l2.2 2'/%3E%3C/svg%3E") center/contain no-repeat;font-size:0}
 .rain.on i{animation-play-state:running}
 @keyframes sway{from{translate:-18px 0;rotate:-5deg}to{translate:18px 0;rotate:5deg}}
