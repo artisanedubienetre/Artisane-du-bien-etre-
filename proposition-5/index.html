@@ -59,7 +59,7 @@ p{margin:0 0 14px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:12px 32px;border-radius:999px;border:1px solid var(--green);font:500 1.0625rem/1.2 var(--sans);text-decoration:none;cursor:pointer;background:var(--green);color:#fff;transition:transform .16s var(--ease-out),background-color .18s ease,color .18s ease}
 .btn:active{transform:scale(.97)}
 .btn.out{background:transparent;color:var(--green)}
-.btn.sm{min-height:44px;padding:8px 22px;font-size:.98rem}
+.btn.sm{min-height:44px;padding:8px 22px;font-size:1rem}
 @media (hover:hover) and (pointer:fine){.btn:hover{background:var(--green-d);border-color:var(--green-d);color:#fff}.btn.out:hover{background:var(--green);color:#fff}}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,107,90,.7);transform:scale(1)}40%{transform:scale(1.06)}75%{box-shadow:0 0 0 20px rgba(74,107,90,0)}100%{box-shadow:0 0 0 0 rgba(74,107,90,0);transform:scale(1)}}
 @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(74,107,90,0)}50%{box-shadow:0 0 0 6px rgba(74,107,90,.45)}}
@@ -112,7 +112,7 @@ p{margin:0 0 14px}
 .about .fr img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
 .about .r{padding-top:clamp(0px,3vw,48px)}
 .chips{list-style:none;margin:0 0 32px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.chips li{border:1px solid var(--line);padding:6px 16px;border-radius:999px;font-size:.95rem}
+.chips li{border:1px solid var(--line);padding:6px 16px;border-radius:999px;font-size:1rem}
 @media (max-width:860px){.about .w{grid-template-columns:1fr}.about .fr{max-width:420px}}
 
 /* titres de section */
@@ -271,7 +271,7 @@ p{margin:0 0 14px}
 /* faq */
 .qtabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .qtabs::-webkit-scrollbar{display:none}
-.qtab{flex:none;appearance:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.95rem;font-weight:500;line-height:1;color:#fff;background:var(--tc);padding:0 38px 0 18px;height:42px;border-radius:12px 0 0 0;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%);opacity:.5;transition:opacity .2s ease,height .25s var(--ease-out);align-self:flex-end;white-space:nowrap}
+.qtab{flex:none;appearance:none;border:0;cursor:pointer;font-family:var(--sans);font-size:1rem;font-weight:500;line-height:1;color:#fff;background:var(--tc);padding:0 38px 0 18px;height:42px;border-radius:12px 0 0 0;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 100%,0 100%);opacity:.5;transition:opacity .2s ease,height .25s var(--ease-out);align-self:flex-end;white-space:nowrap}
 .qtab[aria-selected=true]{opacity:1;height:50px}
 @media (hover:hover){.qtab:hover{opacity:.85}.qtab[aria-selected=true]:hover{opacity:1}}
 .qtab:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
@@ -306,7 +306,7 @@ p{margin:0 0 14px}
 .contact .infos{margin-top:36px;display:grid;gap:16px;color:var(--soft)}
 .contact .infos b{display:block;color:var(--ink);font-weight:500}
 form{border:1px solid var(--line);border-radius:28px;padding:clamp(22px,3vw,36px);display:grid;gap:14px}
-label{display:grid;gap:5px;font-size:.92rem}
+label{display:grid;gap:5px;font-size:1rem}
 input,textarea{font:400 1rem var(--sans);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:12px 18px;min-height:48px;width:100%}
 textarea{border-radius:22px;min-height:130px;resize:vertical}
 input:focus,textarea:focus{outline:3px solid var(--green);outline-offset:1px}
@@ -432,7 +432,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 @media (hover:hover) and (min-width:701px){
 .svc .hint-b{display:block}
 .svc .it.on>*:not(.ben){transform:scale(1.06)}
-.svc .it>.ben li:not(.bl){font-size:1.127rem}
+.svc .it>.ben li:not(.bl){font-size:1.0625rem}
 .svc .it>.ben li.bl{font-size:1.38rem}
 .svc .it>.ben{position:absolute;left:calc(100% + 16px);top:-14px;width:calc(100% + 32px);height:calc(100% + 28px);box-sizing:border-box;z-index:3;margin:0;padding:34px 30px 30px 40px;background:#FBFAF6;border-radius:0 10px 10px 0;box-shadow:0 26px 48px -10px rgba(47,59,53,.30),0 0 0 1px rgba(47,59,53,.08);opacity:0;pointer-events:none;transform-origin:0 50%;transform:perspective(1600px) rotateY(-96deg);transition:transform .65s var(--ease-out),opacity .2s ease;backface-visibility:hidden;align-content:start;gap:12px;overflow:hidden}
 .svc .it>.ben::before{content:"";position:absolute;left:0;top:0;bottom:0;width:26px;background:linear-gradient(90deg,rgba(47,59,53,.16),rgba(47,59,53,0))}
@@ -485,6 +485,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 .rvp.past{opacity:0;z-index:3;transform:perspective(2000px) rotateY(-102deg)}
 .rvp blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.7rem);line-height:1.18;max-width:28ch}
 .rvp .who{margin:0;font-weight:500;color:var(--green);font-size:1.05rem}
+.rvctl,.rvctl *{font-family:var(--sans)}
 .rvctl{display:flex;align-items:center;gap:18px;margin-top:28px;flex-wrap:wrap}
 .rvb{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1.2rem;cursor:pointer;transition:background-color .2s,color .2s,transform .2s var(--ease-out)}
 .rvb:hover:not(:disabled){background:var(--green);color:#fff}
@@ -614,7 +615,7 @@ footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(47,59,5
 </div></section>
 
 <section class="sec faq" id="questions" aria-labelledby="q-h"><div class="w">
-  <div class="side"><h2 class="big" id="q-h" style="font-size:clamp(2.6rem,5vw,4.4rem)"><span class="mk" aria-hidden="true"><svg viewBox="0 0 10 20"><line x1="1.5" y1="1" x2="8.5" y2="19" stroke="currentColor" stroke-width="1.4"/></svg></span>Avant de réserver</h2><p class="muted" style="margin-top:18px">Une question te retient ? Chaque réponse te mène vers la bonne offre.</p></div>
+  <div class="side"><h2 class="big" id="q-h"><span class="mk" aria-hidden="true"><svg viewBox="0 0 10 20"><line x1="1.5" y1="1" x2="8.5" y2="19" stroke="currentColor" stroke-width="1.4"/></svg></span>Avant de réserver</h2><p class="muted" style="margin-top:18px">Une question te retient ? Chaque réponse te mène vers la bonne offre.</p></div>
   <div class="qs">
 <div class="qtabs" role="tablist" aria-label="Questions par pratique"><button type="button" role="tab" class="qtab general" id="qt-general" aria-controls="qp-general" aria-selected="true" tabindex="0">Général</button><button type="button" role="tab" class="qtab reconnexion" id="qt-reconnexion" aria-controls="qp-reconnexion" aria-selected="false" tabindex="-1">Reconnexion</button><button type="button" role="tab" class="qtab reiki" id="qt-reiki" aria-controls="qp-reiki" aria-selected="false" tabindex="-1">Reiki Usui</button><button type="button" role="tab" class="qtab kobido" id="qt-kobido" aria-controls="qp-kobido" aria-selected="false" tabindex="-1">Massage Kobido</button><button type="button" role="tab" class="qtab entreprises" id="qt-entreprises" aria-controls="qp-entreprises" aria-selected="false" tabindex="-1">Entreprises</button></div><div class="qpanel general" role="tabpanel" id="qp-general" aria-labelledby="qt-general"><details><summary>Reconnexion, Reiki ou Kobido : comment choisir ?</summary><div class="ans"><p>Si tu tournes en rond ou si tu hésites sur des choix, Reconnexion est faite pour toi. Si tu es fatigué(e) et que tu as besoin de relâcher, choisis le Reiki. Si tu veux t&#x27;offrir une pause pour ton visage et ta nuque, le massage Kobido t&#x27;attend. Un doute ? Un premier échange t&#x27;aide à trancher.</p><div class="ctas"><a class="btn dark sm" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a><a class="btn out sm" href="#glance">Comparer les offres</a></div></div></details>
 <details><summary>Ces pratiques remplacent-elles un suivi médical ou psychologique ?</summary><div class="ans"><p>Non. Le Reiki, le massage Kobido et les techniques d&#x27;accompagnement sont des pratiques de bien-être. Elles ne se substituent ni à un avis médical, ni à un traitement, ni à un suivi psychologique.</p></div></details></div><div class="qpanel reconnexion" role="tabpanel" id="qp-reconnexion" aria-labelledby="qt-reconnexion" hidden><details><summary>Je tourne en rond : par où commencer ?</summary><div class="ans"><p>Par un premier échange. Nous regardons ensemble où tu en es et si l&#x27;accompagnement Reconnexion correspond à ce que tu recherches. Tu n&#x27;as pas besoin d&#x27;avoir les réponses avant de commencer : nous les faisons émerger ensemble.</p><div class="ctas"><a class="btn dark sm" href="https://calendar.app.google/ktmoR72SQwgZzDju8" target="_blank" rel="noopener noreferrer">Réserver un premier échange</a></div></div></details>
